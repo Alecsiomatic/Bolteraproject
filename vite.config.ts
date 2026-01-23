@@ -13,6 +13,26 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "liquid-glass-ui": path.resolve(__dirname, "./src/lib/liquid-glass-ui.tsx"),
     },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunks
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-ui': ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-slot', '@radix-ui/react-tooltip'],
+          'vendor-query': ['@tanstack/react-query'],
+          // Feature chunks
+          'admin': [
+            './src/pages/AdminDashboard.tsx',
+            './src/pages/AdminEvents.tsx',
+            './src/pages/AdminVenues.tsx',
+          ],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
   },
 }));

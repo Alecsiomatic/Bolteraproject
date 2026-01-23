@@ -1,113 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================
+   THEME SYSTEM - COMPRA TU BOLETO MX
+   Negro + Dorado + Blanco
+   ============================================ */
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    /* === COLORES BASE === */
+    --background: 0 0% 2%;           /* Negro profundo #050505 */
+    --foreground: 0 0% 98%;          /* Blanco #fafafa */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card: 0 0% 5%;                 /* Negro card #0d0d0d */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 199 89% 48%;
-    --primary-foreground: 0 0% 100%;
+    /* === DORADO PRIMARY === */
+    --primary: 45 100% 50%;          /* Dorado #ffc800 */
+    --primary-foreground: 0 0% 5%;   /* Negro para contraste */
 
-    --secondary: 210 17% 95%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 0 0% 10%;           /* Gris oscuro */
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 17% 95%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 199 89% 48%;
-    --accent-foreground: 0 0% 100%;
+    /* === DORADO ACCENT === */
+    --accent: 43 96% 56%;            /* Dorado claro #f5c542 */
+    --accent-foreground: 0 0% 5%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 199 89% 48%;
+    /* === BORDES Y INPUTS === */
+    --border: 0 0% 18%;              /* Borde sutil */
+    --input: 0 0% 18%;
+    --ring: 45 100% 50%;             /* Dorado para focus */
 
-    --radius: 0.75rem;
-    
-    /* Custom design tokens */
-    --canvas-bg: 0 0% 100%;
-    --toolbar-bg: 210 40% 98%;
-    --tool-active: 199 89% 48%;
-    --tool-hover: 199 89% 38%;
-    --zone-default: 199 89% 48%;
-    
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --radius: 1rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* === CUSTOM TOKENS === */
+    --gold-50: 45 100% 96%;
+    --gold-100: 45 100% 90%;
+    --gold-200: 45 100% 80%;
+    --gold-300: 45 100% 70%;
+    --gold-400: 45 100% 60%;
+    --gold-500: 45 100% 50%;
+    --gold-600: 43 100% 45%;
+    --gold-700: 40 100% 38%;
+    --gold-800: 38 100% 30%;
+    --gold-900: 35 100% 22%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --canvas-bg: 0 0% 4%;
+    --toolbar-bg: 0 0% 8%;
+    --tool-active: 45 100% 50%;
+    --tool-hover: 45 100% 60%;
+    --zone-default: 45 100% 50%;
 
-    --sidebar-primary: 240 5.9% 10%;
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-gold: 0 0 30px rgba(255, 200, 0, 0.15);
+    --shadow-md: 0 10px 30px rgb(0 0 0 / 0.5);
+    --shadow-lg: 0 30px 80px rgb(0 0 0 / 0.65);
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    /* === SIDEBAR === */
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 45 100% 50%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 45 100% 50%;
 
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* === GLASS EFFECT === */
+    --glass-bg: rgba(0, 0, 0, 0.6);
+    --glass-border: rgba(255, 215, 0, 0.2);
+    --glass-shine: rgba(255, 215, 0, 0.1);
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-
-    --card: 217 33% 17%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 217 33% 17%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 199 89% 48%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 199 89% 48%;
-    --accent-foreground: 0 0% 100%;
-
+    --background: 0 0% 2%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 45 100% 50%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 43 96% 56%;
+    --accent-foreground: 0 0% 5%;
     --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 199 89% 48%;
-    
-    --canvas-bg: 0 0% 15%;
-    --toolbar-bg: 222 47% 11%;
-    --tool-active: 199 89% 48%;
-    --tool-hover: 199 89% 38%;
-    --zone-default: 199 89% 48%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 45 100% 50%;
+    --canvas-bg: 0 0% 4%;
+    --toolbar-bg: 0 0% 8%;
+    --tool-active: 45 100% 50%;
+    --tool-hover: 45 100% 60%;
+    --zone-default: 45 100% 50%;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 45 100% 50%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 45 100% 50%;
   }
 }
 
@@ -117,6 +126,396 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100vh;
+    background-color: hsl(0 0% 2%);
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(255, 200, 0, 0.08), transparent 40%),
+      radial-gradient(circle at 80% 10%, rgba(255, 215, 0, 0.05), transparent 35%),
+      radial-gradient(circle at 50% 90%, rgba(255, 200, 0, 0.06), transparent 40%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(5, 5, 5, 1));
+    background-attachment: fixed;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: rgba(255, 200, 0, 0.3);
+    color: white;
+  }
+}
+
+@layer components {
+  /* ============================================
+     GLASS PANELS - Estilo Liquid Glass
+     ============================================ */
+  .glass-panel {
+    @apply relative overflow-hidden rounded-2xl border border-white/10 bg-black/60 p-0 text-white backdrop-blur-2xl transition-all duration-500;
+    box-shadow: 
+      0 0 1px 1px rgba(255, 215, 0, 0.1) inset,
+      0 20px 70px rgba(0, 0, 0, 0.6);
+  }
+
+  .glass-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent 65%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .glass-panel:hover::before {
+    opacity: 1;
+  }
+
+  .glass-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 80% -10%, rgba(255, 215, 0, 0.2), transparent 45%);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  /* ============================================
+     GOLD BUTTONS
+     ============================================ */
+  .btn-gold {
+    @apply relative px-6 py-3 font-semibold rounded-xl overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, hsl(45 100% 50%), hsl(40 100% 45%));
+    color: black;
+    box-shadow: 0 4px 20px rgba(255, 200, 0, 0.3);
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 200, 0, 0.4);
+  }
+
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .btn-gold:hover::before {
+    left: 100%;
+  }
+
+  .btn-gold-outline {
+    @apply relative px-6 py-3 font-semibold rounded-xl overflow-hidden transition-all duration-300 bg-transparent border-2;
+    border-color: hsl(45 100% 50%);
+    color: hsl(45 100% 50%);
+  }
+
+  .btn-gold-outline:hover {
+    background: rgba(255, 200, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 200, 0, 0.2);
+  }
+
+  /* ============================================
+     GLASS CARDS
+     ============================================ */
+  .glass-card {
+    @apply relative rounded-2xl border border-white/10 bg-black/50 backdrop-blur-xl p-6 transition-all duration-300;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(255, 200, 0, 0.3);
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(255, 200, 0, 0.1);
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.1), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .glass-card:hover::before {
+    opacity: 1;
+  }
+
+  /* ============================================
+     STATS CARDS
+     ============================================ */
+  .stat-card {
+    @apply rounded-2xl border border-white/10 bg-black/40 px-5 py-6 backdrop-blur-lg transition-all duration-300;
+  }
+
+  .stat-card:hover {
+    border-color: rgba(255, 200, 0, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .stat-value {
+    @apply text-4xl font-bold;
+    background: linear-gradient(135deg, #ffd700, #ffaa00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ============================================
+     NAVBAR GLASS
+     ============================================ */
+  .navbar-glass {
+    @apply fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-all duration-300;
+    background: rgba(0, 0, 0, 0.7);
+    border-color: rgba(255, 215, 0, 0.1);
+  }
+
+  .navbar-glass.scrolled {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: rgba(255, 215, 0, 0.2);
+  }
+
+  /* ============================================
+     SCROLLBAR GOLD
+     ============================================ */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 200, 0, 0.3);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 200, 0, 0.5);
+  }
+
+  /* ============================================
+     ANIMATIONS
+     ============================================ */
+  @keyframes gold-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(255, 200, 0, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(255, 200, 0, 0.5);
+    }
+  }
+
+  .animate-gold-pulse {
+    animation: gold-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 215, 0, 0) 0%,
+      rgba(255, 215, 0, 0.3) 50%,
+      rgba(255, 215, 0, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* ============================================
+     BADGE GOLD
+     ============================================ */
+  .badge-gold {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium;
+    background: rgba(255, 200, 0, 0.15);
+    color: hsl(45 100% 60%);
+    border: 1px solid rgba(255, 200, 0, 0.3);
+  }
+
+  /* Hero Animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(-5deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(-3deg);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.05);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes float-rotate {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translateY(-15px) rotate(2deg) scale(1.02);
+    }
+    50% {
+      transform: translateY(-25px) rotate(0deg) scale(1.05);
+    }
+    75% {
+      transform: translateY(-10px) rotate(-2deg) scale(1.02);
+    }
+  }
+
+  @keyframes aurora {
+    0%, 100% {
+      transform: translateX(-10%) translateY(0) rotate(-5deg);
+      opacity: 0.5;
+    }
+    25% {
+      transform: translateX(5%) translateY(-10%) rotate(0deg);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateX(10%) translateY(-5%) rotate(5deg);
+      opacity: 0.6;
+    }
+    75% {
+      transform: translateX(-5%) translateY(-15%) rotate(0deg);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(1);
+      filter: blur(60px);
+    }
+    50% {
+      transform: scale(1.15);
+      filter: blur(80px);
+    }
+  }
+
+  @keyframes orbit {
+    0% {
+      transform: rotate(0deg) translateX(30px) rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg) translateX(30px) rotate(-360deg);
+    }
+  }
+
+  .writing-mode-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}
+
+@layer utilities {
+  .neon-grid {
+    background-image: linear-gradient(rgba(255, 200, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 200, 0, 0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), transparent 70%);
+  }
+
+  .text-glow {
+    text-shadow: 0 5px 25px rgba(255, 200, 0, 0.35);
+  }
+
+  .text-gold-50 { color: hsl(45 100% 96%); }
+  .text-gold-100 { color: hsl(45 100% 90%); }
+  .text-gold-200 { color: hsl(45 100% 80%); }
+  .text-gold-300 { color: hsl(45 100% 70%); }
+  .text-gold-400 { color: hsl(45 100% 60%); }
+  .text-gold-500 { color: hsl(45 100% 50%); }
+
+  .bg-gold-500 { background-color: hsl(45 100% 50%); }
+  .bg-gold-400 { background-color: hsl(45 100% 60%); }
+
+  .border-gold-500 { border-color: hsl(45 100% 50%); }
+  .border-gold-400 { border-color: hsl(45 100% 60%); }
 }

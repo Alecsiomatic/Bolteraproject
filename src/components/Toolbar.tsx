@@ -1,6 +1,7 @@
 import { 
-  MousePointer2, Pencil, Square, Circle, Trash2, Pentagon, Type, Hand, 
-  Save, Upload, Undo2, Redo2, Copy, Image, FileJson
+  MousePointer2, Square, Circle, Trash2, Pentagon, Type, Hand, 
+  Save, Upload, Undo2, Redo2, Copy, Image, FileJson, LayoutGrid,
+  CircleDot, Aperture
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -20,6 +21,10 @@ interface ToolbarProps {
   onExportJSON: () => void;  // Nueva prop
   canUndo: boolean;
   canRedo: boolean;
+  saveLabel?: string;
+  isSaving?: boolean;
+  loadLabel?: string;
+  isLoading?: boolean;
 }
 
 export const Toolbar = ({ 
@@ -34,15 +39,21 @@ export const Toolbar = ({
   onExportImage,
   onExportJSON, 
   canUndo, 
-  canRedo 
+  canRedo,
+  saveLabel,
+  isSaving = false,
+  loadLabel,
+  isLoading = false,
 }: ToolbarProps) => {
   const tools = [
     { id: "select" as const, icon: MousePointer2, label: "Seleccionar" },
     { id: "hand" as const, icon: Hand, label: "Mover (Pan)" },
-    { id: "draw" as const, icon: Pencil, label: "Dibujar" },
     { id: "rectangle" as const, icon: Square, label: "Rectángulo" },
     { id: "circle" as const, icon: Circle, label: "Asiento" },
-    { id: "polygon" as const, icon: Pentagon, label: "Polígono" },
+    { id: "polygon" as const, icon: Pentagon, label: "Polígono (Zona)" },
+    { id: "section" as const, icon: LayoutGrid, label: "Sección (Polígono)" },
+    { id: "section-circle" as const, icon: CircleDot, label: "Sección Circular" },
+    { id: "section-arc" as const, icon: Aperture, label: "Sección Curva (Arco)" },
     { id: "text" as const, icon: Type, label: "Texto" },
   ];
 
@@ -94,13 +105,27 @@ export const Toolbar = ({
             
             {/* Guardado Local */}
             <div className="grid grid-cols-2 gap-2">
-              <Button variant="outline" size="sm" onClick={onSave} className="justify-start gap-2" title="Guardar en navegador">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={onSave}
+                className="justify-start gap-2"
+                title="Guardar layout"
+                disabled={isSaving}
+              >
                   <Save className="h-4 w-4" />
-                  <span className="text-xs">Guardar</span>
+                  <span className="text-xs">{isSaving ? "Guardando..." : saveLabel ?? "Guardar"}</span>
               </Button>
-              <Button variant="outline" size="sm" onClick={onLoad} className="justify-start gap-2" title="Cargar de navegador">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={onLoad}
+                className="justify-start gap-2"
+                title="Recargar layout"
+                disabled={isLoading}
+              >
                   <Upload className="h-4 w-4" />
-                  <span className="text-xs">Cargar</span>
+                  <span className="text-xs">{isLoading ? "Cargando..." : loadLabel ?? "Cargar"}</span>
               </Button>
             </div>
 

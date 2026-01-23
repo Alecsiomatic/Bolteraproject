@@ -1,0 +1,2 @@
+ALTER TABLE `Event`
+ADD COLUMN `showRemainingTickets` BOOLEAN NOT NULL DEFAULT FALSE;

@@ -1,0 +1,179 @@
+.glass-surface {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-surface:hover {
+  transform: translateY(-2px);
+}
+
+.glass-surface__filter {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: -1;
+}
+
+.glass-surface__content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: inherit;
+  position: relative;
+  z-index: 1;
+}
+
+/* SVG Filter supported (Chrome) */
+.glass-surface--svg {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  backdrop-filter: var(--filter-id, url(#glass-filter)) saturate(var(--glass-saturation, 1.2));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow:
+    0 0 1px 1px rgba(255, 215, 0, 0.1) inset,
+    0 0 20px 4px rgba(255, 215, 0, 0.05) inset,
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.glass-surface--svg:hover {
+  border-color: rgba(255, 215, 0, 0.4);
+  box-shadow:
+    0 0 1px 1px rgba(255, 215, 0, 0.2) inset,
+    0 0 30px 8px rgba(255, 215, 0, 0.1) inset,
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 4px 12px rgba(255, 215, 0, 0.1);
+}
+
+/* Fallback for Safari/Firefox */
+.glass-surface--fallback {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(20, 20, 20, 0.75) 100%
+  );
+  backdrop-filter: blur(20px) saturate(1.5) brightness(0.9);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5) brightness(0.9);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.5),
+    0 2px 16px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 0 rgba(255, 215, 0, 0.15),
+    inset 0 -1px 0 0 rgba(255, 215, 0, 0.1);
+}
+
+.glass-surface--fallback:hover {
+  border-color: rgba(255, 215, 0, 0.4);
+  box-shadow:
+    0 12px 40px 0 rgba(0, 0, 0, 0.6),
+    0 4px 20px 0 rgba(255, 215, 0, 0.1),
+    inset 0 1px 0 0 rgba(255, 215, 0, 0.25),
+    inset 0 -1px 0 0 rgba(255, 215, 0, 0.15);
+}
+
+/* Gold shimmer effect */
+.glass-surface::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 0, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.glass-surface:hover::before {
+  left: 100%;
+}
+
+/* Gold accent glow */
+.glass-surface::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 30% -20%,
+    rgba(255, 215, 0, 0.15),
+    transparent 50%
+  );
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.glass-surface:hover::after {
+  opacity: 1;
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  .glass-surface--fallback {
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  .glass-surface--fallback::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 215, 0, 0.05);
+    border-radius: inherit;
+    z-index: -1;
+  }
+}
+
+.glass-surface:focus-visible {
+  outline: 2px solid rgba(255, 215, 0, 0.6);
+  outline-offset: 2px;
+}
+
+/* Button variant */
+.glass-surface.glass-button {
+  cursor: pointer;
+  user-select: none;
+}
+
+.glass-surface.glass-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Card variant with more padding */
+.glass-surface.glass-card .glass-surface__content {
+  padding: 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* Hero variant - larger and more dramatic */
+.glass-surface.glass-hero {
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.glass-surface.glass-hero::after {
+  background: radial-gradient(
+    ellipse at 50% -30%,
+    rgba(255, 215, 0, 0.2),
+    transparent 60%
+  );
+}

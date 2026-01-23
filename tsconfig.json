@@ -4,7 +4,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "liquid-glass-ui": ["./src/lib/liquid-glass-ui"],
+      "liquid-glass-ui/*": ["./src/lib/liquid-glass-ui/*"]
     },
     "noImplicitAny": false,
     "noUnusedParameters": false,

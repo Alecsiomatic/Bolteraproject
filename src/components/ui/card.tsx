@@ -3,7 +3,15 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("rounded-lg border bg-card text-card-foreground shadow-sm", className)} {...props} />
+  <div
+    ref={ref}
+    className={cn(
+      "glass-panel relative rounded-[28px] border border-white/10 bg-card/70 text-card-foreground shadow-[0_25px_70px_rgba(2,6,23,0.65)] backdrop-blur-2xl",
+      "before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_80%_-10%,rgba(255,255,255,0.35),transparent_45%)]",
+      className,
+    )}
+    {...props}
+  />
 ));
 Card.displayName = "Card";
 
@@ -23,7 +31,7 @@ CardTitle.displayName = "CardTitle";
 
 const CardDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
   ({ className, ...props }, ref) => (
-    <p ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />
+    <p ref={ref} className={cn("text-sm text-slate-400", className)} {...props} />
   ),
 );
 CardDescription.displayName = "CardDescription";

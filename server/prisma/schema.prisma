@@ -1,0 +1,627 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  icon        String?
+  color       String?
+  coverImage  String?
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  events      Event[]
+
+  @@index([isActive, sortOrder])
+}
+
+model User {
+  id          String              @id @default(cuid())
+  name        String
+  email       String              @unique
+  password    String
+  phone       String?
+  role        UserRole            @default(OPERATOR)
+  status      UserStatus          @default(ACTIVE)
+  lastLogin   DateTime?           @map("last_login")
+  createdAt   DateTime            @default(now()) @map("created_at")
+  updatedAt   DateTime            @updatedAt @map("updated_at")
+  events      Event[]             @relation("EventCreatedBy")
+  orders      Order[]
+  seatChanges SeatStatusHistory[]
+  favorites   UserFavorite[]
+}
+
+model UserFavorite {
+  id        String   @id @default(cuid())
+  userId    String
+  eventId   String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@index([userId])
+  @@index([eventId])
+}
+
+model Venue {
+  id             String          @id @default(cuid())
+  name           String
+  slug           String          @unique
+  address        String?
+  city           String?
+  state          String?
+  country        String?
+  postalCode     String?
+  capacity       Int?
+  description    String?         @db.Text
+  layoutJson     String?         @db.LongText
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  lastEditedBy   String?
+  layoutVersion  Int             @default(1)
+  accessInfo     String?         @db.Text
+  amenities      String?         @db.LongText
+  contactEmail   String?
+  contactPhone   String?
+  coverImage     String?
+  galleryImages  String?         @db.LongText
+  policies       String?         @db.Text
+  socialLinks    String?         @db.LongText
+  thumbnailImage String?
+  website        String?
+  events         Event[]
+  seats          Seat[]
+  alerts         VenueAlert[]
+  layouts        VenueLayout[]
+  products       VenueProduct[]
+  tables         VenueTable[]
+  templates      VenueTemplate[]
+  zones          VenueZone[]
+}
+
+model VenueLayout {
+  id             String         @id @default(cuid())
+  venueId        String
+  eventId        String?        @unique
+  name           String
+  version        Int            @default(1)
+  layoutJson     String?        @db.LongText
+  metadata       String?        @db.LongText
+  isDefault      Boolean        @default(false)
+  isTemplate     Boolean        @default(false)
+  publishedAt    DateTime?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  createdBy      String?
+  layoutType     String         @default("flat")
+  parentLayoutId String?
+  sectionId      String?        @unique
+  zones          LayoutZone[]
+  seats          Seat[]         @relation("LayoutSeats")
+  event          Event?         @relation("EventLayout", fields: [eventId], references: [id], onDelete: Cascade)
+  parentLayout   VenueLayout?   @relation("LayoutHierarchy", fields: [parentLayoutId], references: [id])
+  childLayouts   VenueLayout[]  @relation("LayoutHierarchy")
+  section        LayoutSection? @relation("SectionLayout", fields: [sectionId], references: [id])
+  venue          Venue          @relation(fields: [venueId], references: [id], onDelete: Cascade)
+
+  @@index([venueId, isDefault])
+  @@index([venueId, isTemplate])
+  @@index([venueId, version])
+  @@index([parentLayoutId])
+  @@index([layoutType])
+}
+
+model LayoutSection {
+  id             String       @id @default(cuid())
+  parentLayoutId String
+  zoneId         String?
+  name           String
+  description    String?
+  color          String?      @default("#3B82F6")
+  polygonPoints  String       @db.LongText
+  labelPosition  String?      @db.LongText
+  capacity       Int          @default(0)
+  displayOrder   Int          @default(0)
+  isActive       Boolean      @default(true)
+  hoverColor     String?      @default("#60A5FA")
+  selectedColor  String?      @default("#2563EB")
+  thumbnailUrl   String?
+  metadata       String?      @db.LongText
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  childLayout    VenueLayout? @relation("SectionLayout")
+
+  @@index([parentLayoutId])
+  @@index([zoneId])
+}
+
+model LayoutZone {
+  id           String      @id @default(cuid())
+  layoutId     String
+  sourceZoneId String?
+  name         String
+  color        String?
+  basePrice    Decimal?    @db.Decimal(10, 2)
+  capacity     Int?
+  metadata     String?     @db.LongText
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  layout       VenueLayout @relation(fields: [layoutId], references: [id], onDelete: Cascade)
+
+  @@index([layoutId])
+}
+
+model VenueProduct {
+  id          String   @id @default(cuid())
+  venueId     String
+  type        String
+  name        String
+  description String?
+  price       Decimal  @db.Decimal(10, 2)
+  stock       Int?
+  metadata    String?  @db.LongText
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  venue       Venue    @relation(fields: [venueId], references: [id], onDelete: Cascade)
+
+  @@index([venueId, type])
+  @@index([venueId, isActive])
+}
+
+model VenueTemplate {
+  id           String   @id @default(cuid())
+  venueId      String?
+  name         String
+  description  String?
+  category     String
+  capacity     Int?
+  layoutJson   String   @db.LongText
+  thumbnailUrl String?
+  isPublic     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  venue        Venue?   @relation(fields: [venueId], references: [id])
+
+  @@index([category, isPublic])
+  @@index([venueId], map: "VenueTemplate_venueId_fkey")
+}
+
+model VenueAlert {
+  id            String    @id @default(cuid())
+  venueId       String
+  zoneId        String?
+  condition     String
+  threshold     Decimal   @db.Decimal(10, 2)
+  notifyEmails  String    @db.Text
+  isActive      Boolean   @default(true)
+  lastTriggered DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  venue         Venue     @relation(fields: [venueId], references: [id], onDelete: Cascade)
+
+  @@index([venueId, isActive])
+}
+
+model VenueZone {
+  id         String          @id @default(cuid())
+  venueId    String
+  name       String
+  color      String?
+  basePrice  Decimal?        @db.Decimal(10, 2)
+  metadata   String?         @db.LongText
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+  capacity   Int?
+  seats      Seat[]
+  venue      Venue           @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  priceTiers ZonePriceTier[]
+
+  @@index([venueId])
+}
+
+model ZonePriceTier {
+  id        String    @id @default(cuid())
+  zoneId    String
+  eventId   String?
+  sessionId String?
+  price     Decimal   @db.Decimal(10, 2)
+  validFrom DateTime?
+  validTo   DateTime?
+  metadata  String?   @db.LongText
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  zone      VenueZone @relation(fields: [zoneId], references: [id], onDelete: Cascade)
+
+  @@index([zoneId, eventId])
+  @@index([zoneId, sessionId])
+}
+
+model Seat {
+  id           String              @id @default(cuid())
+  venueId      String
+  layoutId     String?
+  zoneId       String?
+  label        String
+  rowLabel     String?
+  columnNumber Int?
+  status       SeatStatus          @default(AVAILABLE)
+  metadata     String?             @db.LongText
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+  tableId      String?
+  layout       VenueLayout?        @relation("LayoutSeats", fields: [layoutId], references: [id], onDelete: Cascade)
+  table        VenueTable?         @relation(fields: [tableId], references: [id])
+  venue        Venue               @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  zone         VenueZone?          @relation(fields: [zoneId], references: [id])
+  history      SeatStatusHistory[]
+  tickets      Ticket[]
+
+  @@unique([layoutId, label])
+  @@index([venueId, label])
+  @@index([layoutId])
+  @@index([tableId])
+  @@index([zoneId], map: "Seat_zoneId_fkey")
+}
+
+model Event {
+  id                   String           @id @default(cuid())
+  name                 String
+  slug                 String           @unique
+  description          String?          @db.Text
+  status               EventStatus      @default(DRAFT)
+  venueId              String?
+  createdById          String?
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+  ageRestriction       String?
+  artistName           String?
+  categoryId           String?
+  coverImage           String?
+  doorTime             String?
+  duration             String?
+  galleryImages        String?          @db.LongText
+  hashtag              String?
+  isFeatured           Boolean          @default(false)
+  organizer            String?
+  organizerLogo        String?
+  policies             String?          @db.LongText
+  publishedAt          DateTime?
+  refundPolicy         String?          @db.Text
+  salesEndAt           DateTime?
+  salesStartAt         DateTime?
+  seoDescription       String?
+  seoImage             String?
+  seoTitle             String?
+  shortDescription     String?
+  socialLinks          String?          @db.LongText
+  terms                String?          @db.Text
+  thumbnailImage       String?
+  videoUrl             String?
+  eventType            String           @default("seated")
+  serviceFeeType       String?
+  serviceFeeValue      Decimal?         @db.Decimal(10, 2)
+  showRemainingTickets Boolean          @default(false)
+  
+  // Music system relations
+  artistId             String?
+  playlistId           String?
+  
+  category             Category?        @relation(fields: [categoryId], references: [id])
+  createdBy            User?            @relation("EventCreatedBy", fields: [createdById], references: [id])
+  venue                Venue?           @relation(fields: [venueId], references: [id])
+  artist               Artist?          @relation("EventArtist", fields: [artistId], references: [id], onDelete: SetNull)
+  playlist             Playlist?        @relation("EventPlaylist", fields: [playlistId], references: [id], onDelete: SetNull)
+  priceTiers           EventPriceTier[]
+  sessions             EventSession[]
+  layout               VenueLayout?     @relation("EventLayout")
+  favoritedBy          UserFavorite[]
+
+  @@index([categoryId])
+  @@index([status, isFeatured])
+  @@index([publishedAt])
+  @@index([artistId])
+  @@index([playlistId])
+  @@index([createdById], map: "Event_createdById_fkey")
+  @@index([venueId], map: "Event_venueId_fkey")
+}
+
+model EventPriceTier {
+  id          String        @id @default(cuid())
+  eventId     String
+  sessionId   String?
+  zoneId      String?
+  sectionId   String?
+  seatType    String?
+  label       String
+  description String?
+  price       Decimal       @db.Decimal(10, 2)
+  fee         Decimal       @default(0.00) @db.Decimal(10, 2)
+  currency    String        @default("MXN")
+  minQuantity Int?
+  maxQuantity Int?
+  capacity    Int?
+  isDefault   Boolean       @default(false)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  event       Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  session     EventSession? @relation(fields: [sessionId], references: [id])
+
+  @@index([eventId])
+  @@index([eventId, sessionId])
+  @@index([eventId, zoneId])
+  @@index([eventId, sectionId])
+  @@index([sessionId], map: "EventPriceTier_sessionId_fkey")
+}
+
+model EventSession {
+  id           String           @id @default(cuid())
+  eventId      String
+  title        String?
+  startsAt     DateTime
+  endsAt       DateTime?
+  status       SessionStatus    @default(SCHEDULED)
+  capacity     Int?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  doorsOpenAt  DateTime?
+  salesCloseAt DateTime?
+  salesOpenAt  DateTime?
+  priceTiers   EventPriceTier[]
+  event        Event            @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  tickets      Ticket[]
+
+  @@index([eventId, startsAt])
+}
+
+model Ticket {
+  id          String       @id @default(cuid())
+  sessionId   String
+  seatId      String?
+  price       Decimal      @db.Decimal(10, 2)
+  currency    String       @default("MXN")
+  status      TicketStatus @default(PENDING)
+  purchasedAt DateTime?
+  orderId     String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  tierId      String?
+  checkedInAt DateTime?
+  checkedInBy String?
+  holderEmail String?
+  holderName  String?
+  ticketCode  String?      @unique
+  order       Order?       @relation(fields: [orderId], references: [id])
+  seat        Seat?        @relation(fields: [seatId], references: [id])
+  session     EventSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId, status])
+  @@index([ticketCode])
+  @@index([orderId], map: "Ticket_orderId_fkey")
+  @@index([seatId], map: "Ticket_seatId_fkey")
+}
+
+model Order {
+  id               String      @id @default(cuid())
+  buyerName        String
+  buyerEmail       String
+  buyerPhone       String?
+  total            Decimal     @db.Decimal(10, 2)
+  status           OrderStatus @default(PENDING)
+  paymentReference String?
+  userId           String?
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  billingAddress   String?
+  billingEmail     String?
+  billingName      String?
+  billingPhone     String?
+  cancelledAt      DateTime?
+  currency         String      @default("MXN")
+  notes            String?     @db.Text
+  orderNumber      String      @unique
+  paidAt           DateTime?
+  paymentMethod    String?
+  refundedAt       DateTime?
+  serviceFee       Decimal?    @db.Decimal(10, 2)
+  subtotal         Decimal?    @db.Decimal(10, 2)
+  user             User?       @relation(fields: [userId], references: [id])
+  tickets          Ticket[]
+
+  @@index([buyerEmail])
+  @@index([orderNumber])
+  @@index([status])
+  @@index([userId], map: "Order_userId_fkey")
+}
+
+model VenueTable {
+  id        String   @id @default(cuid())
+  venueId   String
+  shape     String   @default("circle")
+  centerX   Decimal  @db.Decimal(10, 2)
+  centerY   Decimal  @db.Decimal(10, 2)
+  rotation  Decimal  @default(0.00) @db.Decimal(6, 2)
+  seatCount Int      @default(4)
+  metadata  String?  @db.LongText
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  seats     Seat[]
+  venue     Venue    @relation(fields: [venueId], references: [id], onDelete: Cascade)
+
+  @@index([venueId])
+}
+
+model SeatStatusHistory {
+  id          String      @id @default(cuid())
+  seatId      String
+  fromStatus  SeatStatus?
+  toStatus    SeatStatus
+  reason      String?
+  changedById String?
+  createdAt   DateTime    @default(now())
+  changedBy   User?       @relation(fields: [changedById], references: [id])
+  seat        Seat        @relation(fields: [seatId], references: [id], onDelete: Cascade)
+
+  @@index([changedById], map: "SeatStatusHistory_changedById_fkey")
+  @@index([seatId], map: "SeatStatusHistory_seatId_fkey")
+}
+
+model EventReminder {
+  id           String                     @id @default(dbgenerated("(uuid())")) @db.VarChar(36)
+  orderId      String                     @db.VarChar(36)
+  sessionId    String                     @db.VarChar(36)
+  reminderType EventReminder_reminderType
+  sentAt       DateTime                   @default(now()) @db.DateTime(0)
+
+  @@unique([orderId, sessionId, reminderType], map: "unique_reminder")
+  @@index([sessionId], map: "idx_session")
+}
+
+model Setting {
+  id          String   @id @db.VarChar(36)
+  key         String   @unique(map: "key") @db.VarChar(100)
+  value       String   @db.Text
+  category    String   @default("general") @db.VarChar(50)
+  description String?  @db.VarChar(255)
+  createdAt   DateTime @default(now()) @db.DateTime(0)
+  updatedAt   DateTime @default(now()) @db.DateTime(0)
+
+  @@index([category], map: "idx_category")
+}
+
+enum UserRole {
+  ADMIN
+  OPERATOR
+  VIEWER
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum EventStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum SessionStatus {
+  SCHEDULED
+  SALES_OPEN
+  SOLD_OUT
+  CANCELLED
+}
+
+enum SeatStatus {
+  AVAILABLE
+  RESERVED
+  SOLD
+  BLOCKED
+}
+
+enum TicketStatus {
+  PENDING
+  RESERVED
+  SOLD
+  CANCELLED
+  REFUNDED
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  CANCELLED
+  REFUNDED
+}
+
+enum EventReminder_reminderType {
+  h24 @map("24h")
+  h2 @map("2h")
+}
+
+// ============================================
+// MUSIC SYSTEM - Artists, Playlists, Tracks
+// ============================================
+
+model Artist {
+  id            String   @id @default(cuid())
+  name          String
+  slug          String   @unique
+  bio           String?  @db.Text
+  shortBio      String?  @db.VarChar(255)
+  profileImage  String?  // Main artist photo
+  coverImage    String?  // Header/banner image
+  galleryImages String?  @db.LongText // JSON array of image paths
+  
+  // Social links (stored as JSON)
+  socialLinks   String?  @db.LongText // { spotify, instagram, twitter, facebook, youtube, tiktok, website }
+  
+  // Music metadata
+  genres        String?  @db.Text // JSON array: ["Rock", "Alternative"]
+  achievements  String?  @db.LongText // JSON array of achievements/awards
+  
+  isActive      Boolean  @default(true)
+  isFeatured    Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  events        Event[]  @relation("EventArtist")
+  playlists     Playlist[]
+
+  @@index([isActive, isFeatured])
+  @@index([slug])
+}
+
+model Playlist {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?  @db.Text
+  coverImage  String?  // Playlist cover art
+  artistId    String?  // Optional: belongs to an artist
+  
+  isPublic    Boolean  @default(true)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  artist      Artist?  @relation(fields: [artistId], references: [id], onDelete: SetNull)
+  tracks      Track[]
+  events      Event[]  @relation("EventPlaylist")
+
+  @@index([artistId])
+  @@index([isActive, isPublic])
+}
+
+model Track {
+  id          String   @id @default(cuid())
+  playlistId  String
+  title       String
+  artistName  String?  // Track artist (can differ from playlist artist)
+  albumName   String?
+  albumImage  String?  // Album cover art
+  duration    Int?     // Duration in seconds
+  audioUrl    String   // Path to MP3 file
+  trackNumber Int      @default(0) // Order in playlist
+  
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  playlist    Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
+
+  @@index([playlistId, trackNumber])
+}
