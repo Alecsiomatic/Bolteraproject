@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Ticket, MapPin, Sparkles, Shield, Cpu, Star, Zap } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Ticket, MapPin, Calendar, Sparkles, Shield, Cpu, Star, Zap } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import { useAppConfig, getCurrentYear } from "@/hooks/useAppConfig";
 import PublicNavbar from "@/components/PublicNavbar";
 import GlassSurface from "@/components/GlassSurface";
 import { useState, Suspense, lazy } from "react";
+import type { EventSummary } from "@/types/api";
+import { API_BASE_URL } from "@/lib/api-base";
+import { normalizeImageUrl } from "@/lib/utils/imageUrl";
 
 // Lazy load ModelViewer para mejor performance
 const ModelViewer = lazy(() => import("@/components/ModelViewer"));
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
 
 interface PublicStats {
   events: { value: number; label: string; sub: string };
@@ -58,6 +61,20 @@ const Landing = () => {
     },
     staleTime: 60000,
     refetchInterval: 60000,
+  });
+
+  const { data: landingEvents = [], isLoading: landingEventsLoading } = useQuery({
+    queryKey: ["landing-events"],
+    queryFn: async () => {
+      const params = new URLSearchParams();
+      params.set("status", "PUBLISHED");
+      params.set("limit", "4");
+      const res = await fetch(`${API_BASE_URL}/api/events?${params.toString()}`);
+      if (!res.ok) throw new Error("Failed to fetch events");
+      const data = await res.json();
+      return (data.events ?? []) as EventSummary[];
+    },
+    staleTime: 60000,
   });
   
   const stats = statsData 
@@ -268,6 +285,94 @@ const Landing = () => {
                 </div>
               </GlassSurface>
             ))}
+          </section>
+
+          {/* ============================================
+              EVENTS SECTION
+              ============================================ */}
+          <section className="space-y-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-[0.3em] text-gold-400">Eventos</p>
+                <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-white">Eventos Destacados</h2>
+                <p className="text-sm text-white/60">Descubre lo mejor que no te puedes perder</p>
+              </div>
+              <Link to="/events" className="hidden sm:block">
+                <Button className="bg-gold-500 text-black hover:bg-gold-400">Ver todos</Button>
+              </Link>
+            </div>
+
+            {landingEventsLoading ? (
+              <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                {Array.from({ length: 4 }).map((_, idx) => (
+                  <Card key={`landing-event-skeleton-${idx}`} className="border-white/10 bg-white/5">
+                    <div className="h-40 sm:h-48 bg-white/5" />
+                    <CardContent className="p-4">
+                      <div className="h-4 w-3/4 bg-white/10 rounded" />
+                      <div className="mt-3 h-3 w-1/2 bg-white/10 rounded" />
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : landingEvents.length > 0 ? (
+              <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                {landingEvents.map((event) => (
+                  <Link to={`/events/${event.slug || event.id}`} key={event.id}>
+                    <Card className="group h-full overflow-hidden border-gold-500/10 bg-gradient-to-br from-gold-500/5 to-transparent backdrop-blur-xl transition-all hover:border-gold-500/30 hover:bg-gold-500/10 hover:shadow-xl hover:shadow-gold-500/10 rounded-xl sm:rounded-2xl">
+                      <div className="relative h-40 sm:h-48 overflow-hidden bg-gradient-to-br from-gold-500/10 to-amber-500/10">
+                        {event.thumbnailImage || event.coverImage ? (
+                          <img
+                            src={normalizeImageUrl(event.thumbnailImage || event.coverImage) || ""}
+                            alt={event.name}
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <Ticket className="h-14 w-14 text-white/20" />
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                        {event.isFeatured && (
+                          <Badge className="absolute left-3 top-3 bg-gold-500/90 text-black border-0">⭐ Destacado</Badge>
+                        )}
+                      </div>
+                      <CardContent className="p-4 sm:p-5">
+                        <h3 className="line-clamp-2 text-base sm:text-lg font-bold text-white transition-colors group-hover:text-gold-400">
+                          {event.name}
+                        </h3>
+                        {event.category && (
+                          <Badge variant="outline" className="mt-2 border-gold-500/20 text-xs">
+                            {event.category.name}
+                          </Badge>
+                        )}
+                        <div className="mt-3 space-y-1.5 text-xs sm:text-sm text-white/70">
+                          <div className="flex items-center gap-2">
+                            <Calendar className="h-4 w-4 text-gold-400" />
+                            <span className="truncate">{event.firstSession ? new Date(event.firstSession).toLocaleString() : "Próximamente"}</span>
+                          </div>
+                          {event.venue?.name && (
+                            <div className="flex items-center gap-2">
+                              <MapPin className="h-4 w-4 text-gold-400" />
+                              <span className="truncate">{event.venue.name}</span>
+                            </div>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-3xl border border-white/10 bg-white/5 py-10 text-center text-white/60">
+                No hay eventos publicados por ahora.
+              </div>
+            )}
+
+            <div className="sm:hidden">
+              <Link to="/events" className="w-full">
+                <Button className="w-full bg-gold-500 text-black hover:bg-gold-400">Ver todos los eventos</Button>
+              </Link>
+            </div>
           </section>
 
           {/* ============================================

@@ -4,8 +4,8 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+import { API_BASE_URL } from "@/lib/api-base";
+import { normalizeImageUrl } from "@/lib/utils/imageUrl";
 
 export interface AppConfig {
   appName: string;
@@ -45,7 +45,7 @@ async function fetchAppConfig(): Promise<AppConfig> {
     return {
       appName: settings["app.name"] || DEFAULT_CONFIG.appName,
       appDescription: settings["app.description"] || DEFAULT_CONFIG.appDescription,
-      appLogo: settings["app.logo"] || DEFAULT_CONFIG.appLogo,
+      appLogo: normalizeImageUrl(settings["app.logo"]) || DEFAULT_CONFIG.appLogo,
       appLogoSize: parseInt(settings["app.logoSize"]) || DEFAULT_CONFIG.appLogoSize,
       primaryColor: settings["app.primaryColor"] || DEFAULT_CONFIG.primaryColor,
       currency: settings["payments.currency"] || DEFAULT_CONFIG.currency,

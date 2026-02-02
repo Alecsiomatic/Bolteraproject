@@ -41,8 +41,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+import { API_BASE_URL } from "@/lib/api-base";
+import { normalizeImageUrl } from "@/lib/utils/imageUrl";
 
 type Session = {
   id: string;
@@ -348,14 +348,14 @@ const EventDetail = () => {
             <div 
               className="absolute inset-0 scale-110 blur-2xl opacity-40"
               style={{ 
-                backgroundImage: `url(${event.coverImage || event.thumbnailImage})`,
+                backgroundImage: `url(${normalizeImageUrl(event.coverImage || event.thumbnailImage)})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
               }}
             />
             {/* Main image - full visible, no cropping */}
             <img 
-              src={event.coverImage || event.thumbnailImage} 
+              src={normalizeImageUrl(event.coverImage || event.thumbnailImage) || ''} 
               alt={event.name}
               className="absolute inset-0 h-full w-full object-contain"
             />

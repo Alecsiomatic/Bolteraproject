@@ -47,8 +47,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { useAppConfig } from "@/hooks/useAppConfig";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+import { API_BASE_URL } from "@/lib/api-base";
 
 // Types
 interface CourtesyOrder {

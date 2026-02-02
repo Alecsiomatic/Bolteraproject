@@ -161,6 +161,7 @@ const dedupeSectionTiers = <T extends { sectionId?: string | null }>(tiers: T[])
 
 const eventTypes = ["seated", "general"] as const;
 const serviceFeeTypes = ["percentage", "fixed"] as const;
+const stagePositions = ["top", "bottom", "left", "right"] as const;
 
 const createEventSchema = z.object({
   name: z.string().min(3),
@@ -182,6 +183,7 @@ const createEventSchema = z.object({
   serviceFeeType: z.enum(serviceFeeTypes).optional(), // "percentage" o "fixed"
   serviceFeeValue: z.number().nonnegative().optional(), // valor del cargo de servicio global
   showRemainingTickets: z.boolean().optional(),
+  stagePosition: z.enum(stagePositions).default("top"), // posición del escenario: arriba, abajo, izquierda, derecha
   
   // Media
   coverImage: z.string().optional(),
@@ -268,6 +270,7 @@ export async function eventRoutes(app: FastifyInstance) {
         e.coverImage,
         e.isFeatured,
         e.showRemainingTickets,
+        e.stagePosition,
         e.createdById,
         e.createdAt,
         e.updatedAt,
@@ -501,6 +504,7 @@ export async function eventRoutes(app: FastifyInstance) {
         e.serviceFeeType,
         e.serviceFeeValue,
         e.showRemainingTickets,
+        e.stagePosition,
         e.artistId,
         e.playlistId,
         e.createdById,
@@ -691,6 +695,7 @@ export async function eventRoutes(app: FastifyInstance) {
       serviceFeeType: event.serviceFeeType ?? null, // "percentage" o "fixed"
       serviceFeeValue: event.serviceFeeValue ? Number(event.serviceFeeValue) : null,
       showRemainingTickets: Boolean(event.showRemainingTickets),
+      stagePosition: event.stagePosition ?? "top", // posición del escenario
       artistId: event.artistId ?? null,
       playlistId: event.playlistId ?? null,
       artist: event.artistId ? {
@@ -832,10 +837,10 @@ export async function eventRoutes(app: FastifyInstance) {
             seoTitle, seoDescription, seoImage,
             socialLinks, hashtag,
             isFeatured, salesStartAt, salesEndAt,
-            eventType, serviceFeeType, serviceFeeValue, showRemainingTickets,
+            eventType, serviceFeeType, serviceFeeValue, showRemainingTickets, stagePosition,
             artistId, playlistId,
             createdAt, updatedAt
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
           [
             eventId,
             payload.name,
@@ -871,6 +876,7 @@ export async function eventRoutes(app: FastifyInstance) {
             payload.serviceFeeType ?? null,
             payload.serviceFeeValue ?? null,
             payload.showRemainingTickets ?? false,
+            payload.stagePosition ?? "top",
             payload.artistId ?? null,
             payload.playlistId ?? null,
           ],
@@ -1970,6 +1976,7 @@ export async function eventRoutes(app: FastifyInstance) {
       serviceFeeType: z.enum(serviceFeeTypes).nullable().optional(), // "percentage" o "fixed"
       serviceFeeValue: z.number().nonnegative().nullable().optional(), // valor del cargo de servicio global
       showRemainingTickets: z.boolean().optional(),
+      stagePosition: z.enum(stagePositions).optional(), // posición del escenario
       artistId: z.string().nullable().optional(), // ID del artista asociado
       playlistId: z.string().nullable().optional(), // ID de la playlist asociada
     });
@@ -2044,6 +2051,10 @@ export async function eventRoutes(app: FastifyInstance) {
     if (payload.showRemainingTickets !== undefined) {
       updates.push("showRemainingTickets = ?");
       values.push(payload.showRemainingTickets);
+    }
+    if (payload.stagePosition !== undefined) {
+      updates.push("stagePosition = ?");
+      values.push(payload.stagePosition);
     }
     if (payload.artistId !== undefined) {
       updates.push("artistId = ?");

@@ -45,8 +45,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+import { API_BASE_URL } from "@/lib/api-base";
 
 type SeatAvailability = {
   id: string;
@@ -1080,19 +1079,47 @@ const EventPurchase = () => {
                           </div>
                         </div>
 
-                        {/* Stage indicator */}
-                        <div className="mb-4 sm:mb-8 rounded-lg bg-gradient-to-r from-amber-500/20 to-gold-500/20 p-2 sm:p-4 text-center border border-white/10 mx-1 sm:mx-0">
-                          <span className="text-[10px] sm:text-sm font-medium text-white">🎭 ESCENARIO</span>
+                        {/* Stage indicator - Position based on event.stagePosition */}
+                        {(event?.stagePosition === "top" || !event?.stagePosition) && (
+                          <div className="mb-4 sm:mb-8 rounded-lg bg-gradient-to-r from-amber-500/20 to-gold-500/20 p-2 sm:p-4 text-center border border-white/10 mx-1 sm:mx-0">
+                            <span className="text-[10px] sm:text-sm font-medium text-white">🎭 ESCENARIO</span>
+                          </div>
+                        )}
+
+                        {/* Visual Seat Map with lateral stage support */}
+                        <div className={`flex ${event?.stagePosition === "left" ? "flex-row" : event?.stagePosition === "right" ? "flex-row-reverse" : "flex-col"} gap-4`}>
+                          {/* Left stage */}
+                          {event?.stagePosition === "left" && (
+                            <div className="flex-shrink-0 w-12 sm:w-16 flex items-center justify-center rounded-lg bg-gradient-to-b from-amber-500/20 to-gold-500/20 border border-white/10">
+                              <span className="text-[10px] sm:text-sm font-medium text-white [writing-mode:vertical-rl] rotate-180">🎭 ESCENARIO</span>
+                            </div>
+                          )}
+
+                          {/* Seat map */}
+                          <div className="flex-1">
+                            {availability?.seats && availability.seats.length > 0 && eventId && sessionId && (
+                              <HierarchicalSeatMap
+                                eventId={eventId}
+                                sessionId={sessionId}
+                                selectedSeats={selectedSeats}
+                                onSeatSelect={toggleSeat}
+                              />
+                            )}
+                          </div>
+
+                          {/* Right stage */}
+                          {event?.stagePosition === "right" && (
+                            <div className="flex-shrink-0 w-12 sm:w-16 flex items-center justify-center rounded-lg bg-gradient-to-b from-amber-500/20 to-gold-500/20 border border-white/10">
+                              <span className="text-[10px] sm:text-sm font-medium text-white [writing-mode:vertical-rl]">🎭 ESCENARIO</span>
+                            </div>
+                          )}
                         </div>
 
-                        {/* Visual Seat Map - Supports both flat and hierarchical layouts */}
-                        {availability?.seats && availability.seats.length > 0 && eventId && sessionId && (
-                          <HierarchicalSeatMap
-                            eventId={eventId}
-                            sessionId={sessionId}
-                            selectedSeats={selectedSeats}
-                            onSeatSelect={toggleSeat}
-                          />
+                        {/* Bottom stage */}
+                        {event?.stagePosition === "bottom" && (
+                          <div className="mt-4 sm:mt-8 rounded-lg bg-gradient-to-r from-amber-500/20 to-gold-500/20 p-2 sm:p-4 text-center border border-white/10 mx-1 sm:mx-0">
+                            <span className="text-[10px] sm:text-sm font-medium text-white">🎭 ESCENARIO</span>
+                          </div>
                         )}
                       </>
                     )}

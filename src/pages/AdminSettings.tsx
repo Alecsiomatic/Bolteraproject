@@ -9,8 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { Settings as SettingsIcon, Mail, Shield, Palette, Ticket, CreditCard, Save, Loader2, CheckCircle, Image, Eye, AlertCircle, Upload, X, Minus, Plus } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { toast } from "sonner";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+import { API_BASE_URL } from "@/lib/api-base";
 
 interface SettingItem {
   key: string;

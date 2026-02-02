@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { 
   LayoutGrid, Eye, EyeOff, Trash2, ExternalLink, Pencil, 
   ChevronDown, ChevronRight, Users, DollarSign, Plus, Armchair, Sparkles,
-  Target, AlignCenter, RotateCcw, CircleDot, Aperture, Pentagon
+  Target, AlignCenter, RotateCcw, CircleDot, Aperture, Pentagon, Hand
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { ScrollArea } from "./ui/scroll-area";
@@ -82,6 +82,9 @@ interface SectionManagerProps {
   onCreateSection?: (shapeType?: SectionShapeType) => void;
   onUpdateSection?: (sectionId: string, updates: Partial<SectionData>) => void;
   onGenerateSeats?: (sectionId: string, seats: GeneratedSeat[], options: SeatGenerationOptions) => void;
+  // Pan tool support
+  isPanToolActive?: boolean;
+  onTogglePanTool?: () => void;
 }
 
 // Advanced generation form state
@@ -140,6 +143,8 @@ export const SectionManager = ({
   onCreateSection,
   onUpdateSection,
   onGenerateSeats,
+  isPanToolActive = false,
+  onTogglePanTool,
 }: SectionManagerProps) => {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
   const [editingSection, setEditingSection] = useState<SectionData | null>(null);
@@ -326,20 +331,43 @@ export const SectionManager = ({
           </div>
         )}
 
-        {/* Create Section Button - Dropdown with shape options */}
-        {onCreateSection && (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
-                size="sm"
-                className="w-full mb-3 gap-2"
-              >
-                <Plus className="h-4 w-4" />
-                Crear Sección
-                <ChevronDown className="h-3 w-3 ml-auto opacity-50" />
-              </Button>
-            </DropdownMenuTrigger>
+        {/* Toolbar: Create Section + Pan Tool */}
+        <div className="flex gap-2 mb-3">
+          {/* Hand/Pan tool button */}
+          {onTogglePanTool && (
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant={isPanToolActive ? "default" : "outline"}
+                    size="sm"
+                    onClick={onTogglePanTool}
+                    className="h-9 w-9 p-0 flex-shrink-0"
+                  >
+                    <Hand className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">
+                  <p>Mover vista (H)</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          )}
+
+          {/* Create Section Dropdown */}
+          {onCreateSection && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex-1 gap-2"
+                >
+                  <Plus className="h-4 w-4" />
+                  Crear Sección
+                  <ChevronDown className="h-3 w-3 ml-auto opacity-50" />
+                </Button>
+              </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-56">
               <DropdownMenuLabel>Tipo de Sección</DropdownMenuLabel>
               <DropdownMenuSeparator />
@@ -366,7 +394,8 @@ export const SectionManager = ({
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        )}
+          )}
+        </div>
 
         <ScrollArea className="h-[300px] pr-2">
           {sections.length === 0 ? (

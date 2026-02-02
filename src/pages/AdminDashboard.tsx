@@ -33,8 +33,8 @@ import { format, formatDistanceToNow } from "date-fns";
 import { es } from "date-fns/locale";
 import { Link } from "react-router-dom";
 import { useAppConfig, formatPrice } from "@/hooks/useAppConfig";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+import { API_BASE_URL } from "@/lib/api-base";
+import { normalizeImageUrl } from "@/lib/utils/imageUrl";
 
 interface DashboardStats {
   activeEvents: number;
@@ -456,7 +456,7 @@ const AdminDashboard = () => {
                     </div>
                     {event.thumbnailImage && (
                       <img
-                        src={`${API_BASE_URL}${event.thumbnailImage}`}
+                        src={normalizeImageUrl(event.thumbnailImage) || ''}
                         alt={event.name}
                         className="h-12 w-12 rounded-lg object-cover"
                       />

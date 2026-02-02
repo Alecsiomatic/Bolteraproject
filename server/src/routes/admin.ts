@@ -107,11 +107,12 @@ export async function adminRoutes(app: FastifyInstance) {
       // Get orders with event info
       const orders = await query<RowDataPacket[]>(
         `SELECT DISTINCT
-          o.id, o.buyerName, o.buyerEmail, o.buyerPhone,
-          o.total, o.status, o.paymentReference,
+          o.id, o.orderNumber, o.buyerName, o.buyerEmail, o.buyerPhone,
+          o.total, o.status, o.paymentReference, o.paymentMethod,
           o.createdAt, o.updatedAt,
           (SELECT COUNT(*) FROM Ticket WHERE orderId = o.id) as ticketCount,
-          (SELECT e.name FROM Ticket t2 JOIN EventSession es ON es.id = t2.sessionId JOIN Event e ON e.id = es.eventId WHERE t2.orderId = o.id LIMIT 1) as eventName
+          (SELECT e.name FROM Ticket t2 JOIN EventSession es ON es.id = t2.sessionId JOIN Event e ON e.id = es.eventId WHERE t2.orderId = o.id LIMIT 1) as eventName,
+          (SELECT es.startTime FROM Ticket t2 JOIN EventSession es ON es.id = t2.sessionId WHERE t2.orderId = o.id LIMIT 1) as sessionDate
          FROM \`Order\` o
          LEFT JOIN Ticket t ON t.orderId = o.id
          ${whereSQL}
@@ -124,7 +125,7 @@ export async function adminRoutes(app: FastifyInstance) {
         success: true,
         orders: orders.map((o: any) => ({
           id: o.id,
-          orderNumber: o.id.substring(0, 8).toUpperCase(),
+          orderNumber: o.orderNumber || o.id.substring(0, 8).toUpperCase(),
           buyerName: o.buyerName,
           buyerEmail: o.buyerEmail,
           buyerPhone: o.buyerPhone,
@@ -133,10 +134,11 @@ export async function adminRoutes(app: FastifyInstance) {
           discount: 0,
           currency: 'MXN',
           status: o.status,
-          paymentMethod: null,
+          paymentMethod: o.paymentMethod,
           paymentReference: o.paymentReference,
           ticketCount: o.ticketCount,
           eventName: o.eventName,
+          sessionDate: o.sessionDate,
           paidAt: o.status === 'PAID' ? o.updatedAt : null,
           cancelledAt: o.status === 'CANCELLED' ? o.updatedAt : null,
           refundedAt: o.status === 'REFUNDED' ? o.updatedAt : null,

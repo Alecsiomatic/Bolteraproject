@@ -35,8 +35,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAppConfig, formatPrice } from "@/hooks/useAppConfig";
 import { toast } from "sonner";
-import { format } from "date-fns";
+import { format, isValid, parseISO } from "date-fns";
 import { es } from "date-fns/locale";
+
+// Helper para formatear fechas de forma segura
+function safeFormatDate(dateValue: string | null | undefined, formatStr: string, options?: { locale?: typeof es }): string {
+  if (!dateValue) return "—";
+  try {
+    const date = typeof dateValue === 'string' ? parseISO(dateValue) : new Date(dateValue);
+    if (!isValid(date)) return "—";
+    return format(date, formatStr, options);
+  } catch {
+    return "—";
+  }
+}
 import {
   Search,
   Filter,
@@ -59,8 +71,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+import { API_BASE_URL } from "@/lib/api-base";
 
 interface Order {
   id: string;
@@ -362,9 +373,9 @@ export default function AdminOrders() {
                         </td>
                         <td className="p-4">
                           <div>
-                            <p className="text-white">{order.eventName}</p>
+                            <p className="text-white">{order.eventName || "—"}</p>
                             <p className="text-sm text-white/60">
-                              {format(new Date(order.sessionDate), "dd MMM yyyy HH:mm", { locale: es })}
+                              {safeFormatDate(order.sessionDate, "dd MMM yyyy HH:mm", { locale: es })}
                             </p>
                           </div>
                         </td>
@@ -385,7 +396,7 @@ export default function AdminOrders() {
                           </Badge>
                         </td>
                         <td className="p-4 text-sm text-white/60">
-                          {format(new Date(order.createdAt), "dd/MM/yy HH:mm")}
+                          {safeFormatDate(order.createdAt, "dd/MM/yy HH:mm")}
                         </td>
                         <td className="p-4">
                           <DropdownMenu>
@@ -496,10 +507,10 @@ export default function AdminOrders() {
                 </div>
                 <div className="space-y-2">
                   <p className="text-sm text-white/60">Evento</p>
-                  <p className="text-white">{orderDetail.eventName}</p>
+                  <p className="text-white">{orderDetail.eventName || "—"}</p>
                   <div className="flex items-center gap-2 text-white/70">
                     <Calendar className="h-4 w-4" />
-                    {format(new Date(orderDetail.sessionDate), "PPP HH:mm", { locale: es })}
+                    {safeFormatDate(orderDetail.sessionDate, "PPP HH:mm", { locale: es })}
                   </div>
                 </div>
               </div>

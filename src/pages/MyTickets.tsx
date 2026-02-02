@@ -55,8 +55,8 @@ import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+import { API_BASE_URL } from "@/lib/api-base";
+import { normalizeImageUrl } from "@/lib/utils/imageUrl";
 
 interface TicketItem {
   id: string;
@@ -425,7 +425,7 @@ function OrderCard({ order, onRefund, onRefresh, token }: { order: Order; onRefu
           <div className="flex gap-3 sm:gap-4">
             {order.event.thumbnailImage && (
               <img
-                src={`${API_BASE_URL}${order.event.thumbnailImage}`}
+                src={normalizeImageUrl(order.event.thumbnailImage) || ''}
                 alt={order.event.name}
                 className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover flex-shrink-0 ring-2 ring-white/10"
               />

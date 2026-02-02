@@ -4,8 +4,7 @@ import { api } from "@/lib/api";
 import { SeatMapViewer } from "./SeatMapViewer";
 import { SectionMapViewer, SectionZoomTransition } from "./SectionMapViewer";
 import { Loader2 } from "lucide-react";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+import { API_BASE_URL } from "@/lib/api-base";
 
 // Use a generic seat type that works with both local and API types
 interface BaseSeat {

@@ -417,6 +417,7 @@ export const Canvas = () => {
 
   const [bgOpacity, setBgOpacity] = useState(0.5);
   const [showGrid, setShowGrid] = useState(true);
+  const [showSeats, setShowSeats] = useState(true); // Toggle para ocultar asientos y mejorar rendimiento
   // zoomLevel ahora viene del controllerZoomLevel (useZoomController)
   const [previewMode, setPreviewMode] = useState(false);
 
@@ -590,6 +591,18 @@ export const Canvas = () => {
   useEffect(() => {
     setStoreGridEnabled(showGrid);
   }, [showGrid, setStoreGridEnabled]);
+
+  // Efecto para ocultar/mostrar asientos - mejora rendimiento al editar polígonos
+  useEffect(() => {
+    if (!fabricCanvas) return;
+    
+    fabricCanvas.forEachObject((obj: any) => {
+      if (obj._customType === 'seat' || obj.type === 'Circle' || obj.type === 'circle') {
+        obj.visible = showSeats;
+      }
+    });
+    fabricCanvas.requestRenderAll();
+  }, [showSeats, fabricCanvas]);
 
   // Sincronizar preview mode con store
   useEffect(() => {
@@ -4475,6 +4488,20 @@ export const Canvas = () => {
                   </p>
                 </div>
               )}
+
+              {/* Toggle rápido para ocultar asientos - VISIBLE ARRIBA */}
+              <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-2">
+                <label className="flex items-center gap-2 cursor-pointer" title="Oculta asientos para mejor rendimiento al editar polígonos">
+                  <input 
+                    type="checkbox" 
+                    checked={showSeats}
+                    onChange={(e) => setShowSeats(e.target.checked)}
+                    className="h-4 w-4 rounded"
+                  />
+                  <span className="text-xs font-medium">🪑 Mostrar Asientos</span>
+                  <span className="text-[10px] text-muted-foreground ml-auto">{!showSeats && '(ocultos para edición rápida)'}</span>
+                </label>
+              </div>
               
               {/* Undo/Redo - Más compacto */}
               <div className="flex gap-1">
@@ -4600,7 +4627,7 @@ export const Canvas = () => {
               {/* View Options - Horizontal */}
               <div>
                 <h4 className="text-[10px] font-semibold mb-1.5 text-muted-foreground uppercase tracking-wider">Vista</h4>
-                <div className="flex gap-3">
+                <div className="flex gap-3 flex-wrap">
                   <label className={`flex items-center gap-1.5 text-xs ${isEventMode ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}>
                     <input 
                       type="checkbox" 
@@ -4619,6 +4646,15 @@ export const Canvas = () => {
                       className="h-3.5 w-3.5 rounded"
                     />
                     📐 Grid
+                  </label>
+                  <label className="flex items-center gap-1.5 text-xs cursor-pointer" title="Oculta asientos para mejor rendimiento al editar polígonos">
+                    <input 
+                      type="checkbox" 
+                      checked={showSeats}
+                      onChange={(e) => setShowSeats(e.target.checked)}
+                      className="h-3.5 w-3.5 rounded"
+                    />
+                    🪑 Asientos
                   </label>
                 </div>
               </div>
@@ -4775,6 +4811,14 @@ export const Canvas = () => {
               sections={sections}
               layoutId={effectiveLayoutId ?? undefined}
               isHierarchical={isHierarchicalMode}
+              isPanToolActive={activeTool === "hand"}
+              onTogglePanTool={() => {
+                if (activeTool === "hand") {
+                  setActiveTool("select");
+                } else {
+                  setActiveTool("hand");
+                }
+              }}
               onSelectSection={(sectionId) => {
                 // Find and select the section on canvas
                 const sectionObj = fabricCanvas?.getObjects().find(

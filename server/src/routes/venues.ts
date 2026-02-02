@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import { FastifyInstance } from "fastify";
-import { RowDataPacket } from "mysql2";
+import { ResultSetHeader, RowDataPacket } from "mysql2";
 import { z } from "zod";
 import { query, withTransaction } from "../lib/db";
 import { ensureUniqueSlug, slugify } from "../utils/slug";
@@ -1467,10 +1467,16 @@ export async function venueRoutes(app: FastifyInstance) {
       await withTransaction(async (connection) => {
         // 1. Update layout JSON and version
         const newVersion = currentVersion + 1;
-        await connection.query(
+        const [layoutUpdateResult] = await connection.query<ResultSetHeader>(
           `UPDATE VenueLayout SET layoutJson = ?, metadata = ?, version = ?, updatedAt = NOW() WHERE id = ? AND venueId = ?`,
           [layoutJsonString, metadataString, newVersion, payload.layoutId, venueId],
         );
+
+        // Validate that the VenueLayout was actually updated
+        if (layoutUpdateResult.affectedRows === 0) {
+          request.log.warn(`[Layout Save] VenueLayout UPDATE affected 0 rows! layoutId=${payload.layoutId}, venueId=${venueId}`);
+          throw new Error(`VenueLayout no encontrado o no pertenece al venue (layoutId=${payload.layoutId})`);
+        }
 
         // Also update Venue for backwards compatibility
         await connection.query(

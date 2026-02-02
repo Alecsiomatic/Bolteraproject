@@ -15,6 +15,7 @@ import { useVenueLayout } from "@/hooks/useVenueLayout";
 import { useVenueLayouts } from "@/hooks/useVenueLayouts";
 import { useToast } from "@/components/ui/use-toast";
 import { api } from "@/lib/api";
+import { API_BASE_URL } from "@/lib/api-base";
 import { useAuth } from "@/context/AuthContext";
 import { cn } from "@/lib/utils";
 import { 
@@ -55,6 +56,7 @@ const seatTypes = ["STANDARD", "VIP", "ACCESSIBLE", "COMPANION"] as const;
 const ageRestrictions = ["Todas las edades", "13+", "16+", "18+", "21+"] as const;
 const eventTypes = ["seated", "general"] as const;
 const serviceFeeTypes = ["percentage", "fixed"] as const;
+const stagePositions = ["top", "bottom", "left", "right"] as const;
 
 type SessionDraft = {
   clientId: string;
@@ -143,6 +145,7 @@ const AdminEventCreate = () => {
     value: "",
   });
   const [showRemainingTickets, setShowRemainingTickets] = useState(false);
+  const [stagePosition, setStagePosition] = useState<(typeof stagePositions)[number]>("top");
 
   // ========== PASO 2: Venue & Layout ==========
   const [venueId, setVenueId] = useState<string>("");
@@ -184,7 +187,6 @@ const AdminEventCreate = () => {
   }, []);
 
   // ========== Cargar artistas y playlists ==========
-  const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
   
   useEffect(() => {
     // Cargar artistas
@@ -415,6 +417,7 @@ const AdminEventCreate = () => {
         serviceFeeType: serviceFee.type || undefined,
         serviceFeeValue: serviceFee.value ? Number(serviceFee.value) : undefined,
         showRemainingTickets: eventType === "general" ? showRemainingTickets : undefined,
+        stagePosition: eventType === "seated" ? stagePosition : undefined,
         
         // Venue
         venueId,
@@ -886,6 +889,68 @@ const AdminEventCreate = () => {
                   />
                 </div>
               </GlassCard>
+            )}
+
+            {/* Selector de posición del escenario - Solo para eventos con asientos */}
+            {venueId && eventType === "seated" && (
+              <div>
+                <Label className="text-white">Posición del escenario</Label>
+                <p className="mb-3 text-xs text-slate-400">
+                  Indica dónde se ubicará el escenario respecto al mapa de asientos
+                </p>
+                <div className="grid grid-cols-4 gap-2">
+                  {[
+                    { value: "top", label: "Arriba", icon: "⬆️" },
+                    { value: "bottom", label: "Abajo", icon: "⬇️" },
+                    { value: "left", label: "Izquierda", icon: "⬅️" },
+                    { value: "right", label: "Derecha", icon: "➡️" },
+                  ].map((pos) => (
+                    <button
+                      key={pos.value}
+                      type="button"
+                      onClick={() => setStagePosition(pos.value as (typeof stagePositions)[number])}
+                      className={cn(
+                        "flex flex-col items-center gap-1 rounded-xl border p-3 transition-all",
+                        stagePosition === pos.value
+                          ? "border-amber-500 bg-amber-500/20 text-white"
+                          : "border-white/20 bg-white/5 text-slate-400 hover:border-white/30"
+                      )}
+                    >
+                      <span className="text-xl">{pos.icon}</span>
+                      <span className="text-xs font-medium">{pos.label}</span>
+                    </button>
+                  ))}
+                </div>
+                {/* Preview visual */}
+                <div className="mt-4 flex items-center justify-center">
+                  <div className="relative w-40 h-32 border border-white/20 rounded-lg bg-white/5">
+                    {/* Escenario */}
+                    <div
+                      className={cn(
+                        "absolute bg-amber-500/40 border border-amber-500 flex items-center justify-center text-[10px] text-amber-200 font-medium",
+                        stagePosition === "top" && "top-0 left-1/2 -translate-x-1/2 w-20 h-5 rounded-b-lg",
+                        stagePosition === "bottom" && "bottom-0 left-1/2 -translate-x-1/2 w-20 h-5 rounded-t-lg",
+                        stagePosition === "left" && "left-0 top-1/2 -translate-y-1/2 w-5 h-16 rounded-r-lg [writing-mode:vertical-rl]",
+                        stagePosition === "right" && "right-0 top-1/2 -translate-y-1/2 w-5 h-16 rounded-l-lg [writing-mode:vertical-rl]"
+                      )}
+                    >
+                      🎭
+                    </div>
+                    {/* Asientos placeholder */}
+                    <div className={cn(
+                      "absolute grid grid-cols-5 gap-1",
+                      stagePosition === "top" && "top-8 left-1/2 -translate-x-1/2",
+                      stagePosition === "bottom" && "bottom-8 left-1/2 -translate-x-1/2",
+                      stagePosition === "left" && "left-8 top-1/2 -translate-y-1/2",
+                      stagePosition === "right" && "right-8 top-1/2 -translate-y-1/2"
+                    )}>
+                      {Array.from({ length: 15 }).map((_, i) => (
+                        <div key={i} className="w-2 h-2 rounded-sm bg-cyan-500/40" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             )}
 
             {/* Resumen del Venue */}

@@ -35,25 +35,12 @@ import {
 import { useState, useEffect, lazy, Suspense } from "react";
 import type { EventSummary } from "@/types/api";
 import PublicNavbar from "@/components/PublicNavbar";
+import { normalizeImageUrl } from "@/lib/utils/imageUrl";
+import { API_BASE_URL } from "@/lib/api-base";
 
 // Lazy load WebGL component
 const PrismaticBurst = lazy(() => import("@/components/PrismaticBurst"));
 
-// Normalize image URLs to HTTPS
-const normalizeImageUrl = (url: string | null | undefined): string | null => {
-  if (!url) return null;
-  // If it's a relative URL starting with /uploads, prepend the API base
-  if (url.startsWith('/uploads')) {
-    return `https://update.compratuboleto.mx${url}`;
-  }
-  // Force HTTPS for any http URLs
-  if (url.startsWith('http://')) {
-    return url.replace('http://', 'https://');
-  }
-  return url;
-};
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
 const ITEMS_PER_PAGE = 12;
 
 const Events = () => {

@@ -1,0 +1,5681 @@
+[
+  {
+    "id": "preferente-derecha-A-79",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "79",
+    "label": "A-79",
+    "x": 283.76,
+    "y": 365.52
+  },
+  {
+    "id": "preferente-derecha-A-80",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "80",
+    "label": "A-80",
+    "x": 293.26,
+    "y": 360.01
+  },
+  {
+    "id": "preferente-derecha-A-81",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "81",
+    "label": "A-81",
+    "x": 302.76,
+    "y": 354.49
+  },
+  {
+    "id": "preferente-derecha-A-82",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "82",
+    "label": "A-82",
+    "x": 312.26,
+    "y": 348.98
+  },
+  {
+    "id": "preferente-derecha-A-83",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "83",
+    "label": "A-83",
+    "x": 321.76,
+    "y": 343.46
+  },
+  {
+    "id": "preferente-derecha-A-84",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "84",
+    "label": "A-84",
+    "x": 331.26,
+    "y": 337.95
+  },
+  {
+    "id": "preferente-derecha-A-85",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "85",
+    "label": "A-85",
+    "x": 340.76,
+    "y": 332.43
+  },
+  {
+    "id": "preferente-derecha-A-86",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "86",
+    "label": "A-86",
+    "x": 350.26,
+    "y": 326.91
+  },
+  {
+    "id": "preferente-derecha-A-87",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "87",
+    "label": "A-87",
+    "x": 359.76,
+    "y": 321.4
+  },
+  {
+    "id": "preferente-derecha-A-88",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "88",
+    "label": "A-88",
+    "x": 369.27,
+    "y": 315.88
+  },
+  {
+    "id": "preferente-derecha-A-89",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "89",
+    "label": "A-89",
+    "x": 378.77,
+    "y": 310.37
+  },
+  {
+    "id": "preferente-derecha-A-90",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "90",
+    "label": "A-90",
+    "x": 388.27,
+    "y": 304.85
+  },
+  {
+    "id": "preferente-derecha-A-91",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "91",
+    "label": "A-91",
+    "x": 397.77,
+    "y": 299.33
+  },
+  {
+    "id": "preferente-derecha-A-92",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "92",
+    "label": "A-92",
+    "x": 407.27,
+    "y": 293.82
+  },
+  {
+    "id": "preferente-derecha-A-93",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "93",
+    "label": "A-93",
+    "x": 416.77,
+    "y": 288.3
+  },
+  {
+    "id": "preferente-derecha-A-94",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "94",
+    "label": "A-94",
+    "x": 426.27,
+    "y": 282.79
+  },
+  {
+    "id": "preferente-derecha-A-95",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "95",
+    "label": "A-95",
+    "x": 435.77,
+    "y": 277.27
+  },
+  {
+    "id": "preferente-derecha-A-96",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "96",
+    "label": "A-96",
+    "x": 445.27,
+    "y": 271.75
+  },
+  {
+    "id": "preferente-derecha-A-97",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "97",
+    "label": "A-97",
+    "x": 454.77,
+    "y": 266.24
+  },
+  {
+    "id": "preferente-derecha-A-98",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "98",
+    "label": "A-98",
+    "x": 464.27,
+    "y": 260.72
+  },
+  {
+    "id": "preferente-derecha-A-99",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "99",
+    "label": "A-99",
+    "x": 473.77,
+    "y": 255.21
+  },
+  {
+    "id": "preferente-derecha-A-100",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "100",
+    "label": "A-100",
+    "x": 483.27,
+    "y": 249.69
+  },
+  {
+    "id": "preferente-derecha-A-101",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "101",
+    "label": "A-101",
+    "x": 492.77,
+    "y": 244.17
+  },
+  {
+    "id": "preferente-derecha-A-102",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "102",
+    "label": "A-102",
+    "x": 502.27,
+    "y": 238.66
+  },
+  {
+    "id": "preferente-derecha-A-103",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "103",
+    "label": "A-103",
+    "x": 511.78,
+    "y": 233.14
+  },
+  {
+    "id": "preferente-derecha-A-104",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "104",
+    "label": "A-104",
+    "x": 521.28,
+    "y": 227.63
+  },
+  {
+    "id": "preferente-derecha-A-105",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "105",
+    "label": "A-105",
+    "x": 530.78,
+    "y": 222.11
+  },
+  {
+    "id": "preferente-derecha-A-106",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "106",
+    "label": "A-106",
+    "x": 540.28,
+    "y": 216.6
+  },
+  {
+    "id": "preferente-derecha-A-107",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "107",
+    "label": "A-107",
+    "x": 549.78,
+    "y": 211.08
+  },
+  {
+    "id": "preferente-derecha-A-108",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "108",
+    "label": "A-108",
+    "x": 559.28,
+    "y": 205.56
+  },
+  {
+    "id": "preferente-derecha-A-109",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "109",
+    "label": "A-109",
+    "x": 568.78,
+    "y": 200.05
+  },
+  {
+    "id": "preferente-derecha-A-110",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "110",
+    "label": "A-110",
+    "x": 578.28,
+    "y": 194.53
+  },
+  {
+    "id": "preferente-derecha-A-111",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "111",
+    "label": "A-111",
+    "x": 587.78,
+    "y": 189.02
+  },
+  {
+    "id": "preferente-derecha-A-112",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "112",
+    "label": "A-112",
+    "x": 597.28,
+    "y": 183.5
+  },
+  {
+    "id": "preferente-derecha-A-113",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "113",
+    "label": "A-113",
+    "x": 606.78,
+    "y": 177.98
+  },
+  {
+    "id": "preferente-derecha-A-114",
+    "sectionId": "section-1769728342922",
+    "row": "A",
+    "number": "114",
+    "label": "A-114",
+    "x": 616.28,
+    "y": 172.47
+  },
+  {
+    "id": "preferente-derecha-B-81",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "81",
+    "label": "B-81",
+    "x": 291.44,
+    "y": 378.76
+  },
+  {
+    "id": "preferente-derecha-B-82",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "82",
+    "label": "B-82",
+    "x": 300.84,
+    "y": 373.3
+  },
+  {
+    "id": "preferente-derecha-B-83",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "83",
+    "label": "B-83",
+    "x": 310.24,
+    "y": 367.84
+  },
+  {
+    "id": "preferente-derecha-B-84",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "84",
+    "label": "B-84",
+    "x": 319.65,
+    "y": 362.38
+  },
+  {
+    "id": "preferente-derecha-B-85",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "85",
+    "label": "B-85",
+    "x": 329.05,
+    "y": 356.92
+  },
+  {
+    "id": "preferente-derecha-B-86",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "86",
+    "label": "B-86",
+    "x": 338.45,
+    "y": 351.46
+  },
+  {
+    "id": "preferente-derecha-B-87",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "87",
+    "label": "B-87",
+    "x": 347.85,
+    "y": 346
+  },
+  {
+    "id": "preferente-derecha-B-88",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "88",
+    "label": "B-88",
+    "x": 357.25,
+    "y": 340.55
+  },
+  {
+    "id": "preferente-derecha-B-89",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "89",
+    "label": "B-89",
+    "x": 366.66,
+    "y": 335.09
+  },
+  {
+    "id": "preferente-derecha-B-90",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "90",
+    "label": "B-90",
+    "x": 376.06,
+    "y": 329.63
+  },
+  {
+    "id": "preferente-derecha-B-91",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "91",
+    "label": "B-91",
+    "x": 385.46,
+    "y": 324.17
+  },
+  {
+    "id": "preferente-derecha-B-92",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "92",
+    "label": "B-92",
+    "x": 394.86,
+    "y": 318.71
+  },
+  {
+    "id": "preferente-derecha-B-93",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "93",
+    "label": "B-93",
+    "x": 404.26,
+    "y": 313.25
+  },
+  {
+    "id": "preferente-derecha-B-94",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "94",
+    "label": "B-94",
+    "x": 413.66,
+    "y": 307.8
+  },
+  {
+    "id": "preferente-derecha-B-95",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "95",
+    "label": "B-95",
+    "x": 423.07,
+    "y": 302.34
+  },
+  {
+    "id": "preferente-derecha-B-96",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "96",
+    "label": "B-96",
+    "x": 432.47,
+    "y": 296.88
+  },
+  {
+    "id": "preferente-derecha-B-97",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "97",
+    "label": "B-97",
+    "x": 441.87,
+    "y": 291.42
+  },
+  {
+    "id": "preferente-derecha-B-98",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "98",
+    "label": "B-98",
+    "x": 451.27,
+    "y": 285.96
+  },
+  {
+    "id": "preferente-derecha-B-99",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "99",
+    "label": "B-99",
+    "x": 460.67,
+    "y": 280.5
+  },
+  {
+    "id": "preferente-derecha-B-100",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "100",
+    "label": "B-100",
+    "x": 470.08,
+    "y": 275.04
+  },
+  {
+    "id": "preferente-derecha-B-101",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "101",
+    "label": "B-101",
+    "x": 479.48,
+    "y": 269.59
+  },
+  {
+    "id": "preferente-derecha-B-102",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "102",
+    "label": "B-102",
+    "x": 488.88,
+    "y": 264.13
+  },
+  {
+    "id": "preferente-derecha-B-103",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "103",
+    "label": "B-103",
+    "x": 498.28,
+    "y": 258.67
+  },
+  {
+    "id": "preferente-derecha-B-104",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "104",
+    "label": "B-104",
+    "x": 507.68,
+    "y": 253.21
+  },
+  {
+    "id": "preferente-derecha-B-105",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "105",
+    "label": "B-105",
+    "x": 517.09,
+    "y": 247.75
+  },
+  {
+    "id": "preferente-derecha-B-106",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "106",
+    "label": "B-106",
+    "x": 526.49,
+    "y": 242.29
+  },
+  {
+    "id": "preferente-derecha-B-107",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "107",
+    "label": "B-107",
+    "x": 535.89,
+    "y": 236.83
+  },
+  {
+    "id": "preferente-derecha-B-108",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "108",
+    "label": "B-108",
+    "x": 545.29,
+    "y": 231.38
+  },
+  {
+    "id": "preferente-derecha-B-109",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "109",
+    "label": "B-109",
+    "x": 554.69,
+    "y": 225.92
+  },
+  {
+    "id": "preferente-derecha-B-110",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "110",
+    "label": "B-110",
+    "x": 564.09,
+    "y": 220.46
+  },
+  {
+    "id": "preferente-derecha-B-111",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "111",
+    "label": "B-111",
+    "x": 573.5,
+    "y": 215
+  },
+  {
+    "id": "preferente-derecha-B-112",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "112",
+    "label": "B-112",
+    "x": 582.9,
+    "y": 209.54
+  },
+  {
+    "id": "preferente-derecha-B-113",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "113",
+    "label": "B-113",
+    "x": 592.3,
+    "y": 204.08
+  },
+  {
+    "id": "preferente-derecha-B-114",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "114",
+    "label": "B-114",
+    "x": 601.7,
+    "y": 198.63
+  },
+  {
+    "id": "preferente-derecha-B-115",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "115",
+    "label": "B-115",
+    "x": 611.1,
+    "y": 193.17
+  },
+  {
+    "id": "preferente-derecha-B-116",
+    "sectionId": "section-1769728342922",
+    "row": "B",
+    "number": "116",
+    "label": "B-116",
+    "x": 620.51,
+    "y": 187.71
+  },
+  {
+    "id": "preferente-derecha-C-82",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "82",
+    "label": "C-82",
+    "x": 299.12,
+    "y": 391.99
+  },
+  {
+    "id": "preferente-derecha-C-83",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "83",
+    "label": "C-83",
+    "x": 308.14,
+    "y": 386.75
+  },
+  {
+    "id": "preferente-derecha-C-84",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "84",
+    "label": "C-84",
+    "x": 317.16,
+    "y": 381.51
+  },
+  {
+    "id": "preferente-derecha-C-85",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "85",
+    "label": "C-85",
+    "x": 326.18,
+    "y": 376.28
+  },
+  {
+    "id": "preferente-derecha-C-86",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "86",
+    "label": "C-86",
+    "x": 335.2,
+    "y": 371.04
+  },
+  {
+    "id": "preferente-derecha-C-87",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "87",
+    "label": "C-87",
+    "x": 344.23,
+    "y": 365.8
+  },
+  {
+    "id": "preferente-derecha-C-88",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "88",
+    "label": "C-88",
+    "x": 353.25,
+    "y": 360.56
+  },
+  {
+    "id": "preferente-derecha-C-89",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "89",
+    "label": "C-89",
+    "x": 362.27,
+    "y": 355.33
+  },
+  {
+    "id": "preferente-derecha-C-90",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "90",
+    "label": "C-90",
+    "x": 371.29,
+    "y": 350.09
+  },
+  {
+    "id": "preferente-derecha-C-91",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "91",
+    "label": "C-91",
+    "x": 380.31,
+    "y": 344.85
+  },
+  {
+    "id": "preferente-derecha-C-92",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "92",
+    "label": "C-92",
+    "x": 389.33,
+    "y": 339.62
+  },
+  {
+    "id": "preferente-derecha-C-93",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "93",
+    "label": "C-93",
+    "x": 398.35,
+    "y": 334.38
+  },
+  {
+    "id": "preferente-derecha-C-94",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "94",
+    "label": "C-94",
+    "x": 407.37,
+    "y": 329.14
+  },
+  {
+    "id": "preferente-derecha-C-95",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "95",
+    "label": "C-95",
+    "x": 416.39,
+    "y": 323.9
+  },
+  {
+    "id": "preferente-derecha-C-96",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "96",
+    "label": "C-96",
+    "x": 425.41,
+    "y": 318.67
+  },
+  {
+    "id": "preferente-derecha-C-97",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "97",
+    "label": "C-97",
+    "x": 434.43,
+    "y": 313.43
+  },
+  {
+    "id": "preferente-derecha-C-98",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "98",
+    "label": "C-98",
+    "x": 443.45,
+    "y": 308.19
+  },
+  {
+    "id": "preferente-derecha-C-99",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "99",
+    "label": "C-99",
+    "x": 452.47,
+    "y": 302.96
+  },
+  {
+    "id": "preferente-derecha-C-100",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "100",
+    "label": "C-100",
+    "x": 461.49,
+    "y": 297.72
+  },
+  {
+    "id": "preferente-derecha-C-101",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "101",
+    "label": "C-101",
+    "x": 470.51,
+    "y": 292.48
+  },
+  {
+    "id": "preferente-derecha-C-102",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "102",
+    "label": "C-102",
+    "x": 479.53,
+    "y": 287.24
+  },
+  {
+    "id": "preferente-derecha-C-103",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "103",
+    "label": "C-103",
+    "x": 488.55,
+    "y": 282.01
+  },
+  {
+    "id": "preferente-derecha-C-104",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "104",
+    "label": "C-104",
+    "x": 497.58,
+    "y": 276.77
+  },
+  {
+    "id": "preferente-derecha-C-105",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "105",
+    "label": "C-105",
+    "x": 506.6,
+    "y": 271.53
+  },
+  {
+    "id": "preferente-derecha-C-106",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "106",
+    "label": "C-106",
+    "x": 515.62,
+    "y": 266.3
+  },
+  {
+    "id": "preferente-derecha-C-107",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "107",
+    "label": "C-107",
+    "x": 524.64,
+    "y": 261.06
+  },
+  {
+    "id": "preferente-derecha-C-108",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "108",
+    "label": "C-108",
+    "x": 533.66,
+    "y": 255.82
+  },
+  {
+    "id": "preferente-derecha-C-109",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "109",
+    "label": "C-109",
+    "x": 542.68,
+    "y": 250.58
+  },
+  {
+    "id": "preferente-derecha-C-110",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "110",
+    "label": "C-110",
+    "x": 551.7,
+    "y": 245.35
+  },
+  {
+    "id": "preferente-derecha-C-111",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "111",
+    "label": "C-111",
+    "x": 560.72,
+    "y": 240.11
+  },
+  {
+    "id": "preferente-derecha-C-112",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "112",
+    "label": "C-112",
+    "x": 569.74,
+    "y": 234.87
+  },
+  {
+    "id": "preferente-derecha-C-113",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "113",
+    "label": "C-113",
+    "x": 578.76,
+    "y": 229.64
+  },
+  {
+    "id": "preferente-derecha-C-114",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "114",
+    "label": "C-114",
+    "x": 587.78,
+    "y": 224.4
+  },
+  {
+    "id": "preferente-derecha-C-115",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "115",
+    "label": "C-115",
+    "x": 596.8,
+    "y": 219.16
+  },
+  {
+    "id": "preferente-derecha-C-116",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "116",
+    "label": "C-116",
+    "x": 605.82,
+    "y": 213.92
+  },
+  {
+    "id": "preferente-derecha-C-117",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "117",
+    "label": "C-117",
+    "x": 614.84,
+    "y": 208.69
+  },
+  {
+    "id": "preferente-derecha-C-118",
+    "sectionId": "section-1769728342922",
+    "row": "C",
+    "number": "118",
+    "label": "C-118",
+    "x": 623.86,
+    "y": 203.45
+  },
+  {
+    "id": "preferente-derecha-D-84",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "84",
+    "label": "D-84",
+    "x": 306.8,
+    "y": 405.22
+  },
+  {
+    "id": "preferente-derecha-D-85",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "85",
+    "label": "D-85",
+    "x": 315.73,
+    "y": 400.04
+  },
+  {
+    "id": "preferente-derecha-D-86",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "86",
+    "label": "D-86",
+    "x": 324.65,
+    "y": 394.86
+  },
+  {
+    "id": "preferente-derecha-D-87",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "87",
+    "label": "D-87",
+    "x": 333.58,
+    "y": 389.67
+  },
+  {
+    "id": "preferente-derecha-D-88",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "88",
+    "label": "D-88",
+    "x": 342.5,
+    "y": 384.49
+  },
+  {
+    "id": "preferente-derecha-D-89",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "89",
+    "label": "D-89",
+    "x": 351.43,
+    "y": 379.31
+  },
+  {
+    "id": "preferente-derecha-D-90",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "90",
+    "label": "D-90",
+    "x": 360.35,
+    "y": 374.13
+  },
+  {
+    "id": "preferente-derecha-D-91",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "91",
+    "label": "D-91",
+    "x": 369.28,
+    "y": 368.95
+  },
+  {
+    "id": "preferente-derecha-D-92",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "92",
+    "label": "D-92",
+    "x": 378.2,
+    "y": 363.77
+  },
+  {
+    "id": "preferente-derecha-D-93",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "93",
+    "label": "D-93",
+    "x": 387.12,
+    "y": 358.59
+  },
+  {
+    "id": "preferente-derecha-D-94",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "94",
+    "label": "D-94",
+    "x": 396.05,
+    "y": 353.41
+  },
+  {
+    "id": "preferente-derecha-D-95",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "95",
+    "label": "D-95",
+    "x": 404.97,
+    "y": 348.22
+  },
+  {
+    "id": "preferente-derecha-D-96",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "96",
+    "label": "D-96",
+    "x": 413.9,
+    "y": 343.04
+  },
+  {
+    "id": "preferente-derecha-D-97",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "97",
+    "label": "D-97",
+    "x": 422.82,
+    "y": 337.86
+  },
+  {
+    "id": "preferente-derecha-D-98",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "98",
+    "label": "D-98",
+    "x": 431.75,
+    "y": 332.68
+  },
+  {
+    "id": "preferente-derecha-D-99",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "99",
+    "label": "D-99",
+    "x": 440.67,
+    "y": 327.5
+  },
+  {
+    "id": "preferente-derecha-D-100",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "100",
+    "label": "D-100",
+    "x": 449.6,
+    "y": 322.32
+  },
+  {
+    "id": "preferente-derecha-D-101",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "101",
+    "label": "D-101",
+    "x": 458.52,
+    "y": 317.14
+  },
+  {
+    "id": "preferente-derecha-D-102",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "102",
+    "label": "D-102",
+    "x": 467.45,
+    "y": 311.95
+  },
+  {
+    "id": "preferente-derecha-D-103",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "103",
+    "label": "D-103",
+    "x": 476.37,
+    "y": 306.77
+  },
+  {
+    "id": "preferente-derecha-D-104",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "104",
+    "label": "D-104",
+    "x": 485.29,
+    "y": 301.59
+  },
+  {
+    "id": "preferente-derecha-D-105",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "105",
+    "label": "D-105",
+    "x": 494.22,
+    "y": 296.41
+  },
+  {
+    "id": "preferente-derecha-D-106",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "106",
+    "label": "D-106",
+    "x": 503.14,
+    "y": 291.23
+  },
+  {
+    "id": "preferente-derecha-D-107",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "107",
+    "label": "D-107",
+    "x": 512.07,
+    "y": 286.05
+  },
+  {
+    "id": "preferente-derecha-D-108",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "108",
+    "label": "D-108",
+    "x": 520.99,
+    "y": 280.87
+  },
+  {
+    "id": "preferente-derecha-D-109",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "109",
+    "label": "D-109",
+    "x": 529.92,
+    "y": 275.68
+  },
+  {
+    "id": "preferente-derecha-D-110",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "110",
+    "label": "D-110",
+    "x": 538.84,
+    "y": 270.5
+  },
+  {
+    "id": "preferente-derecha-D-111",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "111",
+    "label": "D-111",
+    "x": 547.77,
+    "y": 265.32
+  },
+  {
+    "id": "preferente-derecha-D-112",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "112",
+    "label": "D-112",
+    "x": 556.69,
+    "y": 260.14
+  },
+  {
+    "id": "preferente-derecha-D-113",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "113",
+    "label": "D-113",
+    "x": 565.61,
+    "y": 254.96
+  },
+  {
+    "id": "preferente-derecha-D-114",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "114",
+    "label": "D-114",
+    "x": 574.54,
+    "y": 249.78
+  },
+  {
+    "id": "preferente-derecha-D-115",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "115",
+    "label": "D-115",
+    "x": 583.46,
+    "y": 244.6
+  },
+  {
+    "id": "preferente-derecha-D-116",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "116",
+    "label": "D-116",
+    "x": 592.39,
+    "y": 239.42
+  },
+  {
+    "id": "preferente-derecha-D-117",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "117",
+    "label": "D-117",
+    "x": 601.31,
+    "y": 234.23
+  },
+  {
+    "id": "preferente-derecha-D-118",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "118",
+    "label": "D-118",
+    "x": 610.24,
+    "y": 229.05
+  },
+  {
+    "id": "preferente-derecha-D-119",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "119",
+    "label": "D-119",
+    "x": 619.16,
+    "y": 223.87
+  },
+  {
+    "id": "preferente-derecha-D-120",
+    "sectionId": "section-1769728342922",
+    "row": "D",
+    "number": "120",
+    "label": "D-120",
+    "x": 628.09,
+    "y": 218.69
+  },
+  {
+    "id": "preferente-derecha-E-85",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "85",
+    "label": "E-85",
+    "x": 314.49,
+    "y": 418.45
+  },
+  {
+    "id": "preferente-derecha-E-86",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "86",
+    "label": "E-86",
+    "x": 323.08,
+    "y": 413.46
+  },
+  {
+    "id": "preferente-derecha-E-87",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "87",
+    "label": "E-87",
+    "x": 331.67,
+    "y": 408.48
+  },
+  {
+    "id": "preferente-derecha-E-88",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "88",
+    "label": "E-88",
+    "x": 340.26,
+    "y": 403.49
+  },
+  {
+    "id": "preferente-derecha-E-89",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "89",
+    "label": "E-89",
+    "x": 348.85,
+    "y": 398.5
+  },
+  {
+    "id": "preferente-derecha-E-90",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "90",
+    "label": "E-90",
+    "x": 357.44,
+    "y": 393.51
+  },
+  {
+    "id": "preferente-derecha-E-91",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "91",
+    "label": "E-91",
+    "x": 366.03,
+    "y": 388.53
+  },
+  {
+    "id": "preferente-derecha-E-92",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "92",
+    "label": "E-92",
+    "x": 374.61,
+    "y": 383.54
+  },
+  {
+    "id": "preferente-derecha-E-93",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "93",
+    "label": "E-93",
+    "x": 383.2,
+    "y": 378.55
+  },
+  {
+    "id": "preferente-derecha-E-94",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "94",
+    "label": "E-94",
+    "x": 391.79,
+    "y": 373.57
+  },
+  {
+    "id": "preferente-derecha-E-95",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "95",
+    "label": "E-95",
+    "x": 400.38,
+    "y": 368.58
+  },
+  {
+    "id": "preferente-derecha-E-96",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "96",
+    "label": "E-96",
+    "x": 408.97,
+    "y": 363.59
+  },
+  {
+    "id": "preferente-derecha-E-97",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "97",
+    "label": "E-97",
+    "x": 417.56,
+    "y": 358.61
+  },
+  {
+    "id": "preferente-derecha-E-98",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "98",
+    "label": "E-98",
+    "x": 426.15,
+    "y": 353.62
+  },
+  {
+    "id": "preferente-derecha-E-99",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "99",
+    "label": "E-99",
+    "x": 434.74,
+    "y": 348.63
+  },
+  {
+    "id": "preferente-derecha-E-100",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "100",
+    "label": "E-100",
+    "x": 443.33,
+    "y": 343.64
+  },
+  {
+    "id": "preferente-derecha-E-101",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "101",
+    "label": "E-101",
+    "x": 451.92,
+    "y": 338.66
+  },
+  {
+    "id": "preferente-derecha-E-102",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "102",
+    "label": "E-102",
+    "x": 460.51,
+    "y": 333.67
+  },
+  {
+    "id": "preferente-derecha-E-103",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "103",
+    "label": "E-103",
+    "x": 469.1,
+    "y": 328.68
+  },
+  {
+    "id": "preferente-derecha-E-104",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "104",
+    "label": "E-104",
+    "x": 477.69,
+    "y": 323.7
+  },
+  {
+    "id": "preferente-derecha-E-105",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "105",
+    "label": "E-105",
+    "x": 486.28,
+    "y": 318.71
+  },
+  {
+    "id": "preferente-derecha-E-106",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "106",
+    "label": "E-106",
+    "x": 494.87,
+    "y": 313.72
+  },
+  {
+    "id": "preferente-derecha-E-107",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "107",
+    "label": "E-107",
+    "x": 503.46,
+    "y": 308.74
+  },
+  {
+    "id": "preferente-derecha-E-108",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "108",
+    "label": "E-108",
+    "x": 512.05,
+    "y": 303.75
+  },
+  {
+    "id": "preferente-derecha-E-109",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "109",
+    "label": "E-109",
+    "x": 520.64,
+    "y": 298.76
+  },
+  {
+    "id": "preferente-derecha-E-110",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "110",
+    "label": "E-110",
+    "x": 529.23,
+    "y": 293.77
+  },
+  {
+    "id": "preferente-derecha-E-111",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "111",
+    "label": "E-111",
+    "x": 537.82,
+    "y": 288.79
+  },
+  {
+    "id": "preferente-derecha-E-112",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "112",
+    "label": "E-112",
+    "x": 546.41,
+    "y": 283.8
+  },
+  {
+    "id": "preferente-derecha-E-113",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "113",
+    "label": "E-113",
+    "x": 555,
+    "y": 278.81
+  },
+  {
+    "id": "preferente-derecha-E-114",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "114",
+    "label": "E-114",
+    "x": 563.59,
+    "y": 273.83
+  },
+  {
+    "id": "preferente-derecha-E-115",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "115",
+    "label": "E-115",
+    "x": 572.18,
+    "y": 268.84
+  },
+  {
+    "id": "preferente-derecha-E-116",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "116",
+    "label": "E-116",
+    "x": 580.77,
+    "y": 263.85
+  },
+  {
+    "id": "preferente-derecha-E-117",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "117",
+    "label": "E-117",
+    "x": 589.36,
+    "y": 258.86
+  },
+  {
+    "id": "preferente-derecha-E-118",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "118",
+    "label": "E-118",
+    "x": 597.95,
+    "y": 253.88
+  },
+  {
+    "id": "preferente-derecha-E-119",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "119",
+    "label": "E-119",
+    "x": 606.54,
+    "y": 248.89
+  },
+  {
+    "id": "preferente-derecha-E-120",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "120",
+    "label": "E-120",
+    "x": 615.13,
+    "y": 243.9
+  },
+  {
+    "id": "preferente-derecha-E-121",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "121",
+    "label": "E-121",
+    "x": 623.72,
+    "y": 238.92
+  },
+  {
+    "id": "preferente-derecha-E-122",
+    "sectionId": "section-1769728342922",
+    "row": "E",
+    "number": "122",
+    "label": "E-122",
+    "x": 632.31,
+    "y": 233.93
+  },
+  {
+    "id": "preferente-derecha-F-87",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "87",
+    "label": "F-87",
+    "x": 322.17,
+    "y": 431.68
+  },
+  {
+    "id": "preferente-derecha-F-88",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "88",
+    "label": "F-88",
+    "x": 330.64,
+    "y": 426.76
+  },
+  {
+    "id": "preferente-derecha-F-89",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "89",
+    "label": "F-89",
+    "x": 339.11,
+    "y": 421.84
+  },
+  {
+    "id": "preferente-derecha-F-90",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "90",
+    "label": "F-90",
+    "x": 347.59,
+    "y": 416.92
+  },
+  {
+    "id": "preferente-derecha-F-91",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "91",
+    "label": "F-91",
+    "x": 356.06,
+    "y": 412
+  },
+  {
+    "id": "preferente-derecha-F-92",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "92",
+    "label": "F-92",
+    "x": 364.53,
+    "y": 407.09
+  },
+  {
+    "id": "preferente-derecha-F-93",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "93",
+    "label": "F-93",
+    "x": 373.01,
+    "y": 402.17
+  },
+  {
+    "id": "preferente-derecha-F-94",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "94",
+    "label": "F-94",
+    "x": 381.48,
+    "y": 397.25
+  },
+  {
+    "id": "preferente-derecha-F-95",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "95",
+    "label": "F-95",
+    "x": 389.95,
+    "y": 392.33
+  },
+  {
+    "id": "preferente-derecha-F-96",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "96",
+    "label": "F-96",
+    "x": 398.42,
+    "y": 387.41
+  },
+  {
+    "id": "preferente-derecha-F-97",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "97",
+    "label": "F-97",
+    "x": 406.9,
+    "y": 382.49
+  },
+  {
+    "id": "preferente-derecha-F-98",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "98",
+    "label": "F-98",
+    "x": 415.37,
+    "y": 377.57
+  },
+  {
+    "id": "preferente-derecha-F-99",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "99",
+    "label": "F-99",
+    "x": 423.84,
+    "y": 372.65
+  },
+  {
+    "id": "preferente-derecha-F-100",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "100",
+    "label": "F-100",
+    "x": 432.32,
+    "y": 367.73
+  },
+  {
+    "id": "preferente-derecha-F-101",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "101",
+    "label": "F-101",
+    "x": 440.79,
+    "y": 362.81
+  },
+  {
+    "id": "preferente-derecha-F-102",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "102",
+    "label": "F-102",
+    "x": 449.26,
+    "y": 357.89
+  },
+  {
+    "id": "preferente-derecha-F-103",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "103",
+    "label": "F-103",
+    "x": 457.74,
+    "y": 352.97
+  },
+  {
+    "id": "preferente-derecha-F-104",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "104",
+    "label": "F-104",
+    "x": 466.21,
+    "y": 348.06
+  },
+  {
+    "id": "preferente-derecha-F-105",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "105",
+    "label": "F-105",
+    "x": 474.68,
+    "y": 343.14
+  },
+  {
+    "id": "preferente-derecha-F-106",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "106",
+    "label": "F-106",
+    "x": 483.15,
+    "y": 338.22
+  },
+  {
+    "id": "preferente-derecha-F-107",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "107",
+    "label": "F-107",
+    "x": 491.63,
+    "y": 333.3
+  },
+  {
+    "id": "preferente-derecha-F-108",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "108",
+    "label": "F-108",
+    "x": 500.1,
+    "y": 328.38
+  },
+  {
+    "id": "preferente-derecha-F-109",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "109",
+    "label": "F-109",
+    "x": 508.57,
+    "y": 323.46
+  },
+  {
+    "id": "preferente-derecha-F-110",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "110",
+    "label": "F-110",
+    "x": 517.05,
+    "y": 318.54
+  },
+  {
+    "id": "preferente-derecha-F-111",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "111",
+    "label": "F-111",
+    "x": 525.52,
+    "y": 313.62
+  },
+  {
+    "id": "preferente-derecha-F-112",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "112",
+    "label": "F-112",
+    "x": 533.99,
+    "y": 308.7
+  },
+  {
+    "id": "preferente-derecha-F-113",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "113",
+    "label": "F-113",
+    "x": 542.46,
+    "y": 303.78
+  },
+  {
+    "id": "preferente-derecha-F-114",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "114",
+    "label": "F-114",
+    "x": 550.94,
+    "y": 298.86
+  },
+  {
+    "id": "preferente-derecha-F-115",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "115",
+    "label": "F-115",
+    "x": 559.41,
+    "y": 293.94
+  },
+  {
+    "id": "preferente-derecha-F-116",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "116",
+    "label": "F-116",
+    "x": 567.88,
+    "y": 289.03
+  },
+  {
+    "id": "preferente-derecha-F-117",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "117",
+    "label": "F-117",
+    "x": 576.36,
+    "y": 284.11
+  },
+  {
+    "id": "preferente-derecha-F-118",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "118",
+    "label": "F-118",
+    "x": 584.83,
+    "y": 279.19
+  },
+  {
+    "id": "preferente-derecha-F-119",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "119",
+    "label": "F-119",
+    "x": 593.3,
+    "y": 274.27
+  },
+  {
+    "id": "preferente-derecha-F-120",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "120",
+    "label": "F-120",
+    "x": 601.77,
+    "y": 269.35
+  },
+  {
+    "id": "preferente-derecha-F-121",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "121",
+    "label": "F-121",
+    "x": 610.25,
+    "y": 264.43
+  },
+  {
+    "id": "preferente-derecha-F-122",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "122",
+    "label": "F-122",
+    "x": 618.72,
+    "y": 259.51
+  },
+  {
+    "id": "preferente-derecha-F-123",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "123",
+    "label": "F-123",
+    "x": 627.19,
+    "y": 254.59
+  },
+  {
+    "id": "preferente-derecha-F-124",
+    "sectionId": "section-1769728342922",
+    "row": "F",
+    "number": "124",
+    "label": "F-124",
+    "x": 635.67,
+    "y": 249.67
+  },
+  {
+    "id": "preferente-derecha-G-88",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "88",
+    "label": "G-88",
+    "x": 329.85,
+    "y": 444.91
+  },
+  {
+    "id": "preferente-derecha-G-89",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "89",
+    "label": "G-89",
+    "x": 338.01,
+    "y": 440.18
+  },
+  {
+    "id": "preferente-derecha-G-90",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "90",
+    "label": "G-90",
+    "x": 346.17,
+    "y": 435.44
+  },
+  {
+    "id": "preferente-derecha-G-91",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "91",
+    "label": "G-91",
+    "x": 354.33,
+    "y": 430.7
+  },
+  {
+    "id": "preferente-derecha-G-92",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "92",
+    "label": "G-92",
+    "x": 362.49,
+    "y": 425.97
+  },
+  {
+    "id": "preferente-derecha-G-93",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "93",
+    "label": "G-93",
+    "x": 370.64,
+    "y": 421.23
+  },
+  {
+    "id": "preferente-derecha-G-94",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "94",
+    "label": "G-94",
+    "x": 378.8,
+    "y": 416.49
+  },
+  {
+    "id": "preferente-derecha-G-95",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "95",
+    "label": "G-95",
+    "x": 386.96,
+    "y": 411.75
+  },
+  {
+    "id": "preferente-derecha-G-96",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "96",
+    "label": "G-96",
+    "x": 395.12,
+    "y": 407.02
+  },
+  {
+    "id": "preferente-derecha-G-97",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "97",
+    "label": "G-97",
+    "x": 403.28,
+    "y": 402.28
+  },
+  {
+    "id": "preferente-derecha-G-98",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "98",
+    "label": "G-98",
+    "x": 411.44,
+    "y": 397.54
+  },
+  {
+    "id": "preferente-derecha-G-99",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "99",
+    "label": "G-99",
+    "x": 419.6,
+    "y": 392.81
+  },
+  {
+    "id": "preferente-derecha-G-100",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "100",
+    "label": "G-100",
+    "x": 427.76,
+    "y": 388.07
+  },
+  {
+    "id": "preferente-derecha-G-101",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "101",
+    "label": "G-101",
+    "x": 435.92,
+    "y": 383.33
+  },
+  {
+    "id": "preferente-derecha-G-102",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "102",
+    "label": "G-102",
+    "x": 444.08,
+    "y": 378.6
+  },
+  {
+    "id": "preferente-derecha-G-103",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "103",
+    "label": "G-103",
+    "x": 452.23,
+    "y": 373.86
+  },
+  {
+    "id": "preferente-derecha-G-104",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "104",
+    "label": "G-104",
+    "x": 460.39,
+    "y": 369.12
+  },
+  {
+    "id": "preferente-derecha-G-105",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "105",
+    "label": "G-105",
+    "x": 468.55,
+    "y": 364.39
+  },
+  {
+    "id": "preferente-derecha-G-106",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "106",
+    "label": "G-106",
+    "x": 476.71,
+    "y": 359.65
+  },
+  {
+    "id": "preferente-derecha-G-107",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "107",
+    "label": "G-107",
+    "x": 484.87,
+    "y": 354.91
+  },
+  {
+    "id": "preferente-derecha-G-108",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "108",
+    "label": "G-108",
+    "x": 493.03,
+    "y": 350.18
+  },
+  {
+    "id": "preferente-derecha-G-109",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "109",
+    "label": "G-109",
+    "x": 501.19,
+    "y": 345.44
+  },
+  {
+    "id": "preferente-derecha-G-110",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "110",
+    "label": "G-110",
+    "x": 509.35,
+    "y": 340.7
+  },
+  {
+    "id": "preferente-derecha-G-111",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "111",
+    "label": "G-111",
+    "x": 517.51,
+    "y": 335.96
+  },
+  {
+    "id": "preferente-derecha-G-112",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "112",
+    "label": "G-112",
+    "x": 525.66,
+    "y": 331.23
+  },
+  {
+    "id": "preferente-derecha-G-113",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "113",
+    "label": "G-113",
+    "x": 533.82,
+    "y": 326.49
+  },
+  {
+    "id": "preferente-derecha-G-114",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "114",
+    "label": "G-114",
+    "x": 541.98,
+    "y": 321.75
+  },
+  {
+    "id": "preferente-derecha-G-115",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "115",
+    "label": "G-115",
+    "x": 550.14,
+    "y": 317.02
+  },
+  {
+    "id": "preferente-derecha-G-116",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "116",
+    "label": "G-116",
+    "x": 558.3,
+    "y": 312.28
+  },
+  {
+    "id": "preferente-derecha-G-117",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "117",
+    "label": "G-117",
+    "x": 566.46,
+    "y": 307.54
+  },
+  {
+    "id": "preferente-derecha-G-118",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "118",
+    "label": "G-118",
+    "x": 574.62,
+    "y": 302.81
+  },
+  {
+    "id": "preferente-derecha-G-119",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "119",
+    "label": "G-119",
+    "x": 582.78,
+    "y": 298.07
+  },
+  {
+    "id": "preferente-derecha-G-120",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "120",
+    "label": "G-120",
+    "x": 590.94,
+    "y": 293.33
+  },
+  {
+    "id": "preferente-derecha-G-121",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "121",
+    "label": "G-121",
+    "x": 599.09,
+    "y": 288.6
+  },
+  {
+    "id": "preferente-derecha-G-122",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "122",
+    "label": "G-122",
+    "x": 607.25,
+    "y": 283.86
+  },
+  {
+    "id": "preferente-derecha-G-123",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "123",
+    "label": "G-123",
+    "x": 615.41,
+    "y": 279.12
+  },
+  {
+    "id": "preferente-derecha-G-124",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "124",
+    "label": "G-124",
+    "x": 623.57,
+    "y": 274.39
+  },
+  {
+    "id": "preferente-derecha-G-125",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "125",
+    "label": "G-125",
+    "x": 631.73,
+    "y": 269.65
+  },
+  {
+    "id": "preferente-derecha-G-126",
+    "sectionId": "section-1769728342922",
+    "row": "G",
+    "number": "126",
+    "label": "G-126",
+    "x": 639.89,
+    "y": 264.91
+  },
+  {
+    "id": "preferente-derecha-H-90",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "90",
+    "label": "H-90",
+    "x": 337.53,
+    "y": 458.14
+  },
+  {
+    "id": "preferente-derecha-H-91",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "91",
+    "label": "H-91",
+    "x": 345.58,
+    "y": 453.47
+  },
+  {
+    "id": "preferente-derecha-H-92",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "92",
+    "label": "H-92",
+    "x": 353.62,
+    "y": 448.8
+  },
+  {
+    "id": "preferente-derecha-H-93",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "93",
+    "label": "H-93",
+    "x": 361.67,
+    "y": 444.13
+  },
+  {
+    "id": "preferente-derecha-H-94",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "94",
+    "label": "H-94",
+    "x": 369.71,
+    "y": 439.46
+  },
+  {
+    "id": "preferente-derecha-H-95",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "95",
+    "label": "H-95",
+    "x": 377.76,
+    "y": 434.79
+  },
+  {
+    "id": "preferente-derecha-H-96",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "96",
+    "label": "H-96",
+    "x": 385.8,
+    "y": 430.12
+  },
+  {
+    "id": "preferente-derecha-H-97",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "97",
+    "label": "H-97",
+    "x": 393.85,
+    "y": 425.45
+  },
+  {
+    "id": "preferente-derecha-H-98",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "98",
+    "label": "H-98",
+    "x": 401.89,
+    "y": 420.78
+  },
+  {
+    "id": "preferente-derecha-H-99",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "99",
+    "label": "H-99",
+    "x": 409.94,
+    "y": 416.11
+  },
+  {
+    "id": "preferente-derecha-H-100",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "100",
+    "label": "H-100",
+    "x": 417.98,
+    "y": 411.44
+  },
+  {
+    "id": "preferente-derecha-H-101",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "101",
+    "label": "H-101",
+    "x": 426.03,
+    "y": 406.77
+  },
+  {
+    "id": "preferente-derecha-H-102",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "102",
+    "label": "H-102",
+    "x": 434.07,
+    "y": 402.09
+  },
+  {
+    "id": "preferente-derecha-H-103",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "103",
+    "label": "H-103",
+    "x": 442.12,
+    "y": 397.42
+  },
+  {
+    "id": "preferente-derecha-H-104",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "104",
+    "label": "H-104",
+    "x": 450.16,
+    "y": 392.75
+  },
+  {
+    "id": "preferente-derecha-H-105",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "105",
+    "label": "H-105",
+    "x": 458.21,
+    "y": 388.08
+  },
+  {
+    "id": "preferente-derecha-H-106",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "106",
+    "label": "H-106",
+    "x": 466.25,
+    "y": 383.41
+  },
+  {
+    "id": "preferente-derecha-H-107",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "107",
+    "label": "H-107",
+    "x": 474.3,
+    "y": 378.74
+  },
+  {
+    "id": "preferente-derecha-H-108",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "108",
+    "label": "H-108",
+    "x": 482.34,
+    "y": 374.07
+  },
+  {
+    "id": "preferente-derecha-H-109",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "109",
+    "label": "H-109",
+    "x": 490.39,
+    "y": 369.4
+  },
+  {
+    "id": "preferente-derecha-H-110",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "110",
+    "label": "H-110",
+    "x": 498.43,
+    "y": 364.73
+  },
+  {
+    "id": "preferente-derecha-H-111",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "111",
+    "label": "H-111",
+    "x": 506.48,
+    "y": 360.06
+  },
+  {
+    "id": "preferente-derecha-H-112",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "112",
+    "label": "H-112",
+    "x": 514.52,
+    "y": 355.39
+  },
+  {
+    "id": "preferente-derecha-H-113",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "113",
+    "label": "H-113",
+    "x": 522.57,
+    "y": 350.72
+  },
+  {
+    "id": "preferente-derecha-H-114",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "114",
+    "label": "H-114",
+    "x": 530.62,
+    "y": 346.04
+  },
+  {
+    "id": "preferente-derecha-H-115",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "115",
+    "label": "H-115",
+    "x": 538.66,
+    "y": 341.37
+  },
+  {
+    "id": "preferente-derecha-H-116",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "116",
+    "label": "H-116",
+    "x": 546.71,
+    "y": 336.7
+  },
+  {
+    "id": "preferente-derecha-H-117",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "117",
+    "label": "H-117",
+    "x": 554.75,
+    "y": 332.03
+  },
+  {
+    "id": "preferente-derecha-H-118",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "118",
+    "label": "H-118",
+    "x": 562.8,
+    "y": 327.36
+  },
+  {
+    "id": "preferente-derecha-H-119",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "119",
+    "label": "H-119",
+    "x": 570.84,
+    "y": 322.69
+  },
+  {
+    "id": "preferente-derecha-H-120",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "120",
+    "label": "H-120",
+    "x": 578.89,
+    "y": 318.02
+  },
+  {
+    "id": "preferente-derecha-H-121",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "121",
+    "label": "H-121",
+    "x": 586.93,
+    "y": 313.35
+  },
+  {
+    "id": "preferente-derecha-H-122",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "122",
+    "label": "H-122",
+    "x": 594.98,
+    "y": 308.68
+  },
+  {
+    "id": "preferente-derecha-H-123",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "123",
+    "label": "H-123",
+    "x": 603.02,
+    "y": 304.01
+  },
+  {
+    "id": "preferente-derecha-H-124",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "124",
+    "label": "H-124",
+    "x": 611.07,
+    "y": 299.34
+  },
+  {
+    "id": "preferente-derecha-H-125",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "125",
+    "label": "H-125",
+    "x": 619.11,
+    "y": 294.67
+  },
+  {
+    "id": "preferente-derecha-H-126",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "126",
+    "label": "H-126",
+    "x": 627.16,
+    "y": 289.99
+  },
+  {
+    "id": "preferente-derecha-H-127",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "127",
+    "label": "H-127",
+    "x": 635.2,
+    "y": 285.32
+  },
+  {
+    "id": "preferente-derecha-H-128",
+    "sectionId": "section-1769728342922",
+    "row": "H",
+    "number": "128",
+    "label": "H-128",
+    "x": 643.25,
+    "y": 280.65
+  },
+  {
+    "id": "preferente-derecha-I-91",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "91",
+    "label": "I-91",
+    "x": 345.21,
+    "y": 471.38
+  },
+  {
+    "id": "preferente-derecha-I-92",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "92",
+    "label": "I-92",
+    "x": 352.96,
+    "y": 466.88
+  },
+  {
+    "id": "preferente-derecha-I-93",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "93",
+    "label": "I-93",
+    "x": 360.71,
+    "y": 462.38
+  },
+  {
+    "id": "preferente-derecha-I-94",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "94",
+    "label": "I-94",
+    "x": 368.46,
+    "y": 457.88
+  },
+  {
+    "id": "preferente-derecha-I-95",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "95",
+    "label": "I-95",
+    "x": 376.21,
+    "y": 453.38
+  },
+  {
+    "id": "preferente-derecha-I-96",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "96",
+    "label": "I-96",
+    "x": 383.96,
+    "y": 448.88
+  },
+  {
+    "id": "preferente-derecha-I-97",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "97",
+    "label": "I-97",
+    "x": 391.71,
+    "y": 444.38
+  },
+  {
+    "id": "preferente-derecha-I-98",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "98",
+    "label": "I-98",
+    "x": 399.46,
+    "y": 439.88
+  },
+  {
+    "id": "preferente-derecha-I-99",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "99",
+    "label": "I-99",
+    "x": 407.22,
+    "y": 435.38
+  },
+  {
+    "id": "preferente-derecha-I-100",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "100",
+    "label": "I-100",
+    "x": 414.97,
+    "y": 430.88
+  },
+  {
+    "id": "preferente-derecha-I-101",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "101",
+    "label": "I-101",
+    "x": 422.72,
+    "y": 426.38
+  },
+  {
+    "id": "preferente-derecha-I-102",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "102",
+    "label": "I-102",
+    "x": 430.47,
+    "y": 421.88
+  },
+  {
+    "id": "preferente-derecha-I-103",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "103",
+    "label": "I-103",
+    "x": 438.22,
+    "y": 417.38
+  },
+  {
+    "id": "preferente-derecha-I-104",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "104",
+    "label": "I-104",
+    "x": 445.97,
+    "y": 412.88
+  },
+  {
+    "id": "preferente-derecha-I-105",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "105",
+    "label": "I-105",
+    "x": 453.72,
+    "y": 408.38
+  },
+  {
+    "id": "preferente-derecha-I-106",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "106",
+    "label": "I-106",
+    "x": 461.47,
+    "y": 403.88
+  },
+  {
+    "id": "preferente-derecha-I-107",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "107",
+    "label": "I-107",
+    "x": 469.22,
+    "y": 399.38
+  },
+  {
+    "id": "preferente-derecha-I-108",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "108",
+    "label": "I-108",
+    "x": 476.97,
+    "y": 394.88
+  },
+  {
+    "id": "preferente-derecha-I-109",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "109",
+    "label": "I-109",
+    "x": 484.72,
+    "y": 390.38
+  },
+  {
+    "id": "preferente-derecha-I-110",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "110",
+    "label": "I-110",
+    "x": 492.47,
+    "y": 385.88
+  },
+  {
+    "id": "preferente-derecha-I-111",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "111",
+    "label": "I-111",
+    "x": 500.22,
+    "y": 381.38
+  },
+  {
+    "id": "preferente-derecha-I-112",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "112",
+    "label": "I-112",
+    "x": 507.97,
+    "y": 376.89
+  },
+  {
+    "id": "preferente-derecha-I-113",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "113",
+    "label": "I-113",
+    "x": 515.72,
+    "y": 372.39
+  },
+  {
+    "id": "preferente-derecha-I-114",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "114",
+    "label": "I-114",
+    "x": 523.47,
+    "y": 367.89
+  },
+  {
+    "id": "preferente-derecha-I-115",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "115",
+    "label": "I-115",
+    "x": 531.22,
+    "y": 363.39
+  },
+  {
+    "id": "preferente-derecha-I-116",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "116",
+    "label": "I-116",
+    "x": 538.97,
+    "y": 358.89
+  },
+  {
+    "id": "preferente-derecha-I-117",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "117",
+    "label": "I-117",
+    "x": 546.72,
+    "y": 354.39
+  },
+  {
+    "id": "preferente-derecha-I-118",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "118",
+    "label": "I-118",
+    "x": 554.47,
+    "y": 349.89
+  },
+  {
+    "id": "preferente-derecha-I-119",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "119",
+    "label": "I-119",
+    "x": 562.22,
+    "y": 345.39
+  },
+  {
+    "id": "preferente-derecha-I-120",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "120",
+    "label": "I-120",
+    "x": 569.97,
+    "y": 340.89
+  },
+  {
+    "id": "preferente-derecha-I-121",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "121",
+    "label": "I-121",
+    "x": 577.72,
+    "y": 336.39
+  },
+  {
+    "id": "preferente-derecha-I-122",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "122",
+    "label": "I-122",
+    "x": 585.47,
+    "y": 331.89
+  },
+  {
+    "id": "preferente-derecha-I-123",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "123",
+    "label": "I-123",
+    "x": 593.22,
+    "y": 327.39
+  },
+  {
+    "id": "preferente-derecha-I-124",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "124",
+    "label": "I-124",
+    "x": 600.97,
+    "y": 322.89
+  },
+  {
+    "id": "preferente-derecha-I-125",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "125",
+    "label": "I-125",
+    "x": 608.72,
+    "y": 318.39
+  },
+  {
+    "id": "preferente-derecha-I-126",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "126",
+    "label": "I-126",
+    "x": 616.47,
+    "y": 313.89
+  },
+  {
+    "id": "preferente-derecha-I-127",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "127",
+    "label": "I-127",
+    "x": 624.22,
+    "y": 309.39
+  },
+  {
+    "id": "preferente-derecha-I-128",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "128",
+    "label": "I-128",
+    "x": 631.97,
+    "y": 304.89
+  },
+  {
+    "id": "preferente-derecha-I-129",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "129",
+    "label": "I-129",
+    "x": 639.72,
+    "y": 300.39
+  },
+  {
+    "id": "preferente-derecha-I-130",
+    "sectionId": "section-1769728342922",
+    "row": "I",
+    "number": "130",
+    "label": "I-130",
+    "x": 647.47,
+    "y": 295.89
+  },
+  {
+    "id": "preferente-derecha-J-93",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "93",
+    "label": "J-93",
+    "x": 352.9,
+    "y": 484.61
+  },
+  {
+    "id": "preferente-derecha-J-94",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "94",
+    "label": "J-94",
+    "x": 360.54,
+    "y": 480.17
+  },
+  {
+    "id": "preferente-derecha-J-95",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "95",
+    "label": "J-95",
+    "x": 368.17,
+    "y": 475.74
+  },
+  {
+    "id": "preferente-derecha-J-96",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "96",
+    "label": "J-96",
+    "x": 375.81,
+    "y": 471.3
+  },
+  {
+    "id": "preferente-derecha-J-97",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "97",
+    "label": "J-97",
+    "x": 383.45,
+    "y": 466.87
+  },
+  {
+    "id": "preferente-derecha-J-98",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "98",
+    "label": "J-98",
+    "x": 391.09,
+    "y": 462.43
+  },
+  {
+    "id": "preferente-derecha-J-99",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "99",
+    "label": "J-99",
+    "x": 398.73,
+    "y": 458
+  },
+  {
+    "id": "preferente-derecha-J-100",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "100",
+    "label": "J-100",
+    "x": 406.37,
+    "y": 453.56
+  },
+  {
+    "id": "preferente-derecha-J-101",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "101",
+    "label": "J-101",
+    "x": 414.01,
+    "y": 449.13
+  },
+  {
+    "id": "preferente-derecha-J-102",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "102",
+    "label": "J-102",
+    "x": 421.65,
+    "y": 444.69
+  },
+  {
+    "id": "preferente-derecha-J-103",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "103",
+    "label": "J-103",
+    "x": 429.29,
+    "y": 440.26
+  },
+  {
+    "id": "preferente-derecha-J-104",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "104",
+    "label": "J-104",
+    "x": 436.93,
+    "y": 435.82
+  },
+  {
+    "id": "preferente-derecha-J-105",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "105",
+    "label": "J-105",
+    "x": 444.57,
+    "y": 431.39
+  },
+  {
+    "id": "preferente-derecha-J-106",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "106",
+    "label": "J-106",
+    "x": 452.21,
+    "y": 426.95
+  },
+  {
+    "id": "preferente-derecha-J-107",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "107",
+    "label": "J-107",
+    "x": 459.85,
+    "y": 422.51
+  },
+  {
+    "id": "preferente-derecha-J-108",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "108",
+    "label": "J-108",
+    "x": 467.48,
+    "y": 418.08
+  },
+  {
+    "id": "preferente-derecha-J-109",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "109",
+    "label": "J-109",
+    "x": 475.12,
+    "y": 413.64
+  },
+  {
+    "id": "preferente-derecha-J-110",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "110",
+    "label": "J-110",
+    "x": 482.76,
+    "y": 409.21
+  },
+  {
+    "id": "preferente-derecha-J-111",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "111",
+    "label": "J-111",
+    "x": 490.4,
+    "y": 404.77
+  },
+  {
+    "id": "preferente-derecha-J-112",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "112",
+    "label": "J-112",
+    "x": 498.04,
+    "y": 400.34
+  },
+  {
+    "id": "preferente-derecha-J-113",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "113",
+    "label": "J-113",
+    "x": 505.68,
+    "y": 395.9
+  },
+  {
+    "id": "preferente-derecha-J-114",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "114",
+    "label": "J-114",
+    "x": 513.32,
+    "y": 391.47
+  },
+  {
+    "id": "preferente-derecha-J-115",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "115",
+    "label": "J-115",
+    "x": 520.96,
+    "y": 387.03
+  },
+  {
+    "id": "preferente-derecha-J-116",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "116",
+    "label": "J-116",
+    "x": 528.6,
+    "y": 382.6
+  },
+  {
+    "id": "preferente-derecha-J-117",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "117",
+    "label": "J-117",
+    "x": 536.24,
+    "y": 378.16
+  },
+  {
+    "id": "preferente-derecha-J-118",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "118",
+    "label": "J-118",
+    "x": 543.88,
+    "y": 373.73
+  },
+  {
+    "id": "preferente-derecha-J-119",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "119",
+    "label": "J-119",
+    "x": 551.52,
+    "y": 369.29
+  },
+  {
+    "id": "preferente-derecha-J-120",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "120",
+    "label": "J-120",
+    "x": 559.16,
+    "y": 364.86
+  },
+  {
+    "id": "preferente-derecha-J-121",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "121",
+    "label": "J-121",
+    "x": 566.8,
+    "y": 360.42
+  },
+  {
+    "id": "preferente-derecha-J-122",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "122",
+    "label": "J-122",
+    "x": 574.43,
+    "y": 355.99
+  },
+  {
+    "id": "preferente-derecha-J-123",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "123",
+    "label": "J-123",
+    "x": 582.07,
+    "y": 351.55
+  },
+  {
+    "id": "preferente-derecha-J-124",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "124",
+    "label": "J-124",
+    "x": 589.71,
+    "y": 347.12
+  },
+  {
+    "id": "preferente-derecha-J-125",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "125",
+    "label": "J-125",
+    "x": 597.35,
+    "y": 342.68
+  },
+  {
+    "id": "preferente-derecha-J-126",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "126",
+    "label": "J-126",
+    "x": 604.99,
+    "y": 338.25
+  },
+  {
+    "id": "preferente-derecha-J-127",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "127",
+    "label": "J-127",
+    "x": 612.63,
+    "y": 333.81
+  },
+  {
+    "id": "preferente-derecha-J-128",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "128",
+    "label": "J-128",
+    "x": 620.27,
+    "y": 329.38
+  },
+  {
+    "id": "preferente-derecha-J-129",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "129",
+    "label": "J-129",
+    "x": 627.91,
+    "y": 324.94
+  },
+  {
+    "id": "preferente-derecha-J-130",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "130",
+    "label": "J-130",
+    "x": 635.55,
+    "y": 320.51
+  },
+  {
+    "id": "preferente-derecha-J-131",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "131",
+    "label": "J-131",
+    "x": 643.19,
+    "y": 316.07
+  },
+  {
+    "id": "preferente-derecha-J-132",
+    "sectionId": "section-1769728342922",
+    "row": "J",
+    "number": "132",
+    "label": "J-132",
+    "x": 650.83,
+    "y": 311.63
+  },
+  {
+    "id": "preferente-derecha-K-94",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "94",
+    "label": "K-94",
+    "x": 360.58,
+    "y": 497.84
+  },
+  {
+    "id": "preferente-derecha-K-95",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "95",
+    "label": "K-95",
+    "x": 367.94,
+    "y": 493.56
+  },
+  {
+    "id": "preferente-derecha-K-96",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "96",
+    "label": "K-96",
+    "x": 375.3,
+    "y": 489.29
+  },
+  {
+    "id": "preferente-derecha-K-97",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "97",
+    "label": "K-97",
+    "x": 382.66,
+    "y": 485.02
+  },
+  {
+    "id": "preferente-derecha-K-98",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "98",
+    "label": "K-98",
+    "x": 390.02,
+    "y": 480.74
+  },
+  {
+    "id": "preferente-derecha-K-99",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "99",
+    "label": "K-99",
+    "x": 397.39,
+    "y": 476.47
+  },
+  {
+    "id": "preferente-derecha-K-100",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "100",
+    "label": "K-100",
+    "x": 404.75,
+    "y": 472.19
+  },
+  {
+    "id": "preferente-derecha-K-101",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "101",
+    "label": "K-101",
+    "x": 412.11,
+    "y": 467.92
+  },
+  {
+    "id": "preferente-derecha-K-102",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "102",
+    "label": "K-102",
+    "x": 419.47,
+    "y": 463.65
+  },
+  {
+    "id": "preferente-derecha-K-103",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "103",
+    "label": "K-103",
+    "x": 426.83,
+    "y": 459.37
+  },
+  {
+    "id": "preferente-derecha-K-104",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "104",
+    "label": "K-104",
+    "x": 434.2,
+    "y": 455.1
+  },
+  {
+    "id": "preferente-derecha-K-105",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "105",
+    "label": "K-105",
+    "x": 441.56,
+    "y": 450.82
+  },
+  {
+    "id": "preferente-derecha-K-106",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "106",
+    "label": "K-106",
+    "x": 448.92,
+    "y": 446.55
+  },
+  {
+    "id": "preferente-derecha-K-107",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "107",
+    "label": "K-107",
+    "x": 456.28,
+    "y": 442.28
+  },
+  {
+    "id": "preferente-derecha-K-108",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "108",
+    "label": "K-108",
+    "x": 463.64,
+    "y": 438
+  },
+  {
+    "id": "preferente-derecha-K-109",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "109",
+    "label": "K-109",
+    "x": 471,
+    "y": 433.73
+  },
+  {
+    "id": "preferente-derecha-K-110",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "110",
+    "label": "K-110",
+    "x": 478.37,
+    "y": 429.45
+  },
+  {
+    "id": "preferente-derecha-K-111",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "111",
+    "label": "K-111",
+    "x": 485.73,
+    "y": 425.18
+  },
+  {
+    "id": "preferente-derecha-K-112",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "112",
+    "label": "K-112",
+    "x": 493.09,
+    "y": 420.91
+  },
+  {
+    "id": "preferente-derecha-K-113",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "113",
+    "label": "K-113",
+    "x": 500.45,
+    "y": 416.63
+  },
+  {
+    "id": "preferente-derecha-K-114",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "114",
+    "label": "K-114",
+    "x": 507.81,
+    "y": 412.36
+  },
+  {
+    "id": "preferente-derecha-K-115",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "115",
+    "label": "K-115",
+    "x": 515.18,
+    "y": 408.08
+  },
+  {
+    "id": "preferente-derecha-K-116",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "116",
+    "label": "K-116",
+    "x": 522.54,
+    "y": 403.81
+  },
+  {
+    "id": "preferente-derecha-K-117",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "117",
+    "label": "K-117",
+    "x": 529.9,
+    "y": 399.53
+  },
+  {
+    "id": "preferente-derecha-K-118",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "118",
+    "label": "K-118",
+    "x": 537.26,
+    "y": 395.26
+  },
+  {
+    "id": "preferente-derecha-K-119",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "119",
+    "label": "K-119",
+    "x": 544.62,
+    "y": 390.99
+  },
+  {
+    "id": "preferente-derecha-K-120",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "120",
+    "label": "K-120",
+    "x": 551.98,
+    "y": 386.71
+  },
+  {
+    "id": "preferente-derecha-K-121",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "121",
+    "label": "K-121",
+    "x": 559.35,
+    "y": 382.44
+  },
+  {
+    "id": "preferente-derecha-K-122",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "122",
+    "label": "K-122",
+    "x": 566.71,
+    "y": 378.16
+  },
+  {
+    "id": "preferente-derecha-K-123",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "123",
+    "label": "K-123",
+    "x": 574.07,
+    "y": 373.89
+  },
+  {
+    "id": "preferente-derecha-K-124",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "124",
+    "label": "K-124",
+    "x": 581.43,
+    "y": 369.62
+  },
+  {
+    "id": "preferente-derecha-K-125",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "125",
+    "label": "K-125",
+    "x": 588.79,
+    "y": 365.34
+  },
+  {
+    "id": "preferente-derecha-K-126",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "126",
+    "label": "K-126",
+    "x": 596.16,
+    "y": 361.07
+  },
+  {
+    "id": "preferente-derecha-K-127",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "127",
+    "label": "K-127",
+    "x": 603.52,
+    "y": 356.79
+  },
+  {
+    "id": "preferente-derecha-K-128",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "128",
+    "label": "K-128",
+    "x": 610.88,
+    "y": 352.52
+  },
+  {
+    "id": "preferente-derecha-K-129",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "129",
+    "label": "K-129",
+    "x": 618.24,
+    "y": 348.25
+  },
+  {
+    "id": "preferente-derecha-K-130",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "130",
+    "label": "K-130",
+    "x": 625.6,
+    "y": 343.97
+  },
+  {
+    "id": "preferente-derecha-K-131",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "131",
+    "label": "K-131",
+    "x": 632.96,
+    "y": 339.7
+  },
+  {
+    "id": "preferente-derecha-K-132",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "132",
+    "label": "K-132",
+    "x": 640.33,
+    "y": 335.42
+  },
+  {
+    "id": "preferente-derecha-K-133",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "133",
+    "label": "K-133",
+    "x": 647.69,
+    "y": 331.15
+  },
+  {
+    "id": "preferente-derecha-K-134",
+    "sectionId": "section-1769728342922",
+    "row": "K",
+    "number": "134",
+    "label": "K-134",
+    "x": 655.05,
+    "y": 326.87
+  },
+  {
+    "id": "preferente-derecha-L-96",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "96",
+    "label": "L-96",
+    "x": 368.26,
+    "y": 511.07
+  },
+  {
+    "id": "preferente-derecha-L-97",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "97",
+    "label": "L-97",
+    "x": 375.51,
+    "y": 506.86
+  },
+  {
+    "id": "preferente-derecha-L-98",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "98",
+    "label": "L-98",
+    "x": 382.77,
+    "y": 502.65
+  },
+  {
+    "id": "preferente-derecha-L-99",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "99",
+    "label": "L-99",
+    "x": 390.02,
+    "y": 498.44
+  },
+  {
+    "id": "preferente-derecha-L-100",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "100",
+    "label": "L-100",
+    "x": 397.27,
+    "y": 494.22
+  },
+  {
+    "id": "preferente-derecha-L-101",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "101",
+    "label": "L-101",
+    "x": 404.53,
+    "y": 490.01
+  },
+  {
+    "id": "preferente-derecha-L-102",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "102",
+    "label": "L-102",
+    "x": 411.78,
+    "y": 485.8
+  },
+  {
+    "id": "preferente-derecha-L-103",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "103",
+    "label": "L-103",
+    "x": 419.04,
+    "y": 481.59
+  },
+  {
+    "id": "preferente-derecha-L-104",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "104",
+    "label": "L-104",
+    "x": 426.29,
+    "y": 477.38
+  },
+  {
+    "id": "preferente-derecha-L-105",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "105",
+    "label": "L-105",
+    "x": 433.54,
+    "y": 473.17
+  },
+  {
+    "id": "preferente-derecha-L-106",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "106",
+    "label": "L-106",
+    "x": 440.8,
+    "y": 468.96
+  },
+  {
+    "id": "preferente-derecha-L-107",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "107",
+    "label": "L-107",
+    "x": 448.05,
+    "y": 464.75
+  },
+  {
+    "id": "preferente-derecha-L-108",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "108",
+    "label": "L-108",
+    "x": 455.3,
+    "y": 460.53
+  },
+  {
+    "id": "preferente-derecha-L-109",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "109",
+    "label": "L-109",
+    "x": 462.56,
+    "y": 456.32
+  },
+  {
+    "id": "preferente-derecha-L-110",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "110",
+    "label": "L-110",
+    "x": 469.81,
+    "y": 452.11
+  },
+  {
+    "id": "preferente-derecha-L-111",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "111",
+    "label": "L-111",
+    "x": 477.07,
+    "y": 447.9
+  },
+  {
+    "id": "preferente-derecha-L-112",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "112",
+    "label": "L-112",
+    "x": 484.32,
+    "y": 443.69
+  },
+  {
+    "id": "preferente-derecha-L-113",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "113",
+    "label": "L-113",
+    "x": 491.57,
+    "y": 439.48
+  },
+  {
+    "id": "preferente-derecha-L-114",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "114",
+    "label": "L-114",
+    "x": 498.83,
+    "y": 435.27
+  },
+  {
+    "id": "preferente-derecha-L-115",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "115",
+    "label": "L-115",
+    "x": 506.08,
+    "y": 431.05
+  },
+  {
+    "id": "preferente-derecha-L-116",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "116",
+    "label": "L-116",
+    "x": 513.33,
+    "y": 426.84
+  },
+  {
+    "id": "preferente-derecha-L-117",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "117",
+    "label": "L-117",
+    "x": 520.59,
+    "y": 422.63
+  },
+  {
+    "id": "preferente-derecha-L-118",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "118",
+    "label": "L-118",
+    "x": 527.84,
+    "y": 418.42
+  },
+  {
+    "id": "preferente-derecha-L-119",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "119",
+    "label": "L-119",
+    "x": 535.09,
+    "y": 414.21
+  },
+  {
+    "id": "preferente-derecha-L-120",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "120",
+    "label": "L-120",
+    "x": 542.35,
+    "y": 410
+  },
+  {
+    "id": "preferente-derecha-L-121",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "121",
+    "label": "L-121",
+    "x": 549.6,
+    "y": 405.79
+  },
+  {
+    "id": "preferente-derecha-L-122",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "122",
+    "label": "L-122",
+    "x": 556.86,
+    "y": 401.58
+  },
+  {
+    "id": "preferente-derecha-L-123",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "123",
+    "label": "L-123",
+    "x": 564.11,
+    "y": 397.36
+  },
+  {
+    "id": "preferente-derecha-L-124",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "124",
+    "label": "L-124",
+    "x": 571.36,
+    "y": 393.15
+  },
+  {
+    "id": "preferente-derecha-L-125",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "125",
+    "label": "L-125",
+    "x": 578.62,
+    "y": 388.94
+  },
+  {
+    "id": "preferente-derecha-L-126",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "126",
+    "label": "L-126",
+    "x": 585.87,
+    "y": 384.73
+  },
+  {
+    "id": "preferente-derecha-L-127",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "127",
+    "label": "L-127",
+    "x": 593.12,
+    "y": 380.52
+  },
+  {
+    "id": "preferente-derecha-L-128",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "128",
+    "label": "L-128",
+    "x": 600.38,
+    "y": 376.31
+  },
+  {
+    "id": "preferente-derecha-L-129",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "129",
+    "label": "L-129",
+    "x": 607.63,
+    "y": 372.1
+  },
+  {
+    "id": "preferente-derecha-L-130",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "130",
+    "label": "L-130",
+    "x": 614.89,
+    "y": 367.88
+  },
+  {
+    "id": "preferente-derecha-L-131",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "131",
+    "label": "L-131",
+    "x": 622.14,
+    "y": 363.67
+  },
+  {
+    "id": "preferente-derecha-L-132",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "132",
+    "label": "L-132",
+    "x": 629.39,
+    "y": 359.46
+  },
+  {
+    "id": "preferente-derecha-L-133",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "133",
+    "label": "L-133",
+    "x": 636.65,
+    "y": 355.25
+  },
+  {
+    "id": "preferente-derecha-L-134",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "134",
+    "label": "L-134",
+    "x": 643.9,
+    "y": 351.04
+  },
+  {
+    "id": "preferente-derecha-L-135",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "135",
+    "label": "L-135",
+    "x": 651.15,
+    "y": 346.83
+  },
+  {
+    "id": "preferente-derecha-L-136",
+    "sectionId": "section-1769728342922",
+    "row": "L",
+    "number": "136",
+    "label": "L-136",
+    "x": 658.41,
+    "y": 342.62
+  },
+  {
+    "id": "preferente-derecha-M-97",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "97",
+    "label": "M-97",
+    "x": 375.94,
+    "y": 524.3
+  },
+  {
+    "id": "preferente-derecha-M-98",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "98",
+    "label": "M-98",
+    "x": 382.93,
+    "y": 520.24
+  },
+  {
+    "id": "preferente-derecha-M-99",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "99",
+    "label": "M-99",
+    "x": 389.93,
+    "y": 516.18
+  },
+  {
+    "id": "preferente-derecha-M-100",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "100",
+    "label": "M-100",
+    "x": 396.92,
+    "y": 512.12
+  },
+  {
+    "id": "preferente-derecha-M-101",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "101",
+    "label": "M-101",
+    "x": 403.91,
+    "y": 508.06
+  },
+  {
+    "id": "preferente-derecha-M-102",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "102",
+    "label": "M-102",
+    "x": 410.9,
+    "y": 504
+  },
+  {
+    "id": "preferente-derecha-M-103",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "103",
+    "label": "M-103",
+    "x": 417.9,
+    "y": 499.94
+  },
+  {
+    "id": "preferente-derecha-M-104",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "104",
+    "label": "M-104",
+    "x": 424.89,
+    "y": 495.88
+  },
+  {
+    "id": "preferente-derecha-M-105",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "105",
+    "label": "M-105",
+    "x": 431.88,
+    "y": 491.82
+  },
+  {
+    "id": "preferente-derecha-M-106",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "106",
+    "label": "M-106",
+    "x": 438.87,
+    "y": 487.76
+  },
+  {
+    "id": "preferente-derecha-M-107",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "107",
+    "label": "M-107",
+    "x": 445.87,
+    "y": 483.71
+  },
+  {
+    "id": "preferente-derecha-M-108",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "108",
+    "label": "M-108",
+    "x": 452.86,
+    "y": 479.65
+  },
+  {
+    "id": "preferente-derecha-M-109",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "109",
+    "label": "M-109",
+    "x": 459.85,
+    "y": 475.59
+  },
+  {
+    "id": "preferente-derecha-M-110",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "110",
+    "label": "M-110",
+    "x": 466.84,
+    "y": 471.53
+  },
+  {
+    "id": "preferente-derecha-M-111",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "111",
+    "label": "M-111",
+    "x": 473.84,
+    "y": 467.47
+  },
+  {
+    "id": "preferente-derecha-M-112",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "112",
+    "label": "M-112",
+    "x": 480.83,
+    "y": 463.41
+  },
+  {
+    "id": "preferente-derecha-M-113",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "113",
+    "label": "M-113",
+    "x": 487.82,
+    "y": 459.35
+  },
+  {
+    "id": "preferente-derecha-M-114",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "114",
+    "label": "M-114",
+    "x": 494.81,
+    "y": 455.29
+  },
+  {
+    "id": "preferente-derecha-M-115",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "115",
+    "label": "M-115",
+    "x": 501.8,
+    "y": 451.23
+  },
+  {
+    "id": "preferente-derecha-M-116",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "116",
+    "label": "M-116",
+    "x": 508.8,
+    "y": 447.17
+  },
+  {
+    "id": "preferente-derecha-M-117",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "117",
+    "label": "M-117",
+    "x": 515.79,
+    "y": 443.11
+  },
+  {
+    "id": "preferente-derecha-M-118",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "118",
+    "label": "M-118",
+    "x": 522.78,
+    "y": 439.05
+  },
+  {
+    "id": "preferente-derecha-M-119",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "119",
+    "label": "M-119",
+    "x": 529.77,
+    "y": 434.99
+  },
+  {
+    "id": "preferente-derecha-M-120",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "120",
+    "label": "M-120",
+    "x": 536.77,
+    "y": 430.93
+  },
+  {
+    "id": "preferente-derecha-M-121",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "121",
+    "label": "M-121",
+    "x": 543.76,
+    "y": 426.87
+  },
+  {
+    "id": "preferente-derecha-M-122",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "122",
+    "label": "M-122",
+    "x": 550.75,
+    "y": 422.81
+  },
+  {
+    "id": "preferente-derecha-M-123",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "123",
+    "label": "M-123",
+    "x": 557.74,
+    "y": 418.75
+  },
+  {
+    "id": "preferente-derecha-M-124",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "124",
+    "label": "M-124",
+    "x": 564.74,
+    "y": 414.69
+  },
+  {
+    "id": "preferente-derecha-M-125",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "125",
+    "label": "M-125",
+    "x": 571.73,
+    "y": 410.63
+  },
+  {
+    "id": "preferente-derecha-M-126",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "126",
+    "label": "M-126",
+    "x": 578.72,
+    "y": 406.57
+  },
+  {
+    "id": "preferente-derecha-M-127",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "127",
+    "label": "M-127",
+    "x": 585.71,
+    "y": 402.51
+  },
+  {
+    "id": "preferente-derecha-M-128",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "128",
+    "label": "M-128",
+    "x": 592.71,
+    "y": 398.45
+  },
+  {
+    "id": "preferente-derecha-M-129",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "129",
+    "label": "M-129",
+    "x": 599.7,
+    "y": 394.39
+  },
+  {
+    "id": "preferente-derecha-M-130",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "130",
+    "label": "M-130",
+    "x": 606.69,
+    "y": 390.33
+  },
+  {
+    "id": "preferente-derecha-M-131",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "131",
+    "label": "M-131",
+    "x": 613.68,
+    "y": 386.27
+  },
+  {
+    "id": "preferente-derecha-M-132",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "132",
+    "label": "M-132",
+    "x": 620.68,
+    "y": 382.21
+  },
+  {
+    "id": "preferente-derecha-M-133",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "133",
+    "label": "M-133",
+    "x": 627.67,
+    "y": 378.15
+  },
+  {
+    "id": "preferente-derecha-M-134",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "134",
+    "label": "M-134",
+    "x": 634.66,
+    "y": 374.1
+  },
+  {
+    "id": "preferente-derecha-M-135",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "135",
+    "label": "M-135",
+    "x": 641.65,
+    "y": 370.04
+  },
+  {
+    "id": "preferente-derecha-M-136",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "136",
+    "label": "M-136",
+    "x": 648.65,
+    "y": 365.98
+  },
+  {
+    "id": "preferente-derecha-M-137",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "137",
+    "label": "M-137",
+    "x": 655.64,
+    "y": 361.92
+  },
+  {
+    "id": "preferente-derecha-M-138",
+    "sectionId": "section-1769728342922",
+    "row": "M",
+    "number": "138",
+    "label": "M-138",
+    "x": 662.63,
+    "y": 357.86
+  },
+  {
+    "id": "preferente-derecha-N-98",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "98",
+    "label": "N-98",
+    "x": 383.62,
+    "y": 537.53
+  },
+  {
+    "id": "preferente-derecha-N-99",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "99",
+    "label": "N-99",
+    "x": 390.53,
+    "y": 533.52
+  },
+  {
+    "id": "preferente-derecha-N-100",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "100",
+    "label": "N-100",
+    "x": 397.44,
+    "y": 529.51
+  },
+  {
+    "id": "preferente-derecha-N-101",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "101",
+    "label": "N-101",
+    "x": 404.35,
+    "y": 525.5
+  },
+  {
+    "id": "preferente-derecha-N-102",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "102",
+    "label": "N-102",
+    "x": 411.26,
+    "y": 521.49
+  },
+  {
+    "id": "preferente-derecha-N-103",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "103",
+    "label": "N-103",
+    "x": 418.16,
+    "y": 517.48
+  },
+  {
+    "id": "preferente-derecha-N-104",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "104",
+    "label": "N-104",
+    "x": 425.07,
+    "y": 513.47
+  },
+  {
+    "id": "preferente-derecha-N-105",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "105",
+    "label": "N-105",
+    "x": 431.98,
+    "y": 509.46
+  },
+  {
+    "id": "preferente-derecha-N-106",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "106",
+    "label": "N-106",
+    "x": 438.89,
+    "y": 505.45
+  },
+  {
+    "id": "preferente-derecha-N-107",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "107",
+    "label": "N-107",
+    "x": 445.8,
+    "y": 501.44
+  },
+  {
+    "id": "preferente-derecha-N-108",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "108",
+    "label": "N-108",
+    "x": 452.7,
+    "y": 497.43
+  },
+  {
+    "id": "preferente-derecha-N-109",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "109",
+    "label": "N-109",
+    "x": 459.61,
+    "y": 493.42
+  },
+  {
+    "id": "preferente-derecha-N-110",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "110",
+    "label": "N-110",
+    "x": 466.52,
+    "y": 489.41
+  },
+  {
+    "id": "preferente-derecha-N-111",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "111",
+    "label": "N-111",
+    "x": 473.43,
+    "y": 485.39
+  },
+  {
+    "id": "preferente-derecha-N-112",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "112",
+    "label": "N-112",
+    "x": 480.34,
+    "y": 481.38
+  },
+  {
+    "id": "preferente-derecha-N-113",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "113",
+    "label": "N-113",
+    "x": 487.24,
+    "y": 477.37
+  },
+  {
+    "id": "preferente-derecha-N-114",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "114",
+    "label": "N-114",
+    "x": 494.15,
+    "y": 473.36
+  },
+  {
+    "id": "preferente-derecha-N-115",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "115",
+    "label": "N-115",
+    "x": 501.06,
+    "y": 469.35
+  },
+  {
+    "id": "preferente-derecha-N-116",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "116",
+    "label": "N-116",
+    "x": 507.97,
+    "y": 465.34
+  },
+  {
+    "id": "preferente-derecha-N-117",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "117",
+    "label": "N-117",
+    "x": 514.88,
+    "y": 461.33
+  },
+  {
+    "id": "preferente-derecha-N-118",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "118",
+    "label": "N-118",
+    "x": 521.78,
+    "y": 457.32
+  },
+  {
+    "id": "preferente-derecha-N-119",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "119",
+    "label": "N-119",
+    "x": 528.69,
+    "y": 453.31
+  },
+  {
+    "id": "preferente-derecha-N-120",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "120",
+    "label": "N-120",
+    "x": 535.6,
+    "y": 449.3
+  },
+  {
+    "id": "preferente-derecha-N-121",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "121",
+    "label": "N-121",
+    "x": 542.51,
+    "y": 445.29
+  },
+  {
+    "id": "preferente-derecha-N-122",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "122",
+    "label": "N-122",
+    "x": 549.42,
+    "y": 441.28
+  },
+  {
+    "id": "preferente-derecha-N-123",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "123",
+    "label": "N-123",
+    "x": 556.32,
+    "y": 437.27
+  },
+  {
+    "id": "preferente-derecha-N-124",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "124",
+    "label": "N-124",
+    "x": 563.23,
+    "y": 433.26
+  },
+  {
+    "id": "preferente-derecha-N-125",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "125",
+    "label": "N-125",
+    "x": 570.14,
+    "y": 429.25
+  },
+  {
+    "id": "preferente-derecha-N-126",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "126",
+    "label": "N-126",
+    "x": 577.05,
+    "y": 425.23
+  },
+  {
+    "id": "preferente-derecha-N-127",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "127",
+    "label": "N-127",
+    "x": 583.96,
+    "y": 421.22
+  },
+  {
+    "id": "preferente-derecha-N-128",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "128",
+    "label": "N-128",
+    "x": 590.86,
+    "y": 417.21
+  },
+  {
+    "id": "preferente-derecha-N-129",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "129",
+    "label": "N-129",
+    "x": 597.77,
+    "y": 413.2
+  },
+  {
+    "id": "preferente-derecha-N-130",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "130",
+    "label": "N-130",
+    "x": 604.68,
+    "y": 409.19
+  },
+  {
+    "id": "preferente-derecha-N-131",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "131",
+    "label": "N-131",
+    "x": 611.59,
+    "y": 405.18
+  },
+  {
+    "id": "preferente-derecha-N-132",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "132",
+    "label": "N-132",
+    "x": 618.5,
+    "y": 401.17
+  },
+  {
+    "id": "preferente-derecha-N-133",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "133",
+    "label": "N-133",
+    "x": 625.4,
+    "y": 397.16
+  },
+  {
+    "id": "preferente-derecha-N-134",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "134",
+    "label": "N-134",
+    "x": 632.31,
+    "y": 393.15
+  },
+  {
+    "id": "preferente-derecha-N-135",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "135",
+    "label": "N-135",
+    "x": 639.22,
+    "y": 389.14
+  },
+  {
+    "id": "preferente-derecha-N-136",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "136",
+    "label": "N-136",
+    "x": 646.13,
+    "y": 385.13
+  },
+  {
+    "id": "preferente-derecha-N-137",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "137",
+    "label": "N-137",
+    "x": 653.04,
+    "y": 381.12
+  },
+  {
+    "id": "preferente-derecha-N-138",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "138",
+    "label": "N-138",
+    "x": 659.95,
+    "y": 377.11
+  },
+  {
+    "id": "preferente-derecha-N-139",
+    "sectionId": "section-1769728342922",
+    "row": "N",
+    "number": "139",
+    "label": "N-139",
+    "x": 666.85,
+    "y": 373.1
+  },
+  {
+    "id": "preferente-derecha-O-100",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "100",
+    "label": "O-100",
+    "x": 391.31,
+    "y": 550.76
+  },
+  {
+    "id": "preferente-derecha-O-101",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "101",
+    "label": "O-101",
+    "x": 398.11,
+    "y": 546.82
+  },
+  {
+    "id": "preferente-derecha-O-102",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "102",
+    "label": "O-102",
+    "x": 404.91,
+    "y": 542.87
+  },
+  {
+    "id": "preferente-derecha-O-103",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "103",
+    "label": "O-103",
+    "x": 411.71,
+    "y": 538.92
+  },
+  {
+    "id": "preferente-derecha-O-104",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "104",
+    "label": "O-104",
+    "x": 418.52,
+    "y": 534.97
+  },
+  {
+    "id": "preferente-derecha-O-105",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "105",
+    "label": "O-105",
+    "x": 425.32,
+    "y": 531.02
+  },
+  {
+    "id": "preferente-derecha-O-106",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "106",
+    "label": "O-106",
+    "x": 432.12,
+    "y": 527.07
+  },
+  {
+    "id": "preferente-derecha-O-107",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "107",
+    "label": "O-107",
+    "x": 438.92,
+    "y": 523.12
+  },
+  {
+    "id": "preferente-derecha-O-108",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "108",
+    "label": "O-108",
+    "x": 445.73,
+    "y": 519.17
+  },
+  {
+    "id": "preferente-derecha-O-109",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "109",
+    "label": "O-109",
+    "x": 452.53,
+    "y": 515.22
+  },
+  {
+    "id": "preferente-derecha-O-110",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "110",
+    "label": "O-110",
+    "x": 459.33,
+    "y": 511.27
+  },
+  {
+    "id": "preferente-derecha-O-111",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "111",
+    "label": "O-111",
+    "x": 466.13,
+    "y": 507.32
+  },
+  {
+    "id": "preferente-derecha-O-112",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "112",
+    "label": "O-112",
+    "x": 472.94,
+    "y": 503.37
+  },
+  {
+    "id": "preferente-derecha-O-113",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "113",
+    "label": "O-113",
+    "x": 479.74,
+    "y": 499.42
+  },
+  {
+    "id": "preferente-derecha-O-114",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "114",
+    "label": "O-114",
+    "x": 486.54,
+    "y": 495.47
+  },
+  {
+    "id": "preferente-derecha-O-115",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "115",
+    "label": "O-115",
+    "x": 493.34,
+    "y": 491.52
+  },
+  {
+    "id": "preferente-derecha-O-116",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "116",
+    "label": "O-116",
+    "x": 500.15,
+    "y": 487.57
+  },
+  {
+    "id": "preferente-derecha-O-117",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "117",
+    "label": "O-117",
+    "x": 506.95,
+    "y": 483.62
+  },
+  {
+    "id": "preferente-derecha-O-118",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "118",
+    "label": "O-118",
+    "x": 513.75,
+    "y": 479.67
+  },
+  {
+    "id": "preferente-derecha-O-119",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "119",
+    "label": "O-119",
+    "x": 520.55,
+    "y": 475.73
+  },
+  {
+    "id": "preferente-derecha-O-120",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "120",
+    "label": "O-120",
+    "x": 527.36,
+    "y": 471.78
+  },
+  {
+    "id": "preferente-derecha-O-121",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "121",
+    "label": "O-121",
+    "x": 534.16,
+    "y": 467.83
+  },
+  {
+    "id": "preferente-derecha-O-122",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "122",
+    "label": "O-122",
+    "x": 540.96,
+    "y": 463.88
+  },
+  {
+    "id": "preferente-derecha-O-123",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "123",
+    "label": "O-123",
+    "x": 547.76,
+    "y": 459.93
+  },
+  {
+    "id": "preferente-derecha-O-124",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "124",
+    "label": "O-124",
+    "x": 554.57,
+    "y": 455.98
+  },
+  {
+    "id": "preferente-derecha-O-125",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "125",
+    "label": "O-125",
+    "x": 561.37,
+    "y": 452.03
+  },
+  {
+    "id": "preferente-derecha-O-126",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "126",
+    "label": "O-126",
+    "x": 568.17,
+    "y": 448.08
+  },
+  {
+    "id": "preferente-derecha-O-127",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "127",
+    "label": "O-127",
+    "x": 574.97,
+    "y": 444.13
+  },
+  {
+    "id": "preferente-derecha-O-128",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "128",
+    "label": "O-128",
+    "x": 581.78,
+    "y": 440.18
+  },
+  {
+    "id": "preferente-derecha-O-129",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "129",
+    "label": "O-129",
+    "x": 588.58,
+    "y": 436.23
+  },
+  {
+    "id": "preferente-derecha-O-130",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "130",
+    "label": "O-130",
+    "x": 595.38,
+    "y": 432.28
+  },
+  {
+    "id": "preferente-derecha-O-131",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "131",
+    "label": "O-131",
+    "x": 602.19,
+    "y": 428.33
+  },
+  {
+    "id": "preferente-derecha-O-132",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "132",
+    "label": "O-132",
+    "x": 608.99,
+    "y": 424.38
+  },
+  {
+    "id": "preferente-derecha-O-133",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "133",
+    "label": "O-133",
+    "x": 615.79,
+    "y": 420.43
+  },
+  {
+    "id": "preferente-derecha-O-134",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "134",
+    "label": "O-134",
+    "x": 622.59,
+    "y": 416.48
+  },
+  {
+    "id": "preferente-derecha-O-135",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "135",
+    "label": "O-135",
+    "x": 629.4,
+    "y": 412.53
+  },
+  {
+    "id": "preferente-derecha-O-136",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "136",
+    "label": "O-136",
+    "x": 636.2,
+    "y": 408.59
+  },
+  {
+    "id": "preferente-derecha-O-137",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "137",
+    "label": "O-137",
+    "x": 643,
+    "y": 404.64
+  },
+  {
+    "id": "preferente-derecha-O-138",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "138",
+    "label": "O-138",
+    "x": 649.8,
+    "y": 400.69
+  },
+  {
+    "id": "preferente-derecha-O-139",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "139",
+    "label": "O-139",
+    "x": 656.61,
+    "y": 396.74
+  },
+  {
+    "id": "preferente-derecha-O-140",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "140",
+    "label": "O-140",
+    "x": 663.41,
+    "y": 392.79
+  },
+  {
+    "id": "preferente-derecha-O-141",
+    "sectionId": "section-1769728342922",
+    "row": "O",
+    "number": "141",
+    "label": "O-141",
+    "x": 670.21,
+    "y": 388.84
+  },
+  {
+    "id": "preferente-derecha-P-101",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "101",
+    "label": "P-101",
+    "x": 398.99,
+    "y": 564
+  },
+  {
+    "id": "preferente-derecha-P-102",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "102",
+    "label": "P-102",
+    "x": 405.55,
+    "y": 560.19
+  },
+  {
+    "id": "preferente-derecha-P-103",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "103",
+    "label": "P-103",
+    "x": 412.1,
+    "y": 556.38
+  },
+  {
+    "id": "preferente-derecha-P-104",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "104",
+    "label": "P-104",
+    "x": 418.66,
+    "y": 552.57
+  },
+  {
+    "id": "preferente-derecha-P-105",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "105",
+    "label": "P-105",
+    "x": 425.22,
+    "y": 548.77
+  },
+  {
+    "id": "preferente-derecha-P-106",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "106",
+    "label": "P-106",
+    "x": 431.78,
+    "y": 544.96
+  },
+  {
+    "id": "preferente-derecha-P-107",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "107",
+    "label": "P-107",
+    "x": 438.34,
+    "y": 541.15
+  },
+  {
+    "id": "preferente-derecha-P-108",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "108",
+    "label": "P-108",
+    "x": 444.89,
+    "y": 537.34
+  },
+  {
+    "id": "preferente-derecha-P-109",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "109",
+    "label": "P-109",
+    "x": 451.45,
+    "y": 533.54
+  },
+  {
+    "id": "preferente-derecha-P-110",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "110",
+    "label": "P-110",
+    "x": 458.01,
+    "y": 529.73
+  },
+  {
+    "id": "preferente-derecha-P-111",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "111",
+    "label": "P-111",
+    "x": 464.57,
+    "y": 525.92
+  },
+  {
+    "id": "preferente-derecha-P-112",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "112",
+    "label": "P-112",
+    "x": 471.13,
+    "y": 522.11
+  },
+  {
+    "id": "preferente-derecha-P-113",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "113",
+    "label": "P-113",
+    "x": 477.69,
+    "y": 518.31
+  },
+  {
+    "id": "preferente-derecha-P-114",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "114",
+    "label": "P-114",
+    "x": 484.24,
+    "y": 514.5
+  },
+  {
+    "id": "preferente-derecha-P-115",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "115",
+    "label": "P-115",
+    "x": 490.8,
+    "y": 510.69
+  },
+  {
+    "id": "preferente-derecha-P-116",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "116",
+    "label": "P-116",
+    "x": 497.36,
+    "y": 506.88
+  },
+  {
+    "id": "preferente-derecha-P-117",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "117",
+    "label": "P-117",
+    "x": 503.92,
+    "y": 503.07
+  },
+  {
+    "id": "preferente-derecha-P-118",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "118",
+    "label": "P-118",
+    "x": 510.48,
+    "y": 499.27
+  },
+  {
+    "id": "preferente-derecha-P-119",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "119",
+    "label": "P-119",
+    "x": 517.04,
+    "y": 495.46
+  },
+  {
+    "id": "preferente-derecha-P-120",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "120",
+    "label": "P-120",
+    "x": 523.59,
+    "y": 491.65
+  },
+  {
+    "id": "preferente-derecha-P-121",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "121",
+    "label": "P-121",
+    "x": 530.15,
+    "y": 487.84
+  },
+  {
+    "id": "preferente-derecha-P-122",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "122",
+    "label": "P-122",
+    "x": 536.71,
+    "y": 484.04
+  },
+  {
+    "id": "preferente-derecha-P-123",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "123",
+    "label": "P-123",
+    "x": 543.27,
+    "y": 480.23
+  },
+  {
+    "id": "preferente-derecha-P-124",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "124",
+    "label": "P-124",
+    "x": 549.83,
+    "y": 476.42
+  },
+  {
+    "id": "preferente-derecha-P-125",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "125",
+    "label": "P-125",
+    "x": 556.38,
+    "y": 472.61
+  },
+  {
+    "id": "preferente-derecha-P-126",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "126",
+    "label": "P-126",
+    "x": 562.94,
+    "y": 468.81
+  },
+  {
+    "id": "preferente-derecha-P-127",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "127",
+    "label": "P-127",
+    "x": 569.5,
+    "y": 465
+  },
+  {
+    "id": "preferente-derecha-P-128",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "128",
+    "label": "P-128",
+    "x": 576.06,
+    "y": 461.19
+  },
+  {
+    "id": "preferente-derecha-P-129",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "129",
+    "label": "P-129",
+    "x": 582.62,
+    "y": 457.38
+  },
+  {
+    "id": "preferente-derecha-P-130",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "130",
+    "label": "P-130",
+    "x": 589.18,
+    "y": 453.58
+  },
+  {
+    "id": "preferente-derecha-P-131",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "131",
+    "label": "P-131",
+    "x": 595.73,
+    "y": 449.77
+  },
+  {
+    "id": "preferente-derecha-P-132",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "132",
+    "label": "P-132",
+    "x": 602.29,
+    "y": 445.96
+  },
+  {
+    "id": "preferente-derecha-P-133",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "133",
+    "label": "P-133",
+    "x": 608.85,
+    "y": 442.15
+  },
+  {
+    "id": "preferente-derecha-P-134",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "134",
+    "label": "P-134",
+    "x": 615.41,
+    "y": 438.35
+  },
+  {
+    "id": "preferente-derecha-P-135",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "135",
+    "label": "P-135",
+    "x": 621.97,
+    "y": 434.54
+  },
+  {
+    "id": "preferente-derecha-P-136",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "136",
+    "label": "P-136",
+    "x": 628.53,
+    "y": 430.73
+  },
+  {
+    "id": "preferente-derecha-P-137",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "137",
+    "label": "P-137",
+    "x": 635.08,
+    "y": 426.92
+  },
+  {
+    "id": "preferente-derecha-P-138",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "138",
+    "label": "P-138",
+    "x": 641.64,
+    "y": 423.12
+  },
+  {
+    "id": "preferente-derecha-P-139",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "139",
+    "label": "P-139",
+    "x": 648.2,
+    "y": 419.31
+  },
+  {
+    "id": "preferente-derecha-P-140",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "140",
+    "label": "P-140",
+    "x": 654.76,
+    "y": 415.5
+  },
+  {
+    "id": "preferente-derecha-P-141",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "141",
+    "label": "P-141",
+    "x": 661.32,
+    "y": 411.69
+  },
+  {
+    "id": "preferente-derecha-P-142",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "142",
+    "label": "P-142",
+    "x": 667.88,
+    "y": 407.89
+  },
+  {
+    "id": "preferente-derecha-P-143",
+    "sectionId": "section-1769728342922",
+    "row": "P",
+    "number": "143",
+    "label": "P-143",
+    "x": 674.43,
+    "y": 404.08
+  }
+]

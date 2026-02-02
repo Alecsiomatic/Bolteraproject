@@ -29,12 +29,12 @@ model User {
   name        String
   email       String              @unique
   password    String
-  phone       String?
   role        UserRole            @default(OPERATOR)
   status      UserStatus          @default(ACTIVE)
   lastLogin   DateTime?           @map("last_login")
   createdAt   DateTime            @default(now()) @map("created_at")
   updatedAt   DateTime            @updatedAt @map("updated_at")
+  phone       String?             @db.VarChar(50)
   events      Event[]             @relation("EventCreatedBy")
   orders      Order[]
   seatChanges SeatStatusHistory[]
@@ -42,16 +42,16 @@ model User {
 }
 
 model UserFavorite {
-  id        String   @id @default(cuid())
-  userId    String
-  eventId   String
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  id        String    @id @default(cuid()) @db.VarChar(255)
+  userId    String    @db.VarChar(255)
+  eventId   String    @db.VarChar(255)
+  createdAt DateTime? @default(now()) @db.DateTime(0)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "UserFavorite_ibfk_1")
+  event     Event     @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "UserFavorite_ibfk_2")
 
-  @@unique([userId, eventId])
-  @@index([userId])
-  @@index([eventId])
+  @@unique([userId, eventId], map: "unique_user_event")
+  @@index([eventId], map: "idx_event")
+  @@index([userId], map: "idx_user")
 }
 
 model Venue {
@@ -261,6 +261,7 @@ model Seat {
   createdAt    DateTime            @default(now())
   updatedAt    DateTime            @updatedAt
   tableId      String?
+  Courtesy     Courtesy[]
   layout       VenueLayout?        @relation("LayoutSeats", fields: [layoutId], references: [id], onDelete: Cascade)
   table        VenueTable?         @relation(fields: [tableId], references: [id])
   venue        Venue               @relation(fields: [venueId], references: [id], onDelete: Cascade)
@@ -313,20 +314,18 @@ model Event {
   serviceFeeType       String?
   serviceFeeValue      Decimal?         @db.Decimal(10, 2)
   showRemainingTickets Boolean          @default(false)
-  
-  // Music system relations
   artistId             String?
   playlistId           String?
-  
+  Courtesy             Courtesy[]
+  artist               Artist?          @relation("EventArtist", fields: [artistId], references: [id])
   category             Category?        @relation(fields: [categoryId], references: [id])
   createdBy            User?            @relation("EventCreatedBy", fields: [createdById], references: [id])
+  playlist             Playlist?        @relation("EventPlaylist", fields: [playlistId], references: [id])
   venue                Venue?           @relation(fields: [venueId], references: [id])
-  artist               Artist?          @relation("EventArtist", fields: [artistId], references: [id], onDelete: SetNull)
-  playlist             Playlist?        @relation("EventPlaylist", fields: [playlistId], references: [id], onDelete: SetNull)
   priceTiers           EventPriceTier[]
   sessions             EventSession[]
-  layout               VenueLayout?     @relation("EventLayout")
   favoritedBy          UserFavorite[]
+  layout               VenueLayout?     @relation("EventLayout")
 
   @@index([categoryId])
   @@index([status, isFeatured])
@@ -378,6 +377,7 @@ model EventSession {
   doorsOpenAt  DateTime?
   salesCloseAt DateTime?
   salesOpenAt  DateTime?
+  Courtesy     Courtesy[]
   priceTiers   EventPriceTier[]
   event        Event            @relation(fields: [eventId], references: [id], onDelete: Cascade)
   tickets      Ticket[]
@@ -500,6 +500,113 @@ model Setting {
   @@index([category], map: "idx_category")
 }
 
+model Artist {
+  id            String     @id @default(cuid())
+  name          String
+  slug          String     @unique
+  bio           String?    @db.Text
+  shortBio      String?    @db.VarChar(255)
+  profileImage  String?
+  coverImage    String?
+  galleryImages String?    @db.LongText
+  socialLinks   String?    @db.LongText
+  genres        String?    @db.Text
+  achievements  String?    @db.LongText
+  isActive      Boolean    @default(true)
+  isFeatured    Boolean    @default(false)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  events        Event[]    @relation("EventArtist")
+  playlists     Playlist[]
+
+  @@index([isActive, isFeatured])
+  @@index([slug])
+}
+
+model Playlist {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?  @db.Text
+  coverImage  String?
+  artistId    String?
+  isPublic    Boolean  @default(true)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  events      Event[]  @relation("EventPlaylist")
+  artist      Artist?  @relation(fields: [artistId], references: [id])
+  tracks      Track[]
+
+  @@index([artistId])
+  @@index([isActive, isPublic])
+}
+
+model Track {
+  id          String   @id @default(cuid())
+  playlistId  String
+  title       String
+  artistName  String?
+  albumName   String?
+  albumImage  String?
+  duration    Int?
+  audioUrl    String
+  trackNumber Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  playlist    Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
+
+  @@index([playlistId, trackNumber])
+}
+
+model AppSettings {
+  key       String    @id @db.VarChar(100)
+  value     String?   @db.Text
+  createdAt DateTime? @default(now()) @db.DateTime(0)
+  updatedAt DateTime? @default(now()) @db.DateTime(0)
+}
+
+model Courtesy {
+  id               String          @id
+  eventId          String
+  sessionId        String?
+  seatId           String?
+  zoneId           String?
+  tierId           String?
+  beneficiaryName  String          @db.VarChar(255)
+  beneficiaryEmail String?         @db.VarChar(255)
+  beneficiaryPhone String?         @db.VarChar(50)
+  company          String?         @db.VarChar(255)
+  reason           String?         @db.Text
+  quantity         Int             @default(1)
+  ticketCode       String          @unique
+  qrCode           String?         @db.Text
+  status           Courtesy_status @default(ACTIVE)
+  usedAt           DateTime?
+  usedBy           String?
+  expiresAt        DateTime?
+  pdfUrl           String?         @db.VarChar(500)
+  pdfGeneratedAt   DateTime?
+  createdBy        String
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime
+  notes            String?         @db.Text
+  batchId          String?
+  batchName        String?         @db.VarChar(255)
+  Event            Event           @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  Seat             Seat?           @relation(fields: [seatId], references: [id])
+  EventSession     EventSession?   @relation(fields: [sessionId], references: [id])
+
+  @@index([batchId])
+  @@index([beneficiaryEmail])
+  @@index([eventId])
+  @@index([seatId], map: "Courtesy_seatId_fkey")
+  @@index([sessionId])
+  @@index([status])
+  @@index([ticketCode])
+}
+
 enum UserRole {
   ADMIN
   OPERATOR
@@ -549,79 +656,12 @@ enum OrderStatus {
 
 enum EventReminder_reminderType {
   h24 @map("24h")
-  h2 @map("2h")
+  h2  @map("2h")
 }
 
-// ============================================
-// MUSIC SYSTEM - Artists, Playlists, Tracks
-// ============================================
-
-model Artist {
-  id            String   @id @default(cuid())
-  name          String
-  slug          String   @unique
-  bio           String?  @db.Text
-  shortBio      String?  @db.VarChar(255)
-  profileImage  String?  // Main artist photo
-  coverImage    String?  // Header/banner image
-  galleryImages String?  @db.LongText // JSON array of image paths
-  
-  // Social links (stored as JSON)
-  socialLinks   String?  @db.LongText // { spotify, instagram, twitter, facebook, youtube, tiktok, website }
-  
-  // Music metadata
-  genres        String?  @db.Text // JSON array: ["Rock", "Alternative"]
-  achievements  String?  @db.LongText // JSON array of achievements/awards
-  
-  isActive      Boolean  @default(true)
-  isFeatured    Boolean  @default(false)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
-  events        Event[]  @relation("EventArtist")
-  playlists     Playlist[]
-
-  @@index([isActive, isFeatured])
-  @@index([slug])
-}
-
-model Playlist {
-  id          String   @id @default(cuid())
-  name        String
-  slug        String   @unique
-  description String?  @db.Text
-  coverImage  String?  // Playlist cover art
-  artistId    String?  // Optional: belongs to an artist
-  
-  isPublic    Boolean  @default(true)
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  artist      Artist?  @relation(fields: [artistId], references: [id], onDelete: SetNull)
-  tracks      Track[]
-  events      Event[]  @relation("EventPlaylist")
-
-  @@index([artistId])
-  @@index([isActive, isPublic])
-}
-
-model Track {
-  id          String   @id @default(cuid())
-  playlistId  String
-  title       String
-  artistName  String?  // Track artist (can differ from playlist artist)
-  albumName   String?
-  albumImage  String?  // Album cover art
-  duration    Int?     // Duration in seconds
-  audioUrl    String   // Path to MP3 file
-  trackNumber Int      @default(0) // Order in playlist
-  
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  playlist    Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
-
-  @@index([playlistId, trackNumber])
+enum Courtesy_status {
+  ACTIVE
+  USED
+  CANCELLED
+  EXPIRED
 }

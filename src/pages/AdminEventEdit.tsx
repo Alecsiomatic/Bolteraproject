@@ -62,13 +62,13 @@ import {
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { toast } from "sonner";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+import { API_BASE_URL } from "@/lib/api-base";
 
 const eventStatuses = ["DRAFT", "PUBLISHED", "ARCHIVED"] as const;
 const sessionStatuses = ["SCHEDULED", "SALES_OPEN", "SOLD_OUT", "CANCELLED"] as const;
 const eventTypes = ["seated", "general"] as const;
 const serviceFeeTypes = ["percentage", "fixed"] as const;
+const stagePositions = ["top", "bottom", "left", "right"] as const;
 
 interface EventSession {
   id: string;
@@ -127,6 +127,7 @@ interface EventData {
   serviceFeeType?: string | null;
   serviceFeeValue?: number | null;
   showRemainingTickets?: boolean;
+  stagePosition?: string;
   sessions: EventSession[];
   priceTiers: PriceTier[];
   createdAt: string;
@@ -189,6 +190,7 @@ export default function AdminEventEdit() {
     value: "",
   });
   const [showRemainingTickets, setShowRemainingTickets] = useState(false);
+  const [stagePosition, setStagePosition] = useState<(typeof stagePositions)[number]>("top");
 
   // New tier form state
   const [newTierForm, setNewTierForm] = useState({
@@ -373,6 +375,7 @@ export default function AdminEventEdit() {
         value: data.serviceFeeValue ? String(data.serviceFeeValue) : "",
       });
       setShowRemainingTickets(Boolean(data.showRemainingTickets));
+      setStagePosition((data.stagePosition as (typeof stagePositions)[number]) || "top");
       // Artist & Playlist
       setArtistId(data.artistId || data.artist?.id || "");
       setPlaylistId(data.playlistId || data.playlist?.id || "");
@@ -416,6 +419,7 @@ export default function AdminEventEdit() {
           serviceFeeType: serviceFee.type || null,
           serviceFeeValue: serviceFee.value ? Number(serviceFee.value) : null,
           showRemainingTickets: eventType === "general" ? showRemainingTickets : false,
+          stagePosition: eventType === "seated" ? stagePosition : null,
           artistId: artistId || null,
           playlistId: playlistId || null,
         }),
@@ -444,6 +448,17 @@ export default function AdminEventEdit() {
         ? `${API_BASE_URL}/api/events/${eventId}/sessions`
         : `${API_BASE_URL}/api/events/${eventId}/sessions/${session.id}`;
 
+      // Convert datetime-local format to ISO 8601
+      const formatDateToISO = (dateStr: string | null): string | null => {
+        if (!dateStr) return null;
+        // If already has timezone info, return as is
+        if (dateStr.includes('Z') || dateStr.includes('+') || dateStr.includes('-', 10)) {
+          return dateStr;
+        }
+        // datetime-local gives us YYYY-MM-DDTHH:mm, add seconds and Z
+        return new Date(dateStr).toISOString();
+      };
+
       const response = await fetch(url, {
         method: isNew ? "POST" : "PUT",
         headers: {
@@ -452,8 +467,8 @@ export default function AdminEventEdit() {
         },
         body: JSON.stringify({
           title: session.title || null,
-          startsAt: session.startsAt,
-          endsAt: session.endsAt || null,
+          startsAt: formatDateToISO(session.startsAt),
+          endsAt: formatDateToISO(session.endsAt),
           status: session.status,
           capacity: session.capacity || null,
         }),
@@ -961,6 +976,45 @@ export default function AdminEventEdit() {
                     Selecciona un layout específico o deja por defecto para usar el layout principal del venue.
                   </p>
                 </div>
+              )}
+
+              {/* Selector de posición del escenario - DESPUÉS del layout */}
+              {eventType === "seated" && (
+                <Card className="border-amber-500/20 bg-amber-500/5">
+                  <CardHeader className="py-3">
+                    <CardTitle className="text-sm flex items-center gap-2">
+                      <span className="text-lg">🎭</span>
+                      Posición del escenario
+                    </CardTitle>
+                    <CardDescription className="text-xs">
+                      Indica dónde se ubica el escenario respecto al mapa de asientos
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <div className="grid grid-cols-4 gap-2">
+                      {[
+                        { value: "top", label: "Arriba", icon: "⬆️" },
+                        { value: "bottom", label: "Abajo", icon: "⬇️" },
+                        { value: "left", label: "Izquierda", icon: "⬅️" },
+                        { value: "right", label: "Derecha", icon: "➡️" },
+                      ].map((pos) => (
+                        <button
+                          key={pos.value}
+                          type="button"
+                          onClick={() => setStagePosition(pos.value as (typeof stagePositions)[number])}
+                          className={`flex flex-col items-center gap-1 rounded-xl border p-3 transition-all ${
+                            stagePosition === pos.value
+                              ? "border-amber-500 bg-amber-500/30 text-white"
+                              : "border-white/20 bg-white/5 text-slate-400 hover:border-white/30"
+                          }`}
+                        >
+                          <span className="text-lg">{pos.icon}</span>
+                          <span className="text-xs font-medium">{pos.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               )}
 
               {/* Info para admisión general */}

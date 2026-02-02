@@ -19,8 +19,7 @@ import {
 } from "lucide-react";
 import { format, formatDistanceToNow, isPast, isToday } from "date-fns";
 import { es } from "date-fns/locale";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+import { API_BASE_URL } from "@/lib/api-base";
 
 interface DashboardStats {
   totalTickets: number;
