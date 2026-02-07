@@ -138,6 +138,7 @@ model LayoutSection {
   selectedColor  String?      @default("#2563EB")
   thumbnailUrl   String?
   metadata       String?      @db.LongText
+  admissionType  String       @default("seated") // "seated" | "general"
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
   childLayout    VenueLayout? @relation("SectionLayout")
@@ -337,25 +338,26 @@ model Event {
 }
 
 model EventPriceTier {
-  id          String        @id @default(cuid())
-  eventId     String
-  sessionId   String?
-  zoneId      String?
-  sectionId   String?
-  seatType    String?
-  label       String
-  description String?
-  price       Decimal       @db.Decimal(10, 2)
-  fee         Decimal       @default(0.00) @db.Decimal(10, 2)
-  currency    String        @default("MXN")
-  minQuantity Int?
-  maxQuantity Int?
-  capacity    Int?
-  isDefault   Boolean       @default(false)
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  event       Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  session     EventSession? @relation(fields: [sessionId], references: [id])
+  id                 String        @id @default(cuid())
+  eventId            String
+  sessionId          String?
+  zoneId             String?
+  sectionId          String?
+  seatType           String?
+  label              String
+  description        String?
+  price              Decimal       @db.Decimal(10, 2)
+  fee                Decimal       @default(0.00) @db.Decimal(10, 2)
+  currency           String        @default("MXN")
+  minQuantity        Int?
+  maxQuantity        Int?
+  capacity           Int?
+  isDefault          Boolean       @default(false)
+  isGeneralAdmission Boolean       @default(false)
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+  event              Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  session            EventSession? @relation(fields: [sessionId], references: [id])
 
   @@index([eventId])
   @@index([eventId, sessionId])

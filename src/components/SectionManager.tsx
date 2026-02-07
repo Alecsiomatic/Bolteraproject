@@ -152,6 +152,8 @@ export const SectionManager = ({
     name: "",
     capacity: 0,
     color: "#3b82f6",
+    admissionType: "seated" as "seated" | "general",
+    basePrice: 0,
   });
 
   // Seat generation modal state
@@ -192,12 +194,14 @@ export const SectionManager = ({
       name: section.name,
       capacity: section.capacity,
       color: section.color,
+      admissionType: section.admissionType || "seated",
+      basePrice: section.basePrice || 0,
     });
   };
 
   const closeModal = () => {
     setEditingSection(null);
-    setEditForm({ name: "", capacity: 0, color: "#3b82f6" });
+    setEditForm({ name: "", capacity: 0, color: "#3b82f6", admissionType: "seated", basePrice: 0 });
   };
 
   const saveEdit = () => {
@@ -206,6 +210,8 @@ export const SectionManager = ({
         name: editForm.name.trim(),
         capacity: editForm.capacity,
         color: editForm.color,
+        admissionType: editForm.admissionType,
+        basePrice: editForm.admissionType === "general" ? editForm.basePrice : undefined,
       });
     }
     closeModal();
@@ -466,14 +472,30 @@ export const SectionManager = ({
 
                       {/* Name and capacity */}
                       <div className="flex-1 min-w-0 overflow-hidden">
-                        <div className="font-medium text-sm truncate">
+                        <div className="font-medium text-sm truncate flex items-center gap-1.5">
                           {section.name}
+                          {/* Admission type badge */}
+                          {section.admissionType === "general" && (
+                            <Badge variant="outline" className="text-[9px] px-1 py-0 bg-amber-500/10 text-amber-600 border-amber-500/30">
+                              GA
+                            </Badge>
+                          )}
                         </div>
                         <div className="flex items-center gap-2 text-xs text-muted-foreground">
                           <span className="flex items-center gap-0.5">
-                            <Users className="h-3 w-3 flex-shrink-0" />
+                            {section.admissionType === "general" ? (
+                              <Users className="h-3 w-3 flex-shrink-0" />
+                            ) : (
+                              <Armchair className="h-3 w-3 flex-shrink-0" />
+                            )}
                             {section.capacity}
                           </span>
+                          {section.admissionType === "general" && section.basePrice ? (
+                            <span className="flex items-center gap-0.5 text-amber-600">
+                              <DollarSign className="h-3 w-3 flex-shrink-0" />
+                              {section.basePrice}
+                            </span>
+                          ) : null}
                           {hasChildLayout && (
                             <Badge variant="outline" className="text-[10px] px-1 py-0 flex-shrink-0">
                               Layout
@@ -484,8 +506,8 @@ export const SectionManager = ({
 
                       {/* Actions */}
                       <div className="flex gap-0.5 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-auto" onClick={(e) => e.stopPropagation()}>
-                        {/* Generate Seats Button */}
-                        {onGenerateSeats && section.points && section.points.length >= 3 && (
+                        {/* Generate Seats Button - Solo para secciones de asientos */}
+                        {onGenerateSeats && section.points && section.points.length >= 3 && section.admissionType !== "general" && (
                           <Button
                             variant="ghost"
                             size="icon"
@@ -578,7 +600,7 @@ export const SectionManager = ({
                             </Button>
                           </div>
                         )}
-                        {!section.childLayoutId && isHierarchical && (
+                        {!section.childLayoutId && isHierarchical && section.admissionType !== "general" && (
                           <div className="pt-1">
                             <Button
                               variant="outline"
@@ -591,8 +613,8 @@ export const SectionManager = ({
                             </Button>
                           </div>
                         )}
-                        {/* Generate Seats Button (in expanded area) */}
-                        {onGenerateSeats && section.points && section.points.length >= 3 && (
+                        {/* Generate Seats Button (in expanded area) - Solo para secciones de asientos */}
+                        {onGenerateSeats && section.points && section.points.length >= 3 && section.admissionType !== "general" && (
                           <div className="pt-1">
                             <Button
                               variant="default"
@@ -603,6 +625,19 @@ export const SectionManager = ({
                               <Sparkles className="h-3 w-3" />
                               Generar Asientos Automáticamente
                             </Button>
+                          </div>
+                        )}
+                        {/* Info para admisión general */}
+                        {section.admissionType === "general" && (
+                          <div className="pt-1 p-2 bg-amber-500/10 rounded border border-amber-500/20">
+                            <div className="flex items-center gap-1.5 text-amber-600">
+                              <Users className="h-3.5 w-3.5" />
+                              <span className="text-[11px] font-medium">Zona de Admisión General</span>
+                            </div>
+                            <p className="text-[10px] text-muted-foreground mt-1">
+                              Los boletos se venden por cantidad sin asiento asignado.
+                              Capacidad: {section.capacity} personas.
+                            </p>
                           </div>
                         )}
                       </div>
@@ -649,6 +684,46 @@ export const SectionManager = ({
               />
             </div>
 
+            {/* Tipo de Admisión */}
+            <div className="space-y-2">
+              <Label>Tipo de Admisión</Label>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => setEditForm(prev => ({ ...prev, admissionType: "seated" }))}
+                  className={cn(
+                    "flex flex-col items-center gap-1 rounded-lg border p-3 text-center transition-all",
+                    editForm.admissionType === "seated"
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border bg-background hover:border-primary/50"
+                  )}
+                >
+                  <Armchair className="h-5 w-5" />
+                  <span className="text-xs font-medium">Asientos</span>
+                  <span className="text-[10px] text-muted-foreground">Numerados</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setEditForm(prev => ({ ...prev, admissionType: "general" }))}
+                  className={cn(
+                    "flex flex-col items-center gap-1 rounded-lg border p-3 text-center transition-all",
+                    editForm.admissionType === "general"
+                      ? "border-amber-500 bg-amber-500/10 text-amber-600"
+                      : "border-border bg-background hover:border-amber-500/50"
+                  )}
+                >
+                  <Users className="h-5 w-5" />
+                  <span className="text-xs font-medium">General</span>
+                  <span className="text-[10px] text-muted-foreground">Sin asiento</span>
+                </button>
+              </div>
+              <p className="text-[10px] text-muted-foreground">
+                {editForm.admissionType === "seated" 
+                  ? "Los usuarios seleccionarán un asiento específico en el mapa"
+                  : "Los usuarios comprarán boletos por cantidad sin asiento asignado"}
+              </p>
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="section-capacity">Capacidad</Label>
               <Input
@@ -658,7 +733,35 @@ export const SectionManager = ({
                 value={editForm.capacity}
                 onChange={(e) => setEditForm(prev => ({ ...prev, capacity: parseInt(e.target.value) || 0 }))}
               />
+              {editForm.admissionType === "general" && (
+                <p className="text-[10px] text-muted-foreground">
+                  Máximo de boletos que se pueden vender en esta zona
+                </p>
+              )}
             </div>
+
+            {/* Precio base - Solo para admisión general */}
+            {editForm.admissionType === "general" && (
+              <div className="space-y-2">
+                <Label htmlFor="section-price">Precio Base</Label>
+                <div className="relative">
+                  <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    id="section-price"
+                    type="number"
+                    min={0}
+                    step="0.01"
+                    value={editForm.basePrice}
+                    onChange={(e) => setEditForm(prev => ({ ...prev, basePrice: parseFloat(e.target.value) || 0 }))}
+                    className="pl-9"
+                    placeholder="0.00"
+                  />
+                </div>
+                <p className="text-[10px] text-muted-foreground">
+                  Precio sugerido para esta zona (se puede ajustar al crear el evento)
+                </p>
+              </div>
+            )}
 
             <div className="space-y-2">
               <Label htmlFor="section-color">Color</Label>

@@ -22,6 +22,7 @@ type LayoutSectionRow = RowDataPacket & {
   selectedColor: string | null;
   thumbnailUrl: string | null;
   metadata: string | null;
+  admissionType: string; // "seated" | "general"
   createdAt: Date;
   updatedAt: Date;
 };
@@ -56,6 +57,7 @@ const createSectionSchema = z.object({
   selectedColor: z.string().optional(),
   thumbnailUrl: z.string().optional(),
   metadata: z.record(z.any()).optional(),
+  admissionType: z.enum(["seated", "general"]).default("seated"),
 });
 
 const updateSectionSchema = createSectionSchema.partial();
@@ -90,6 +92,7 @@ const formatSection = (row: LayoutSectionRow) => ({
   selectedColor: row.selectedColor,
   thumbnailUrl: row.thumbnailUrl,
   metadata: safeParseJson(row.metadata, {}),
+  admissionType: row.admissionType || "seated",
   createdAt: toISO(row.createdAt),
   updatedAt: toISO(row.updatedAt),
 });
@@ -202,8 +205,8 @@ export default async function layoutSectionsRoutes(app: FastifyInstance) {
           id, parentLayoutId, zoneId, name, description, color,
           polygonPoints, labelPosition, capacity, displayOrder,
           isActive, hoverColor, selectedColor, thumbnailUrl, metadata,
-          createdAt, updatedAt
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+          admissionType, createdAt, updatedAt
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
           sectionId,
           layoutId,
@@ -220,6 +223,7 @@ export default async function layoutSectionsRoutes(app: FastifyInstance) {
           data.selectedColor || "#2563EB",
           data.thumbnailUrl || null,
           data.metadata ? JSON.stringify(data.metadata) : null,
+          data.admissionType || "seated",
           now,
           now,
         ]
@@ -320,6 +324,10 @@ export default async function layoutSectionsRoutes(app: FastifyInstance) {
       if (data.metadata !== undefined) {
         updates.push("metadata = ?");
         values.push(JSON.stringify(data.metadata));
+      }
+      if (data.admissionType !== undefined) {
+        updates.push("admissionType = ?");
+        values.push(data.admissionType);
       }
 
       if (updates.length > 0) {
@@ -638,8 +646,8 @@ export default async function layoutSectionsRoutes(app: FastifyInstance) {
             id, parentLayoutId, zoneId, name, description, color,
             polygonPoints, labelPosition, capacity, displayOrder,
             isActive, hoverColor, selectedColor, thumbnailUrl, metadata,
-            createdAt, updatedAt
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            admissionType, createdAt, updatedAt
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
           [
             sectionId,
             layoutId,
@@ -656,6 +664,7 @@ export default async function layoutSectionsRoutes(app: FastifyInstance) {
             data.selectedColor || "#2563EB",
             data.thumbnailUrl || null,
             data.metadata ? JSON.stringify(data.metadata) : null,
+            data.admissionType || "seated",
             now,
             now,
           ]

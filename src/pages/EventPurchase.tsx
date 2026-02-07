@@ -13,7 +13,7 @@ import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/components/ui/use-toast";
 import { Progress } from "@/components/ui/progress";
 import { SeatMapViewer } from "@/components/SeatMapViewer";
-import { HierarchicalSeatMap } from "@/components/HierarchicalSeatMap";
+import { HierarchicalSeatMap, GeneralAdmissionSelection } from "@/components/HierarchicalSeatMap";
 import { MercadoPagoCheckout } from "@/components/MercadoPagoCheckout";
 import PublicNavbar from "@/components/PublicNavbar";
 import {
@@ -142,6 +142,9 @@ const EventPurchase = () => {
   // General admission ticket quantities (tierId -> quantity)
   const [ticketQuantities, setTicketQuantities] = useState<Record<string, number>>({});
 
+  // General admission selections from hierarchical seat map (for hybrid layouts)
+  const [gaSelections, setGaSelections] = useState<GeneralAdmissionSelection[]>([]);
+
   // Coupon state
   const [couponCode, setCouponCode] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState<{
@@ -197,12 +200,25 @@ const EventPurchase = () => {
   }, [event, sessionId]);
 
   // Check if this is a general admission event (availability has the latest flag)
+  // "general" = 100% admisión general
+  // "hybrid" = combinación de seated + general admission sections
   const isGeneralAdmission = useMemo(() => {
     if (availability?.eventType === "general") {
       return true;
     }
     return event?.eventType === "general";
   }, [event?.eventType, availability?.eventType]);
+
+  // Check if this is a hybrid event (has both seated and general admission sections)
+  const isHybridEvent = useMemo(() => {
+    return event?.eventType === "hybrid" || availability?.eventType === "hybrid";
+  }, [event?.eventType, availability?.eventType]);
+
+  // Get general admission tiers (for hybrid events or pure general events)
+  const generalAdmissionTiers = useMemo(() => {
+    const tiers = availability?.tiers ?? event?.priceTiers ?? [];
+    return tiers.filter((tier: any) => tier.isGeneralAdmission === true);
+  }, [availability?.tiers, event?.priceTiers]);
 
   const showRemainingTickets = Boolean(
     availability?.showRemainingTickets ?? event?.showRemainingTickets ?? false,
@@ -265,51 +281,45 @@ const EventPurchase = () => {
     return grouped;
   }, [availability?.seats, sessionStatus, reservedTicketIds, isGeneralAdmission]);
 
-  // Calculate totals - supports both seated and general admission
+  // Calculate totals - supports seated, general admission, and hybrid events
   const totals = useMemo(() => {
-    if (isGeneralAdmission) {
-      // General admission: calculate from ticket quantities
-      // Use tiers from availability (has real-time prices) or fall back to event.priceTiers
+    let subtotal = 0;
+    let fees = 0;
+    
+    // For hybrid events or general admission: calculate from ticket quantities
+    if (isGeneralAdmission || isHybridEvent) {
+      // General admission tiers: calculate from ticket quantities
       const tiers = availability?.tiers ?? event?.priceTiers ?? [];
-      let subtotal = 0;
-      let fees = 0;
-      
       tiers.forEach((tier: any) => {
         const qty = ticketQuantities[tier.id] || 0;
-        subtotal += tier.price * qty;
-        fees += (tier.fee || 0) * qty;
-      });
-      
-      // Apply global service fee if configured
-      if (event?.serviceFeeType && event?.serviceFeeValue) {
-        if (event.serviceFeeType === "percentage") {
-          fees += subtotal * (event.serviceFeeValue / 100);
-        } else {
-          // Fixed fee per ticket
-          const totalTickets = Object.values(ticketQuantities).reduce((a, b) => a + b, 0);
-          fees += event.serviceFeeValue * totalTickets;
+        if (qty > 0) {
+          subtotal += tier.price * qty;
+          fees += (tier.fee || 0) * qty;
         }
-      }
-      
-      const discount = appliedCoupon?.discount ?? 0;
-      return {
-        subtotal,
-        fees,
-        discount,
-        total: Math.max(0, subtotal + fees - discount),
-      };
+      });
     }
     
-    // Seated event: calculate from selected seats
-    const subtotal = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
-    let fees = selectedSeats.reduce((sum, seat) => sum + (seat.fee || 0), 0);
+    // For seated events or hybrid: also add selected seats
+    if (!isGeneralAdmission || isHybridEvent) {
+      // Seated section: calculate from selected seats
+      subtotal += selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
+      fees += selectedSeats.reduce((sum, seat) => sum + (seat.fee || 0), 0);
+    }
+    
+    // Add GA selections from hierarchical seat map (for hybrid layouts)
+    gaSelections.forEach((selection) => {
+      subtotal += selection.price * selection.quantity;
+      // Note: fee could be added here if the selection includes it
+    });
     
     // Apply global service fee if configured
     if (event?.serviceFeeType && event?.serviceFeeValue) {
+      const gaSelectionsCount = gaSelections.reduce((sum, s) => sum + s.quantity, 0);
+      const totalItems = selectedSeats.length + Object.values(ticketQuantities).reduce((a, b) => a + b, 0) + gaSelectionsCount;
       if (event.serviceFeeType === "percentage") {
         fees += subtotal * (event.serviceFeeValue / 100);
       } else {
-        fees += event.serviceFeeValue * selectedSeats.length;
+        fees += event.serviceFeeValue * totalItems;
       }
     }
     
@@ -320,12 +330,14 @@ const EventPurchase = () => {
       discount,
       total: Math.max(0, subtotal + fees - discount),
     };
-  }, [selectedSeats, pricesByZone, appliedCoupon, isGeneralAdmission, ticketQuantities, event]);
+  }, [selectedSeats, pricesByZone, appliedCoupon, isGeneralAdmission, isHybridEvent, ticketQuantities, event, availability?.tiers, gaSelections]);
 
-  // Total tickets for general admission
+  // Total tickets for general admission (including hierarchical GA selections)
   const totalGeneralTickets = useMemo(() => {
-    return Object.values(ticketQuantities).reduce((a, b) => a + b, 0);
-  }, [ticketQuantities]);
+    const fromTierQuantities = Object.values(ticketQuantities).reduce((a, b) => a + b, 0);
+    const fromGASelections = gaSelections.reduce((sum, s) => sum + s.quantity, 0);
+    return fromTierQuantities + fromGASelections;
+  }, [ticketQuantities, gaSelections]);
 
   // Handle reservation expiration
   useEffect(() => {
@@ -386,6 +398,40 @@ const EventPurchase = () => {
       return { ...prev, [tierId]: newQty };
     });
   }, [toast]);
+
+  // Handle GA selection change from HierarchicalSeatMap
+  const handleGASelectionChange = useCallback((selection: GeneralAdmissionSelection) => {
+    // Also check combined total with seated selections
+    const currentSeatedCount = selectedSeats.length;
+    const otherGACount = gaSelections
+      .filter(s => s.sectionId !== selection.sectionId)
+      .reduce((sum, s) => sum + s.quantity, 0);
+    
+    if (currentSeatedCount + otherGACount + selection.quantity > MAX_SEATS) {
+      toast({
+        variant: "destructive",
+        title: "Límite alcanzado",
+        description: `Máximo ${MAX_SEATS} boletos por compra`,
+      });
+      return;
+    }
+    
+    setGaSelections(prev => {
+      const existing = prev.findIndex(s => s.sectionId === selection.sectionId);
+      if (selection.quantity === 0) {
+        // Remove if quantity is 0
+        return prev.filter(s => s.sectionId !== selection.sectionId);
+      }
+      if (existing >= 0) {
+        // Update existing
+        const updated = [...prev];
+        updated[existing] = selection;
+        return updated;
+      }
+      // Add new
+      return [...prev, selection];
+    });
+  }, [selectedSeats.length, gaSelections, toast]);
 
   // Create reservation mutation
   const reservationMutation = useMutation({
@@ -1103,6 +1149,8 @@ const EventPurchase = () => {
                                 sessionId={sessionId}
                                 selectedSeats={selectedSeats}
                                 onSeatSelect={toggleSeat}
+                                generalAdmissionSelections={gaSelections}
+                                onGeneralAdmissionChange={handleGASelectionChange}
                               />
                             )}
                           </div>

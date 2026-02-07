@@ -54,7 +54,7 @@ const eventStatuses = ["DRAFT", "PUBLISHED"] as const;
 const sessionStatuses = ["SCHEDULED", "SALES_OPEN"] as const;
 const seatTypes = ["STANDARD", "VIP", "ACCESSIBLE", "COMPANION"] as const;
 const ageRestrictions = ["Todas las edades", "13+", "16+", "18+", "21+"] as const;
-const eventTypes = ["seated", "general"] as const;
+const eventTypes = ["seated", "general", "hybrid"] as const;
 const serviceFeeTypes = ["percentage", "fixed"] as const;
 const stagePositions = ["top", "bottom", "left", "right"] as const;
 
@@ -81,6 +81,8 @@ type TierDraft = {
   scope: "all" | string;
   maxQuantity: string;
   isDefault: boolean;
+  /** Indica si este tier es de admisión general (sin asiento asignado) */
+  isGeneralAdmission?: boolean;
 };
 
 type Category = {
@@ -273,9 +275,9 @@ const AdminEventCreate = () => {
   const totalSeats = layoutDetail?.seats?.length ?? selectedLayout?.seatCount ?? venueDetail?.stats?.totalSeats ?? 0;
 
   // Auto-generate tiers from SECTIONS (priority) or zones when layout changes
-  // SOLO para eventos con asientos (seated), NO para general admission
+  // Ahora soporta layouts híbridos: secciones seated + zonas general admission
   useEffect(() => {
-    // No auto-generar tiers desde secciones si es admisión general
+    // No auto-generar tiers si es evento 100% general admission
     if (eventType === "general") {
       return;
     }
@@ -283,34 +285,46 @@ const AdminEventCreate = () => {
     if (tiers.length === 1 && !tiers[0].label.trim()) {
       // Priorizar secciones sobre zonas
       if (venueSections.length > 0) {
-        const sectionTiers: TierDraft[] = venueSections.map((section: any) => ({
-          clientId: `tier-section-${section.id}`,
-          label: section.name || "Sección",
-          description: `${section.seatCount || 0} asientos`,
-          price: "0",
-          fee: "0",
-          currency: "MXN",
-          scope: "all",
-          maxQuantity: "10",
-          isDefault: false,
-          zoneId: undefined,
-          sectionId: section.id,
-        }));
+        const sectionTiers: TierDraft[] = venueSections.map((section: any) => {
+          const isGeneralAdmission = section.admissionType === "general";
+          return {
+            clientId: `tier-section-${section.id}`,
+            label: section.name || "Sección",
+            description: isGeneralAdmission 
+              ? `Admisión General - ${section.capacity || 0} cupo`
+              : `${section.seatCount || section.capacity || 0} asientos`,
+            price: section.basePrice ? String(section.basePrice) : "0",
+            fee: "0",
+            currency: "MXN",
+            scope: "all",
+            // Para admisión general, la capacidad es el maxQuantity total
+            maxQuantity: isGeneralAdmission ? String(section.capacity || 100) : "10",
+            isDefault: false,
+            zoneId: undefined,
+            sectionId: section.id,
+            // Marcar si es admisión general para el backend
+            isGeneralAdmission,
+          };
+        });
         setTiers(sectionTiers);
       } else if (venueZones.length > 0) {
         // Fallback a zonas
-        const zoneTiers: TierDraft[] = venueZones.map((zone: any) => ({
-          clientId: `tier-${zone.id}`,
-          label: zone.name || "General",
-          description: "",
-          price: zone.basePrice ? String(zone.basePrice) : "0",
-          fee: "0",
-          currency: "MXN",
-          scope: "all",
-          maxQuantity: "10",
-          isDefault: false,
-          zoneId: zone.id,
-        }));
+        const zoneTiers: TierDraft[] = venueZones.map((zone: any) => {
+          const isGeneralAdmission = zone.admissionType === "general";
+          return {
+            clientId: `tier-${zone.id}`,
+            label: zone.name || "General",
+            description: isGeneralAdmission ? "Admisión General" : "",
+            price: zone.basePrice ? String(zone.basePrice) : "0",
+            fee: "0",
+            currency: "MXN",
+            scope: "all",
+            maxQuantity: isGeneralAdmission ? String(zone.capacity || 100) : "10",
+            isDefault: false,
+            zoneId: zone.id,
+            isGeneralAdmission,
+          };
+        });
         setTiers(zoneTiers);
       }
     }
@@ -413,10 +427,11 @@ const AdminEventCreate = () => {
         playlistId: playlistId || undefined,
         
         // Event type and service fee
-        eventType,
+        // "hybrid" cuando hay secciones seated Y secciones general en el mismo layout
+        eventType: tiers.some(t => t.isGeneralAdmission) && tiers.some(t => !t.isGeneralAdmission) ? "hybrid" : eventType,
         serviceFeeType: serviceFee.type || undefined,
         serviceFeeValue: serviceFee.value ? Number(serviceFee.value) : undefined,
-        showRemainingTickets: eventType === "general" ? showRemainingTickets : undefined,
+        showRemainingTickets: (eventType === "general" || tiers.some(t => t.isGeneralAdmission)) ? showRemainingTickets : undefined,
         stagePosition: eventType === "seated" ? stagePosition : undefined,
         
         // Venue
@@ -457,8 +472,11 @@ const AdminEventCreate = () => {
           seatType: t.seatType || undefined,
           sessionKeys: t.scope === "all" ? undefined : [t.scope],
           maxQuantity: undefined, // No usado actualmente
-          capacity: eventType === "general" ? (t.maxQuantity ? Number(t.maxQuantity) : undefined) : undefined,
+          // Para tiers de admisión general (ya sea evento 100% general o sección GA en evento seated)
+          capacity: (eventType === "general" || t.isGeneralAdmission) ? (t.maxQuantity ? Number(t.maxQuantity) : undefined) : undefined,
           isDefault: t.isDefault,
+          // Flag para indicar que es admisión general (sección sin asientos)
+          isGeneralAdmission: t.isGeneralAdmission || false,
         })),
       };
 

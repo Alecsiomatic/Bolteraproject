@@ -418,6 +418,7 @@ export const Canvas = () => {
   const [bgOpacity, setBgOpacity] = useState(0.5);
   const [showGrid, setShowGrid] = useState(true);
   const [showSeats, setShowSeats] = useState(true); // Toggle para ocultar asientos y mejorar rendimiento
+  const hiddenSeatsRef = useRef<any[]>([]); // Asientos removidos temporalmente del canvas
   // zoomLevel ahora viene del controllerZoomLevel (useZoomController)
   const [previewMode, setPreviewMode] = useState(false);
 
@@ -592,15 +593,33 @@ export const Canvas = () => {
     setStoreGridEnabled(showGrid);
   }, [showGrid, setStoreGridEnabled]);
 
-  // Efecto para ocultar/mostrar asientos - mejora rendimiento al editar polígonos
+  // Efecto para REMOVER/RESTAURAR asientos del canvas - mejora rendimiento drásticamente
   useEffect(() => {
     if (!fabricCanvas) return;
     
-    fabricCanvas.forEachObject((obj: any) => {
-      if (obj._customType === 'seat' || obj.type === 'Circle' || obj.type === 'circle') {
-        obj.visible = showSeats;
-      }
-    });
+    if (!showSeats) {
+      // Remover asientos del canvas y guardarlos en ref
+      const seatsToHide: any[] = [];
+      fabricCanvas.forEachObject((obj: any) => {
+        if (obj._customType === 'seat' || obj.type === 'Circle' || obj.type === 'circle') {
+          seatsToHide.push(obj);
+        }
+      });
+      
+      // Guardar asientos antes de removerlos
+      hiddenSeatsRef.current = seatsToHide.map(seat => seat.toJSON(['id', 'name', 'price', 'capacity', 'zoneId', '_customType', 'status', 'seatType', 'tableId', 'attachedSeats', 'metadata', 'sectionId']));
+      
+      // Remover del canvas
+      seatsToHide.forEach(seat => fabricCanvas.remove(seat));
+      console.log(`[Canvas] Removidos ${seatsToHide.length} asientos del canvas para mejor rendimiento`);
+    } else if (hiddenSeatsRef.current.length > 0) {
+      // Restaurar asientos desde ref
+      console.log(`[Canvas] Restaurando ${hiddenSeatsRef.current.length} asientos al canvas...`);
+      // No restauramos visualmente, solo al guardar los incluimos
+      // Los asientos se recargarán al hacer refresh
+      hiddenSeatsRef.current = [];
+    }
+    
     fabricCanvas.requestRenderAll();
   }, [showSeats, fabricCanvas]);
 
@@ -1234,6 +1253,33 @@ export const Canvas = () => {
   const buildSeatsForSave = useCallback(() => {
     if (!fabricCanvas) return [];
     
+    // Si hay asientos ocultos, incluirlos directamente (ya tienen el formato correcto)
+    // Solo necesitamos convertirlos al formato de save
+    const hiddenSeatsPayload = hiddenSeatsRef.current.map((seatJson: any) => {
+      const position = seatJson.left !== undefined ? { x: seatJson.left, y: seatJson.top, angle: seatJson.angle || 0 } : { x: 0, y: 0, angle: 0 };
+      const metadata = seatJson.metadata || {};
+      return {
+        id: seatJson.id,
+        label: seatJson.name || seatJson.id,
+        name: seatJson.name || seatJson.id,
+        rowLabel: seatJson.name?.match(/^([A-Z]+)/)?.[1] || '',
+        columnNumber: parseInt(seatJson.name?.match(/(\d+)$/)?.[1] || '0', 10),
+        zoneId: seatJson.zoneId,
+        sectionId: seatJson.sectionId || metadata.sectionId,
+        seatType: seatJson.seatType || 'STANDARD',
+        status: seatJson.status || 'available',
+        price: seatJson.price,
+        tableId: seatJson.tableId,
+        position,
+        size: { width: seatJson.radius ? seatJson.radius * 2 : 28, height: seatJson.radius ? seatJson.radius * 2 : 28 },
+        metadata,
+      };
+    });
+    
+    if (hiddenSeatsPayload.length > 0) {
+      console.log(`[buildSeatsForSave] Incluyendo ${hiddenSeatsPayload.length} asientos ocultos`);
+    }
+    
     // Helper function to find which section contains a point
     const findSectionForPoint = (x: number, y: number): string | null => {
       for (const section of sections) {
@@ -1343,7 +1389,7 @@ export const Canvas = () => {
     
     console.log(`[buildSeatsForSave] Total seats: ${seatObjects.length}, Unique labels: ${usedLabels.size}`);
 
-    return seatObjects.map((seat) => {
+    const canvasSeats = seatObjects.map((seat) => {
       // El ID y label ya fueron asignados en el forEach anterior
       const seatId = seat.id || seat.get?.('id');
       const label = finalLabels.get(seatId) || (seat.name || seat.get?.('name'))?.toString().trim() || seatId;
@@ -1425,6 +1471,11 @@ export const Canvas = () => {
         metadata,
       };
     });
+    
+    // Combinar asientos del canvas con los ocultos
+    const allSeats = [...canvasSeats, ...hiddenSeatsPayload];
+    console.log(`[buildSeatsForSave] Canvas: ${canvasSeats.length}, Ocultos: ${hiddenSeatsPayload.length}, Total: ${allSeats.length}`);
+    return allSeats;
   }, [fabricCanvas, sections]);
 
   const findObjectById = useCallback(

@@ -42,8 +42,12 @@ export interface Zone {
   name: string;
   color?: string;
   type?: "section" | "stage" | "aisle" | "custom";
+  /** Tipo de admisión: 'seated' = asientos numerados, 'general' = admisión general */
+  admissionType?: AdmissionType;
   price?: number;
   capacity?: number;
+  /** Cantidad vendida (para tracking en admisión general) */
+  soldCount?: number;
   visible?: boolean; 
 }
 
@@ -98,6 +102,9 @@ export type ToolType =
   | "text"
   | "hand";
 
+// Admission type for sections/zones
+export type AdmissionType = "seated" | "general";
+
 // Section types for hierarchical layouts
 export interface LayoutSection {
   id: string;
@@ -114,6 +121,12 @@ export interface LayoutSection {
   thumbnailUrl?: string;
   zoneId?: string;
   childLayoutId?: string;
+  /** Tipo de admisión: 'seated' = asientos numerados, 'general' = admisión general sin asiento específico */
+  admissionType?: AdmissionType;
+  /** Precio base para secciones de admisión general */
+  basePrice?: number;
+  /** Cantidad vendida (para tracking en admisión general) */
+  soldCount?: number;
   metadata?: Record<string, any>;
 }
 

@@ -13,13 +13,20 @@ import { immer } from 'zustand/middleware/immer';
 // TYPES
 // =============================================================================
 
+/** Tipo de admisión para zonas */
+export type AdmissionType = 'seated' | 'general';
+
 export interface Zone {
   id: string;
   name: string;
   color?: string;
   type?: 'section' | 'vip' | 'general' | 'custom' | 'accessible';
+  /** Tipo de admisión: 'seated' = asientos numerados, 'general' = admisión general sin asiento */
+  admissionType?: AdmissionType;
   price?: number;
   capacity?: number;
+  /** Cantidad vendida (para tracking en admisión general) */
+  soldCount?: number;
   visible?: boolean;
 }
 

@@ -2193,6 +2193,7 @@ export async function eventRoutes(app: FastifyInstance) {
       maxQuantity: z.number().int().nonnegative().nullable().optional(),
       capacity: z.number().int().nonnegative().nullable().optional(),
       isDefault: z.boolean().optional(),
+      isGeneralAdmission: z.boolean().optional(),
     });
 
     const payload = tierSchema.parse(request.body);
@@ -2211,8 +2212,8 @@ export async function eventRoutes(app: FastifyInstance) {
       const tierId = randomUUID();
       await query(
         `INSERT INTO EventPriceTier
-        (id, eventId, sessionId, zoneId, sectionId, seatType, label, description, price, fee, currency, minQuantity, maxQuantity, capacity, isDefault, createdAt, updatedAt)
-        VALUES (?, ?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
+        (id, eventId, sessionId, zoneId, sectionId, seatType, label, description, price, fee, currency, minQuantity, maxQuantity, capacity, isDefault, isGeneralAdmission, createdAt, updatedAt)
+        VALUES (?, ?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
         [
           tierId,
           eventId,
@@ -2228,6 +2229,7 @@ export async function eventRoutes(app: FastifyInstance) {
           payload.maxQuantity ?? null,
           payload.capacity ?? null,
           payload.isDefault ? 1 : 0,
+          payload.isGeneralAdmission ? 1 : 0,
         ],
       );
 
@@ -2264,6 +2266,7 @@ export async function eventRoutes(app: FastifyInstance) {
       maxQuantity: z.number().int().nonnegative().nullable().optional(),
       capacity: z.number().int().nonnegative().nullable().optional(),
       isDefault: z.boolean().optional(),
+      isGeneralAdmission: z.boolean().optional(),
     });
 
     const payload = tierSchema.parse(request.body);
@@ -2329,6 +2332,10 @@ export async function eventRoutes(app: FastifyInstance) {
     if (payload.isDefault !== undefined) {
       updates.push("isDefault = ?");
       values.push(payload.isDefault ? 1 : 0);
+    }
+    if (payload.isGeneralAdmission !== undefined) {
+      updates.push("isGeneralAdmission = ?");
+      values.push(payload.isGeneralAdmission ? 1 : 0);
     }
 
     if (updates.length === 0) {

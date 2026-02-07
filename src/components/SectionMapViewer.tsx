@@ -3,12 +3,14 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, Users, Ticket, MapPin, Info } from "lucide-react";
+import { ArrowLeft, Users, Ticket, MapPin, Info, UserCheck } from "lucide-react";
 
 interface Point {
   x: number;
   y: number;
 }
+
+type AdmissionType = "seated" | "general";
 
 interface Section {
   id: string;
@@ -37,6 +39,7 @@ interface Section {
     reserved: number;
   };
   childLayoutId?: string | null;
+  admissionType?: AdmissionType;
 }
 
 interface SectionMapViewerProps {
@@ -165,11 +168,13 @@ export function SectionMapViewer({
     const availablePercent = section.stats.total > 0 
       ? Math.round((section.stats.available / section.stats.total) * 100) 
       : 0;
+    const isGeneralAdmission = section.admissionType === "general";
 
     return {
       section,
       availabilityColor,
       availablePercent,
+      isGeneralAdmission,
     };
   }, [hoveredSection, sections]);
 
@@ -237,6 +242,7 @@ export function SectionMapViewer({
             const isHovered = hoveredSection === section.id;
             const isSelected = selectedSection?.id === section.id;
             const isUnavailable = section.stats.available === 0;
+            const isGeneralAdmission = section.admissionType === "general";
             const center = section.labelPosition || getPolygonCenter(section.polygonPoints);
 
             return (
@@ -273,7 +279,7 @@ export function SectionMapViewer({
                 {/* Section label */}
                 <text
                   x={center.x}
-                  y={center.y - 10}
+                  y={center.y - (isGeneralAdmission ? 18 : 10)}
                   textAnchor="middle"
                   dominantBaseline="middle"
                   className="fill-white font-semibold text-sm pointer-events-none select-none"
@@ -282,10 +288,35 @@ export function SectionMapViewer({
                   {section.name}
                 </text>
 
+                {/* General Admission badge */}
+                {isGeneralAdmission && (
+                  <g transform={`translate(${center.x}, ${center.y})`}>
+                    <rect
+                      x="-20"
+                      y="-8"
+                      width="40"
+                      height="14"
+                      rx="4"
+                      fill="#8B5CF6"
+                      fillOpacity="0.9"
+                    />
+                    <text
+                      x="0"
+                      y="0"
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      className="fill-white font-bold pointer-events-none select-none"
+                      style={{ fontSize: "9px" }}
+                    >
+                      GENERAL
+                    </text>
+                  </g>
+                )}
+
                 {/* Price label */}
                 <text
                   x={center.x}
-                  y={center.y + 10}
+                  y={center.y + (isGeneralAdmission ? 18 : 10)}
                   textAnchor="middle"
                   dominantBaseline="middle"
                   className="fill-white/80 font-medium text-xs pointer-events-none select-none"
@@ -295,7 +326,7 @@ export function SectionMapViewer({
                 </text>
 
                 {/* Availability indicator */}
-                <g transform={`translate(${center.x}, ${center.y + 28})`}>
+                <g transform={`translate(${center.x}, ${center.y + (isGeneralAdmission ? 36 : 28)})`}>
                   <rect
                     x="-25"
                     y="-8"
@@ -355,9 +386,16 @@ export function SectionMapViewer({
                 style={{ backgroundColor: tooltipContent.section.color }}
               />
               <div className="flex-1 min-w-0">
-                <h4 className="font-bold text-slate-900 truncate">
-                  {tooltipContent.section.name}
-                </h4>
+                <div className="flex items-center gap-2">
+                  <h4 className="font-bold text-slate-900 truncate">
+                    {tooltipContent.section.name}
+                  </h4>
+                  {tooltipContent.isGeneralAdmission && (
+                    <Badge variant="secondary" className="bg-purple-100 text-purple-700 text-xs">
+                      Admisión General
+                    </Badge>
+                  )}
+                </div>
                 {tooltipContent.section.zone && (
                   <p className="text-sm text-slate-500">
                     {tooltipContent.section.zone.name}
@@ -379,9 +417,13 @@ export function SectionMapViewer({
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-slate-400" />
+                {tooltipContent.isGeneralAdmission ? (
+                  <UserCheck className="w-4 h-4 text-slate-400" />
+                ) : (
+                  <Users className="w-4 h-4 text-slate-400" />
+                )}
                 <span className="text-slate-600">
-                  {tooltipContent.section.stats.total} asientos
+                  {tooltipContent.section.stats.total} {tooltipContent.isGeneralAdmission ? "capacidad" : "asientos"}
                 </span>
               </div>
             </div>
@@ -413,7 +455,10 @@ export function SectionMapViewer({
 
             <div className="mt-3 text-center">
               <span className="text-xs text-slate-400">
-                Clic para ver asientos
+                {tooltipContent.isGeneralAdmission 
+                  ? "Clic para seleccionar cantidad"
+                  : "Clic para ver asientos"
+                }
               </span>
             </div>
           </div>
@@ -435,6 +480,13 @@ export function SectionMapViewer({
           <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500" />
           <span>Agotado</span>
         </div>
+        {sections.some(s => s.admissionType === "general") && (
+          <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-white/80 border-t border-white/20 pt-1.5 sm:pt-2 mt-1">
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded bg-purple-500" />
+            <span className="hidden sm:inline">Admisión General</span>
+            <span className="sm:hidden">General</span>
+          </div>
+        )}
       </div>
 
       {/* Info hint - Mobile optimized */}

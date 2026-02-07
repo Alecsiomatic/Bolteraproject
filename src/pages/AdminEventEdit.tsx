@@ -66,7 +66,7 @@ import { API_BASE_URL } from "@/lib/api-base";
 
 const eventStatuses = ["DRAFT", "PUBLISHED", "ARCHIVED"] as const;
 const sessionStatuses = ["SCHEDULED", "SALES_OPEN", "SOLD_OUT", "CANCELLED"] as const;
-const eventTypes = ["seated", "general"] as const;
+const eventTypes = ["seated", "general", "hybrid"] as const;
 const serviceFeeTypes = ["percentage", "fixed"] as const;
 const stagePositions = ["top", "bottom", "left", "right"] as const;
 
@@ -96,6 +96,7 @@ interface PriceTier {
   minQuantity?: number | null;
   maxQuantity?: number | null;
   capacity?: number | null;
+  isGeneralAdmission?: boolean;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -105,6 +106,8 @@ interface LayoutSection {
   name: string;
   color?: string;
   seatCount?: number;
+  admissionType?: "seated" | "general";
+  capacity?: number;
 }
 
 interface EventData {
@@ -400,6 +403,16 @@ export default function AdminEventEdit() {
     if (!eventId) return;
     setSaving(true);
     try {
+      // Detectar automáticamente si es híbrido basándose en los tiers
+      let finalEventType = eventType;
+      if (eventType === "seated" || eventType === "hybrid") {
+        const hasSeatedTiers = tiers.some(t => !t.isGeneralAdmission);
+        const hasGATiers = tiers.some(t => t.isGeneralAdmission);
+        if (hasSeatedTiers && hasGATiers) {
+          finalEventType = "hybrid";
+        }
+      }
+      
       const response = await fetch(`${API_BASE_URL}/api/events/${eventId}`, {
         method: "PUT",
         headers: {
@@ -414,12 +427,12 @@ export default function AdminEventEdit() {
           isFeatured: details.isFeatured,
           categoryId: details.categoryId || null,
           venueId,
-          layoutId: eventType === "seated" ? layoutId : null,
-          eventType,
+          layoutId: (finalEventType === "seated" || finalEventType === "hybrid") ? layoutId : null,
+          eventType: finalEventType,
           serviceFeeType: serviceFee.type || null,
           serviceFeeValue: serviceFee.value ? Number(serviceFee.value) : null,
-          showRemainingTickets: eventType === "general" ? showRemainingTickets : false,
-          stagePosition: eventType === "seated" ? stagePosition : null,
+          showRemainingTickets: finalEventType === "general" ? showRemainingTickets : false,
+          stagePosition: (finalEventType === "seated" || finalEventType === "hybrid") ? stagePosition : null,
           artistId: artistId || null,
           playlistId: playlistId || null,
         }),
@@ -519,7 +532,10 @@ export default function AdminEventEdit() {
   };
 
   // Handle section price change - creates or updates tier for a section
-  const handleSectionPriceChange = async (sectionId: string, sectionName: string, price: number, fee: number = 0) => {
+  const handleSectionPriceChange = async (section: LayoutSection, price: number, fee: number = 0) => {
+    const { id: sectionId, name: sectionName, admissionType, capacity } = section;
+    const isGeneralAdmission = admissionType === "general";
+    
     // Buscar tier existente por sectionId primero, luego por label como fallback
     const existingTier = tiers.find(t => t.sectionId === sectionId) 
       || tiers.find(t => !t.sectionId && t.label.trim().toLowerCase() === sectionName.trim().toLowerCase());
@@ -527,12 +543,24 @@ export default function AdminEventEdit() {
     try {
       if (existingTier) {
         // Update existing tier - también actualizar sectionId si no lo tenía
-        const updatePayload: { price: number; fee: number; sectionId?: string; label?: string } = { price, fee };
+        const updatePayload: { 
+          price: number; 
+          fee: number; 
+          sectionId?: string; 
+          label?: string;
+          isGeneralAdmission?: boolean;
+          capacity?: number | null;
+        } = { price, fee, isGeneralAdmission };
         
         // Si el tier no tenía sectionId, agregarlo ahora para vincular correctamente
         if (!existingTier.sectionId) {
           updatePayload.sectionId = sectionId;
           updatePayload.label = sectionName; // Actualizar label por si acaso
+        }
+        
+        // Para GA, enviar capacidad
+        if (isGeneralAdmission && capacity) {
+          updatePayload.capacity = capacity;
         }
         
         const response = await fetch(`${API_BASE_URL}/api/events/${eventId}/tiers/${existingTier.id}`, {
@@ -555,6 +583,8 @@ export default function AdminEventEdit() {
                 fee, 
                 sectionId: updatePayload.sectionId || t.sectionId, 
                 sectionName, 
+                isGeneralAdmission,
+                capacity: isGeneralAdmission ? capacity : t.capacity,
                 updatedAt: new Date().toISOString(),
               } 
             : t
@@ -574,6 +604,8 @@ export default function AdminEventEdit() {
             currency: "MXN",
             sectionId,
             isDefault: false,
+            isGeneralAdmission,
+            capacity: isGeneralAdmission ? capacity : null,
           }),
         });
         
@@ -593,6 +625,8 @@ export default function AdminEventEdit() {
           sectionName,
           sessionId: null,
           isDefault: false,
+          isGeneralAdmission,
+          capacity: isGeneralAdmission ? capacity : null,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         }]);
@@ -1528,8 +1562,8 @@ export default function AdminEventEdit() {
             </div>
           )}
 
-          {/* EVENTOS CON MAPA - Section-based pricing */}
-          {eventType === "seated" && layoutSections.length > 0 && (
+          {/* EVENTOS CON MAPA - Section-based pricing (seated + hybrid) */}
+          {(eventType === "seated" || eventType === "hybrid") && layoutSections.length > 0 && (
             <div className="space-y-4">
               <p className="text-sm text-slate-400">
                 Asigna un precio a cada sección del mapa. Los asientos de cada sección usarán el precio correspondiente.
@@ -1540,6 +1574,7 @@ export default function AdminEventEdit() {
                   // Buscar por sectionId primero, luego por label como fallback para tiers antiguos
                   const sectionTier = tiers.find(t => t.sectionId === section.id) 
                     || tiers.find(t => !t.sectionId && t.label.trim().toLowerCase() === section.name.trim().toLowerCase());
+                  const isGA = section.admissionType === "general";
                   return (
                     <Card key={section.id} className="border-white/10 bg-white/5">
                       <CardContent className="p-4">
@@ -1552,9 +1587,20 @@ export default function AdminEventEdit() {
                           
                           {/* Section name */}
                           <div className="flex-1 min-w-0">
-                            <p className="font-medium text-white truncate">{section.name}</p>
-                            {section.seatCount !== undefined && (
-                              <p className="text-xs text-slate-400">{section.seatCount} asientos</p>
+                            <div className="flex items-center gap-2">
+                              <p className="font-medium text-white truncate">{section.name}</p>
+                              {isGA && (
+                                <Badge variant="secondary" className="bg-purple-600/20 text-purple-300 border-purple-500/30 text-[10px]">
+                                  General
+                                </Badge>
+                              )}
+                            </div>
+                            {isGA ? (
+                              <p className="text-xs text-slate-400">{section.capacity || 0} capacidad</p>
+                            ) : (
+                              section.seatCount !== undefined && (
+                                <p className="text-xs text-slate-400">{section.seatCount} asientos</p>
+                              )
                             )}
                           </div>
                           
@@ -1570,7 +1616,7 @@ export default function AdminEventEdit() {
                                   value={sectionTier?.price || ""}
                                   onChange={(e) => {
                                     const newPrice = parseFloat(e.target.value) || 0;
-                                    handleSectionPriceChange(section.id, section.name, newPrice, sectionTier?.fee || 0);
+                                    handleSectionPriceChange(section, newPrice, sectionTier?.fee || 0);
                                   }}
                                   className="pl-7 h-9 bg-white/5 border-white/20"
                                   placeholder="0"
@@ -1589,7 +1635,7 @@ export default function AdminEventEdit() {
                                   value={sectionTier?.fee || "0"}
                                   onChange={(e) => {
                                     const newFee = parseFloat(e.target.value) || 0;
-                                    handleSectionPriceChange(section.id, section.name, sectionTier?.price || 0, newFee);
+                                    handleSectionPriceChange(section, sectionTier?.price || 0, newFee);
                                   }}
                                   className="pl-7 h-9 bg-white/5 border-white/20"
                                   placeholder="0"
@@ -1651,8 +1697,8 @@ export default function AdminEventEdit() {
             </div>
           )}
 
-          {/* Empty state for seated events without sections */}
-          {eventType === "seated" && layoutSections.length === 0 && (
+          {/* Empty state for seated/hybrid events without sections */}
+          {(eventType === "seated" || eventType === "hybrid") && layoutSections.length === 0 && (
             <Card className="border-white/10 bg-white/5">
               <CardContent className="py-8 text-center">
                 <Layers className="h-12 w-12 text-slate-500 mx-auto mb-4" />
