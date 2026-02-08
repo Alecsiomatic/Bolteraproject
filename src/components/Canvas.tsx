@@ -417,7 +417,8 @@ export const Canvas = () => {
 
   const [bgOpacity, setBgOpacity] = useState(0.5);
   const [showGrid, setShowGrid] = useState(true);
-  const [showSeats, setShowSeats] = useState(true); // Toggle para ocultar asientos y mejorar rendimiento
+  const [showSeats, setShowSeats] = useState(false); // Toggle para ocultar asientos - DEFAULT FALSE para mejor rendimiento
+  const showSeatsRef = useRef(false); // Ref para acceder en callbacks de carga
   const hiddenSeatsRef = useRef<any[]>([]); // Asientos removidos temporalmente del canvas
   // zoomLevel ahora viene del controllerZoomLevel (useZoomController)
   const [previewMode, setPreviewMode] = useState(false);
@@ -593,35 +594,54 @@ export const Canvas = () => {
     setStoreGridEnabled(showGrid);
   }, [showGrid, setStoreGridEnabled]);
 
+  // Sincronizar ref con estado
+  useEffect(() => {
+    showSeatsRef.current = showSeats;
+  }, [showSeats]);
+
   // Efecto para REMOVER/RESTAURAR asientos del canvas - mejora rendimiento drásticamente
   useEffect(() => {
     if (!fabricCanvas) return;
     
     if (!showSeats) {
-      // Remover asientos del canvas y guardarlos en ref
-      const seatsToHide: any[] = [];
+      // Remover asientos Y sus labels del canvas y guardarlos en ref
+      const objectsToHide: any[] = [];
       fabricCanvas.forEachObject((obj: any) => {
+        // Remover asientos (círculos)
         if (obj._customType === 'seat' || obj.type === 'Circle' || obj.type === 'circle') {
-          seatsToHide.push(obj);
+          objectsToHide.push(obj);
+        }
+        // Remover labels de asientos
+        if (obj._customType === 'seat-label') {
+          objectsToHide.push(obj);
         }
       });
       
-      // Guardar asientos antes de removerlos
-      hiddenSeatsRef.current = seatsToHide.map(seat => seat.toJSON(['id', 'name', 'price', 'capacity', 'zoneId', '_customType', 'status', 'seatType', 'tableId', 'attachedSeats', 'metadata', 'sectionId']));
+      // Guardar asientos (no labels) antes de removerlos
+      hiddenSeatsRef.current = objectsToHide
+        .filter(obj => obj._customType === 'seat' || obj.type === 'Circle' || obj.type === 'circle')
+        .map(seat => seat.toJSON(['id', 'name', 'price', 'capacity', 'zoneId', '_customType', 'status', 'seatType', 'tableId', 'attachedSeats', 'metadata', 'sectionId']));
       
-      // Remover del canvas
-      seatsToHide.forEach(seat => fabricCanvas.remove(seat));
-      console.log(`[Canvas] Removidos ${seatsToHide.length} asientos del canvas para mejor rendimiento`);
-    } else if (hiddenSeatsRef.current.length > 0) {
-      // Restaurar asientos desde ref
-      console.log(`[Canvas] Restaurando ${hiddenSeatsRef.current.length} asientos al canvas...`);
-      // No restauramos visualmente, solo al guardar los incluimos
-      // Los asientos se recargarán al hacer refresh
+      // Remover todos del canvas
+      objectsToHide.forEach(obj => fabricCanvas.remove(obj));
+      if (objectsToHide.length > 0) {
+        console.log(`[Canvas] Removidos ${objectsToHide.length} objetos (asientos + labels) del canvas para mejor rendimiento`);
+      }
+    } else {
+      // showSeats se activó - recargar layout para mostrar asientos
+      console.log(`[Canvas] showSeats activado - recargando layout para mostrar asientos...`);
+      // Limpiar ref y disparar recarga
       hiddenSeatsRef.current = [];
+      // Recargar layout desde el servidor
+      if (isEventMode && eventId) {
+        refetchEventLayout();
+      } else if (venueId && layoutId) {
+        refetchVenueLayout();
+      }
     }
     
     fabricCanvas.requestRenderAll();
-  }, [showSeats, fabricCanvas]);
+  }, [showSeats, fabricCanvas, isEventMode, eventId, venueId, layoutId, refetchEventLayout, refetchVenueLayout]);
 
   // Sincronizar preview mode con store
   useEffect(() => {
@@ -828,16 +848,32 @@ export const Canvas = () => {
         });
       removableObjects.forEach((obj) => fabricCanvas.remove(obj));
 
-      seatPayload.forEach((seat) => {
-        const seatObject = createSeatObjectFromPayload(seat);
-        fabricCanvas.add(seatObject);
-        const label = createSeatLabel(seatObject, seat.name ?? seat.label);
-        if (label) {
-          fabricCanvas.add(label);
-          fabricCanvas.bringObjectToFront(seatObject);
-          fabricCanvas.bringObjectToFront(label);
-        }
-      });
+      // Solo crear asientos si showSeats está activado
+      if (showSeatsRef.current) {
+        seatPayload.forEach((seat) => {
+          const seatObject = createSeatObjectFromPayload(seat);
+          fabricCanvas.add(seatObject);
+          const label = createSeatLabel(seatObject, seat.name ?? seat.label);
+          if (label) {
+            fabricCanvas.add(label);
+            fabricCanvas.bringObjectToFront(seatObject);
+            fabricCanvas.bringObjectToFront(label);
+          }
+        });
+      } else {
+        // Guardar asientos en hiddenSeatsRef para no perderlos
+        hiddenSeatsRef.current = seatPayload.map(seat => ({
+          id: seat.id,
+          name: seat.name ?? seat.label,
+          left: seat.x,
+          top: seat.y,
+          sectionId: seat.sectionId,
+          zoneId: seat.zoneId,
+          status: seat.status ?? 'available',
+          _customType: 'seat',
+        }));
+        console.log(`[rebuildCanvasFromSeats] Guardados ${seatPayload.length} asientos en hiddenSeatsRef (showSeats=false)`);
+      }
 
       ensureCanvasBorder(fabricCanvas);
       
@@ -985,9 +1021,26 @@ export const Canvas = () => {
 
       if (payload.canvas) {
         try {
+          // OPTIMIZACIÓN: Si showSeats está desactivado, filtrar asientos del JSON antes de cargar
+          let canvasToLoad = payload.canvas;
+          if (!showSeatsRef.current && typeof canvasToLoad === 'object' && canvasToLoad.objects) {
+            const filteredObjects = canvasToLoad.objects.filter((obj: any) => {
+              // Filtrar círculos pequeños (asientos) y labels de asientos
+              if (obj._customType === 'seat' || obj._customType === 'seat-label') {
+                return false;
+              }
+              if ((obj.type === 'Circle' || obj.type === 'circle') && obj.radius && obj.radius >= 8 && obj.radius <= 35) {
+                return false;
+              }
+              return true;
+            });
+            canvasToLoad = { ...canvasToLoad, objects: filteredObjects };
+            console.log(`[applyRemoteLayout] Filtrados asientos del JSON: ${payload.canvas.objects.length} -> ${filteredObjects.length} objetos`);
+          }
+          
           // IMPORTANTE: Usar await en lugar de callback para evitar múltiples invocaciones
           // El callback de loadFromJSON en Fabric.js v6 puede dispararse múltiples veces
-          await fabricCanvas.loadFromJSON(payload.canvas as any);
+          await fabricCanvas.loadFromJSON(canvasToLoad as any);
           
           // Actualizar estado UNA SOLA VEZ después de que el canvas esté completamente cargado
           setZones(zonesPayload);
@@ -1140,18 +1193,33 @@ export const Canvas = () => {
             
             console.log(`[applyRemoteLayout] Matched ${matchedCount} canvas seats with DB records by position`);
           } else if (seatsToCreate.length > 0 && existingCanvasSeats.length === 0) {
-            // Solo crear asientos desde DB si el canvas no tiene ninguno
-            console.log(`[applyRemoteLayout] Creating ${seatsToCreate.length} seats from DB (canvas was empty)`);
-            seatsToCreate.forEach((seat) => {
-              const seatObject = createSeatObjectFromPayload(seat);
-              fabricCanvas.add(seatObject);
-              const label = createSeatLabel(seatObject, seat.name ?? seat.label);
-              if (label) {
-                fabricCanvas.add(label);
-                fabricCanvas.bringObjectToFront(seatObject);
-                fabricCanvas.bringObjectToFront(label);
-              }
-            });
+            // Solo crear asientos desde DB si el canvas no tiene ninguno Y showSeats está activado
+            if (showSeatsRef.current) {
+              console.log(`[applyRemoteLayout] Creating ${seatsToCreate.length} seats from DB (canvas was empty)`);
+              seatsToCreate.forEach((seat) => {
+                const seatObject = createSeatObjectFromPayload(seat);
+                fabricCanvas.add(seatObject);
+                const label = createSeatLabel(seatObject, seat.name ?? seat.label);
+                if (label) {
+                  fabricCanvas.add(label);
+                  fabricCanvas.bringObjectToFront(seatObject);
+                  fabricCanvas.bringObjectToFront(label);
+                }
+              });
+            } else {
+              // Guardar asientos en hiddenSeatsRef para no perderlos
+              hiddenSeatsRef.current = seatsToCreate.map(seat => ({
+                id: seat.id,
+                name: seat.name ?? seat.label,
+                left: seat.x,
+                top: seat.y,
+                sectionId: seat.sectionId,
+                zoneId: seat.zoneId,
+                status: seat.status ?? 'available',
+                _customType: 'seat',
+              }));
+              console.log(`[applyRemoteLayout] Guardados ${seatsToCreate.length} asientos en hiddenSeatsRef (showSeats=false)`);
+            }
           }
           
           ensureCanvasBorder(fabricCanvas);
