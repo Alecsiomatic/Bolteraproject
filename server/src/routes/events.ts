@@ -96,6 +96,7 @@ type PriceTierRow = RowDataPacket & {
   minQuantity: number | null;
   maxQuantity: number | null;
   capacity: number | null;
+  isGeneralAdmission: number;
   isDefault: number;
   createdAt: Date;
   updatedAt: Date;
@@ -1684,7 +1685,7 @@ export async function eventRoutes(app: FastifyInstance) {
     // Get price tiers - use actual eventId not the slug
     // Include sectionId for section-based pricing
     const priceTierRows = await query<PriceTierRow[]>(
-      `SELECT id, zoneId, sectionId, label, price, fee, updatedAt, createdAt 
+      `SELECT id, zoneId, sectionId, label, price, fee, capacity, isGeneralAdmission, updatedAt, createdAt 
        FROM EventPriceTier 
        WHERE eventId = ?
        ORDER BY updatedAt DESC, createdAt DESC`,
@@ -1692,6 +1693,9 @@ export async function eventRoutes(app: FastifyInstance) {
     );
 
     const priceTiers = dedupeSectionTiers(priceTierRows);
+    
+    // Get GA tiers for hybrid events
+    const gaTiers = priceTierRows.filter(t => t.isGeneralAdmission === 1);
 
     // DEBUG: Log all tiers for this event
     request.log.debug({ eventId: session.eventId, tiers: priceTiers }, '🔍 Price tiers loaded for event');
@@ -1811,14 +1815,60 @@ export async function eventRoutes(app: FastifyInstance) {
       layoutData = null;
     }
 
+    // For hybrid events, also include sections from layoutJson
+    const sections = layoutData?.sections || [];
+    const isHybrid = session.eventType === 'hybrid' || gaTiers.length > 0 || sections.some((s: any) => s.admissionType === 'general');
+
+    // Build GA tiers with availability for hybrid events
+    let tiersWithAvailability: any[] = [];
+    if (isHybrid && gaTiers.length > 0) {
+      const ticketCounts = await query<RowDataPacket[]>(
+        `SELECT tierId, COUNT(*) as count 
+         FROM Ticket 
+         WHERE sessionId = ? AND status IN ('SOLD', 'RESERVED') AND tierId IS NOT NULL
+         GROUP BY tierId`,
+        [sessionId],
+      );
+      const countMap = new Map(ticketCounts.map(t => [t.tierId, Number(t.count)]));
+
+      tiersWithAvailability = gaTiers.map(tier => {
+        const sold = countMap.get(tier.id) || 0;
+        const capacity = tier.capacity !== null && tier.capacity !== undefined ? Number(tier.capacity) : null;
+        const available = capacity !== null ? Math.max(0, capacity - sold) : null;
+
+        return {
+          id: tier.id,
+          label: tier.label,
+          price: Number(tier.price),
+          fee: Number(tier.fee) || 0,
+          capacity,
+          sold,
+          available,
+          isGeneralAdmission: true,
+          sectionId: tier.sectionId,
+        };
+      });
+    }
+
     return { 
       sessionId, 
+      eventType: isHybrid ? 'hybrid' : 'seated',
       seats: availability, 
       stats,
+      tiers: tiersWithAvailability, // Include GA tiers for hybrid
       layout: {
         id: layoutId,
         canvas: layoutData?.canvas || { width: 1200, height: 800 },
         zones: Array.from(zonesMap.entries()).map(([id, zone]) => ({ id, ...zone })),
+        sections: sections.map((s: any) => ({
+          id: s.id,
+          name: s.name,
+          color: s.color,
+          admissionType: s.admissionType || 'seated',
+          capacity: s.capacity || 0,
+          basePrice: s.basePrice || 0,
+          polygonPoints: s.polygonPoints || s.points || [],
+        })),
       },
       showRemainingTickets: Boolean(session.showRemainingTickets),
     };
@@ -2535,7 +2585,7 @@ export async function eventRoutes(app: FastifyInstance) {
       }
 
       // Map embedded sections to response format with accurate stats
-      const sectionsWithStats = embeddedSections.map((section: any) => {
+      const sectionsWithStats = await Promise.all(embeddedSections.map(async (section: any) => {
         const sectionZoneId = section.zoneId || null;
         const sectionId = section.id;
         // Prefer price by sectionId, then by zoneId, then default
@@ -2584,6 +2634,30 @@ export async function eventRoutes(app: FastifyInstance) {
           }
         }
 
+        // For general admission sections, get capacity from section and calculate sold tickets
+        const isGeneralAdmission = section.admissionType === 'general';
+        let generalStats = { total: 0, available: 0, sold: 0, reserved: 0 };
+        
+        if (isGeneralAdmission) {
+          // For general admission, capacity comes from section, sold from tickets
+          // Since Ticket table doesn't have sectionId, we look for tickets by tierId
+          // where the tier has this sectionId
+          const sectionCapacity = section.capacity || 0;
+          const soldTickets = await query<RowDataPacket[]>(
+            `SELECT COUNT(*) as count FROM Ticket t
+             JOIN EventPriceTier ept ON t.tierId = ept.id
+             WHERE t.sessionId = ? AND ept.sectionId = ? AND t.status IN ('SOLD', 'RESERVED')`,
+            [sessionId, sectionId],
+          );
+          const sold = soldTickets[0]?.count || 0;
+          generalStats = {
+            total: sectionCapacity,
+            available: Math.max(0, sectionCapacity - sold),
+            sold: sold,
+            reserved: 0,
+          };
+        }
+
         return {
           id: section.id,
           name: section.name,
@@ -2595,21 +2669,24 @@ export async function eventRoutes(app: FastifyInstance) {
           hoverColor: section.hoverColor || `${section.color || "#3B82F6"}90`,
           selectedColor: section.selectedColor || `${section.color || "#3B82F6"}B0`,
           thumbnailUrl: section.thumbnailUrl || null,
+          admissionType: section.admissionType || 'seated',
+          capacity: section.capacity || 0,
+          basePrice: section.basePrice || 0,
           zone: sectionZoneId ? {
             id: sectionZoneId,
             name: section.zoneName || section.name,
             color: section.color,
           } : null,
           pricing: {
-            price: sectionPrice.price,
+            price: isGeneralAdmission ? (section.basePrice || sectionPrice.price) : sectionPrice.price,
             fee: sectionPrice.fee,
-            total: sectionPrice.price + sectionPrice.fee,
+            total: (isGeneralAdmission ? (section.basePrice || sectionPrice.price) : sectionPrice.price) + sectionPrice.fee,
           },
-          stats: sectionStats,
+          stats: isGeneralAdmission ? generalStats : sectionStats,
           childLayoutId: null, // No child layouts for embedded sections
           metadata: section.metadata || {},
         };
-      });
+      }));
 
       // Get canvas dimensions
       const canvas = layoutData?.canvas 

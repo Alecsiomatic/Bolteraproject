@@ -642,6 +642,16 @@ const EventPurchase = () => {
         });
         return;
       }
+    } else if (isHybridEvent) {
+      // For hybrid events, user can select GA tickets, seated tickets, or both
+      if (totalGeneralTickets === 0 && selectedSeats.length === 0) {
+        toast({
+          variant: "destructive",
+          title: "Selecciona boletos",
+          description: "Debes seleccionar al menos un boleto o asiento",
+        });
+        return;
+      }
     } else {
       if (selectedSeats.length === 0) {
         toast({
@@ -671,7 +681,13 @@ const EventPurchase = () => {
       return;
     }
     
-    // For seated events, create reservation
+    // For hybrid events with only GA selections (no seated), go directly to checkout
+    if (isHybridEvent && selectedSeats.length === 0) {
+      setStep("checkout");
+      return;
+    }
+    
+    // For seated events or hybrid with seated selections, create reservation
     reservationMutation.mutate();
   };
 
@@ -1143,7 +1159,9 @@ const EventPurchase = () => {
 
                           {/* Seat map */}
                           <div className="flex-1">
-                            {availability?.seats && availability.seats.length > 0 && eventId && sessionId && (
+                            {((availability?.seats && availability.seats.length > 0) || 
+                              (availability?.layout?.sections && availability.layout.sections.length > 0) ||
+                              availability?.eventType === 'hybrid') && eventId && sessionId && (
                               <HierarchicalSeatMap
                                 eventId={eventId}
                                 sessionId={sessionId}
@@ -1347,7 +1365,7 @@ const EventPurchase = () => {
                   <CardTitle className="text-sm sm:text-lg text-white">Resumen de compra</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2.5 sm:space-y-4 p-3 sm:p-6 pt-0">
-                  {/* Selected Items - Different UI for seated vs general */}
+                  {/* Selected Items - Different UI for seated vs general vs hybrid */}
                   {isGeneralAdmission ? (
                     /* General Admission Summary */
                     totalGeneralTickets === 0 ? (
@@ -1371,6 +1389,66 @@ const EventPurchase = () => {
                               <span className="text-xs sm:text-sm text-white/60">
                                 {formatPrice(tier.price * qty, config.currency)}
                               </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )
+                  ) : isHybridEvent ? (
+                    /* Hybrid Event Summary - show both GA selections and seats */
+                    (gaSelections.length === 0 && selectedSeats.length === 0) ? (
+                      <p className="text-xs sm:text-sm text-white/60">
+                        No has seleccionado boletos
+                      </p>
+                    ) : (
+                      <div className="max-h-36 sm:max-h-48 space-y-1.5 sm:space-y-2 overflow-y-auto">
+                        {/* GA Selections */}
+                        {gaSelections.filter(s => s.quantity > 0).map(selection => (
+                          <div
+                            key={selection.sectionId}
+                            className="flex items-center justify-between rounded bg-white/5 p-1.5 sm:p-2"
+                          >
+                            <div className="flex items-center gap-1.5 sm:gap-2">
+                              <div
+                                className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full"
+                                style={{ backgroundColor: selection.color || "#64748b" }}
+                              />
+                              <span className="text-xs sm:text-sm text-white truncate max-w-[100px] sm:max-w-none">{selection.sectionName}</span>
+                              <span className="text-[10px] sm:text-xs text-white/60">x{selection.quantity}</span>
+                            </div>
+                            <span className="text-xs sm:text-sm text-white/60">
+                              {formatPrice(selection.price * selection.quantity, config.currency)}
+                            </span>
+                          </div>
+                        ))}
+                        {/* Seated Selections */}
+                        {selectedSeats.map(seat => {
+                          const zone = seat.zoneId ? zonesMap.get(seat.zoneId) : null;
+                          return (
+                            <div
+                              key={seat.id}
+                              className="flex items-center justify-between rounded bg-white/5 p-1.5 sm:p-2"
+                            >
+                              <div className="flex items-center gap-1.5 sm:gap-2">
+                                <div
+                                  className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full"
+                                  style={{ backgroundColor: zone?.color || "#64748b" }}
+                                />
+                                <span className="text-xs sm:text-sm text-white">{seat.label}</span>
+                              </div>
+                              <div className="flex items-center gap-1.5 sm:gap-2">
+                                <span className="text-[10px] sm:text-sm text-white/60">
+                                  {formatPrice(seat.price, config.currency)}
+                                </span>
+                                {step === "seats" && (
+                                  <button
+                                    onClick={() => toggleSeat(seat)}
+                                    className="text-white/60 hover:text-red-400"
+                                  >
+                                    <X className="h-3 w-3 sm:h-4 sm:w-4" />
+                                  </button>
+                                )}
+                              </div>
                             </div>
                           );
                         })}
@@ -1485,7 +1563,7 @@ const EventPurchase = () => {
                   <div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
                     <div className="flex justify-between">
                       <span className="text-white/60">
-                        Subtotal ({isGeneralAdmission ? totalGeneralTickets : selectedSeats.length} boletos)
+                        Subtotal ({(isGeneralAdmission || isHybridEvent) ? (totalGeneralTickets + selectedSeats.length) : selectedSeats.length} boletos)
                       </span>
                       <span className="text-white">{formatPrice(totals.subtotal, config.currency)}</span>
                     </div>
@@ -1512,7 +1590,7 @@ const EventPurchase = () => {
                   {step === "seats" ? (
                     <Button
                       className="w-full bg-gold-500 hover:bg-gold-600 text-sm sm:text-base"
-                      disabled={(isGeneralAdmission ? totalGeneralTickets === 0 : selectedSeats.length === 0) || reservationMutation.isPending}
+                      disabled={((isGeneralAdmission || isHybridEvent) ? (totalGeneralTickets + selectedSeats.length) === 0 : selectedSeats.length === 0) || reservationMutation.isPending}
                       onClick={handleProceedToCheckout}
                     >
                       {reservationMutation.isPending ? (

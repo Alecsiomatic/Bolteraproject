@@ -1044,13 +1044,14 @@ export const Canvas = () => {
           
           // Actualizar estado UNA SOLA VEZ después de que el canvas esté completamente cargado
           setZones(zonesPayload);
-          setSections(sectionsPayload);
           
           // Después de cargar el canvas, identificar los grupos (secciones)
           const canvasObjects = fabricCanvas.getObjects() as CustomFabricObject[];
           
           // Los Groups que vienen del JSON son las secciones visuales
-          const sectionGroups = canvasObjects.filter(obj => obj.type === 'group' || obj.type === 'Group');
+          const sectionGroups = canvasObjects.filter(obj => 
+            obj._customType === 'section' || obj.type === 'group' || obj.type === 'Group'
+          );
           console.log(`[applyRemoteLayout] Found ${sectionGroups.length} section groups from JSON`);
           
           // Marcar los grupos como secciones y enviarlos al fondo
@@ -1061,9 +1062,71 @@ export const Canvas = () => {
             fabricCanvas.sendObjectToBack(group);
           });
           
+          // SINCRONIZAR: Si sectionsPayload está vacío pero hay grupos en el canvas, extraerlos
+          let finalSections = sectionsPayload;
+          if (sectionsPayload.length === 0 && sectionGroups.length > 0) {
+            console.log(`[applyRemoteLayout] Extracting ${sectionGroups.length} sections from canvas objects`);
+            finalSections = sectionGroups.map((group: any) => {
+              // Intentar extraer puntos del polígono dentro del grupo
+              let polygonPoints: { x: number; y: number }[] = [];
+              let sectionColor = group.fill || '#0EA5E9';
+              
+              // Fabric.js Group: usar getObjects() si existe, o _objects
+              const innerObjects = group.getObjects ? group.getObjects() : (group._objects || group.objects || []);
+              console.log(`[applyRemoteLayout] Group "${group.name}" has ${innerObjects.length} inner objects`);
+              
+              const polygon = innerObjects.find((o: any) => 
+                o.type === 'polygon' || o.type === 'Polygon'
+              );
+              
+              if (polygon) {
+                // Obtener color del polígono
+                if (polygon.fill) {
+                  sectionColor = polygon.fill;
+                }
+                
+                // Obtener puntos
+                if (polygon.points && polygon.points.length > 0) {
+                  // Los puntos del polígono en un grupo son relativos al centro del grupo
+                  // Necesitamos transformarlos a coordenadas absolutas
+                  const groupLeft = group.left || 0;
+                  const groupTop = group.top || 0;
+                  
+                  // El polígono dentro del grupo tiene sus propios left/top relativos
+                  const polyLeft = polygon.left || 0;
+                  const polyTop = polygon.top || 0;
+                  
+                  polygonPoints = polygon.points.map((p: any) => ({
+                    x: p.x,  // Los puntos ya están en coordenadas absolutas según el análisis
+                    y: p.y
+                  }));
+                  
+                  console.log(`[applyRemoteLayout] Polygon in "${group.name}" has ${polygonPoints.length} points`);
+                }
+              } else {
+                console.log(`[applyRemoteLayout] No polygon found in group "${group.name}"`);
+              }
+              
+              return {
+                id: group.id || `section-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+                name: group.name || 'Sección sin nombre',
+                color: sectionColor,
+                polygonPoints,
+                points: polygonPoints,
+                capacity: 0,
+                displayOrder: 0,
+                isActive: true,
+                visible: group.visible !== false,
+                admissionType: 'seated' as const,
+              };
+            });
+            console.log('[applyRemoteLayout] Final extracted sections:', finalSections.map(s => ({ name: s.name, pointsCount: s.points?.length || 0 })));
+          }
+          setSections(finalSections);
+          
           // Helper para encontrar la sección que contiene un punto
           const findSectionForPoint = (x: number, y: number): string | null => {
-            for (const section of sectionsPayload) {
+            for (const section of finalSections) {
               const polygonPoints = section.polygonPoints || section.points;
               if (polygonPoints && polygonPoints.length >= 3) {
                 if (isPointInPolygon({ x, y }, polygonPoints)) {
@@ -1332,12 +1395,12 @@ export const Canvas = () => {
         name: seatJson.name || seatJson.id,
         rowLabel: seatJson.name?.match(/^([A-Z]+)/)?.[1] || '',
         columnNumber: parseInt(seatJson.name?.match(/(\d+)$/)?.[1] || '0', 10),
-        zoneId: seatJson.zoneId,
-        sectionId: seatJson.sectionId || metadata.sectionId,
+        zoneId: seatJson.zoneId || undefined, // Convertir null a undefined para Zod
+        sectionId: seatJson.sectionId || metadata.sectionId || undefined,
         seatType: seatJson.seatType || 'STANDARD',
         status: seatJson.status || 'available',
         price: seatJson.price,
-        tableId: seatJson.tableId,
+        tableId: seatJson.tableId || undefined,
         position,
         size: { width: seatJson.radius ? seatJson.radius * 2 : 28, height: seatJson.radius ? seatJson.radius * 2 : 28 },
         metadata,

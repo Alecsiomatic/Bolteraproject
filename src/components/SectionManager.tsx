@@ -504,73 +504,44 @@ export const SectionManager = ({
                         </div>
                       </div>
 
-                      {/* Actions */}
-                      <div className="flex gap-0.5 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-auto" onClick={(e) => e.stopPropagation()}>
-                        {/* Generate Seats Button - Solo para secciones de asientos */}
-                        {onGenerateSeats && section.points && section.points.length >= 3 && section.admissionType !== "general" && (
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-6 w-6 flex-shrink-0 text-primary hover:bg-primary/10"
-                            onClick={(e) => openGenerateModal(section, e)}
-                            title="Generar asientos automáticamente"
-                          >
-                            <Sparkles className="h-3.5 w-3.5" />
-                          </Button>
-                        )}
-
+                      {/* Actions - Compact */}
+                      <div className="flex gap-0.5 flex-shrink-0 items-center" onClick={(e) => e.stopPropagation()}>
+                        {/* Delete */}
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-6 w-6 flex-shrink-0 text-destructive hover:bg-destructive/10"
+                          onClick={(e) => { e.stopPropagation(); onDeleteSection(section.id); }}
+                          title="Eliminar"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                        </Button>
+                        
+                        {/* Edit */}
                         {onEditSection && (
                           <Button
                             variant="ghost"
                             size="icon"
                             className="h-6 w-6 flex-shrink-0"
                             onClick={(e) => openEditModal(section, e)}
-                            title="Editar sección"
+                            title="Editar"
                           >
                             <Pencil className="h-3 w-3" />
                           </Button>
                         )}
                         
-                        {onToggleVisibility && (
+                        {/* Generate Seats */}
+                        {onGenerateSeats && section.points && section.points.length >= 3 && section.admissionType !== "general" && (
                           <Button
                             variant="ghost"
                             size="icon"
-                            className="h-6 w-6 flex-shrink-0"
-                            onClick={(e) => { e.stopPropagation(); onToggleVisibility(section.id); }}
-                            title={section.visible !== false ? "Ocultar" : "Mostrar"}
+                            className="h-6 w-6 flex-shrink-0 text-amber-500 hover:bg-amber-500/10"
+                            onClick={(e) => openGenerateModal(section, e)}
+                            title="Generar asientos"
                           >
-                            {section.visible !== false ? (
-                              <Eye className="h-3.5 w-3.5" />
-                            ) : (
-                              <EyeOff className="h-3.5 w-3.5 text-muted-foreground" />
-                            )}
+                            <Sparkles className="h-3.5 w-3.5" />
                           </Button>
                         )}
-
-                        {hasChildLayout && onOpenChildLayout && (
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-6 w-6 flex-shrink-0"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onOpenChildLayout(section.id, section.childLayoutId!);
-                            }}
-                            title="Abrir layout de sección"
-                          >
-                            <ExternalLink className="h-3.5 w-3.5" />
-                          </Button>
-                        )}
-
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-6 w-6 flex-shrink-0 text-destructive hover:bg-destructive/10"
-                          onClick={(e) => { e.stopPropagation(); onDeleteSection(section.id); }}
-                          title="Eliminar sección"
-                        >
-                          <Trash2 className="h-3 w-3" />
-                        </Button>
                       </div>
                     </div>
 

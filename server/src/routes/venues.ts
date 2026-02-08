@@ -204,12 +204,12 @@ const layoutSeatSchema = z.object({
   name: z.string().optional(),
   rowLabel: z.string().optional(),
   columnNumber: z.number().int().nonnegative().optional(),
-  zoneId: z.string().optional(),
-  sectionId: z.string().optional(), // Section this seat belongs to
+  zoneId: z.string().nullable().optional(), // Aceptar null y undefined
+  sectionId: z.string().nullable().optional(), // Section this seat belongs to
   seatType: z.string().optional(),
   status: z.string().optional(),
   price: z.number().nonnegative().optional(),
-  tableId: z.string().optional(),
+  tableId: z.string().nullable().optional(),
   position: z
     .object({
       x: z.number(),
@@ -1412,13 +1412,24 @@ export async function venueRoutes(app: FastifyInstance) {
       return reply.code(404).send({ message: "Venue no encontrado" });
     }
 
-    const [layout] = await query<RowDataPacket[]>(
+    let [layout] = await query<RowDataPacket[]>(
       `SELECT id, version, eventId FROM VenueLayout WHERE id = ? AND venueId = ? LIMIT 1`,
       [payload.layoutId, venueId],
     );
 
+    // Si el layout no existe, lo creamos automáticamente
     if (!layout) {
-      return reply.code(404).send({ message: "Layout no encontrado para este venue" });
+      request.log.info(`[Layout Save] Layout ${payload.layoutId} no existe, creándolo...`);
+      await query(
+        `INSERT INTO VenueLayout (id, venueId, name, version, layoutJson, metadata, isDefault, publishedAt, createdAt, updatedAt)
+         VALUES (?, ?, 'Layout Principal', 1, '{}', NULL, 1, NOW(), NOW(), NOW())`,
+        [payload.layoutId, venueId],
+      );
+      // Re-fetch el layout recién creado
+      [layout] = await query<RowDataPacket[]>(
+        `SELECT id, version, eventId FROM VenueLayout WHERE id = ? AND venueId = ? LIMIT 1`,
+        [payload.layoutId, venueId],
+      );
     }
 
     const layoutId = layout.id;
